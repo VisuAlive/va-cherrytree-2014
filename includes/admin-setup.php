@@ -16,10 +16,11 @@ if ( ! function_exists( '_visualive_theme_basic_auth' ) ) :
 function _visualive_theme_basic_auth() {
 	$auth_id   = VACB2014_AUTH_ID;
 	$auth_pass = VACB2014_AUTH_PASS;
+	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password')
 
 	nocache_headers();
 
-	if ( is_user_logged_in() || in_array( $auth_id, array('', 'admin', 'root', 'webmaster') ) || in_array( $auth_pass, array('', 'pass', 'password', 'root') ) ) {
+	if ( is_user_logged_in() || in_array( $auth_id, $improper ) || in_array( $auth_pass, $improper ) ) {
 		return;
 	}
 

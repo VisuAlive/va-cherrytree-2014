@@ -21,8 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 ini_set( 'display_errors', 1 );
 define( 'VACB2014_TEXTDOMAIN', 'va_cherryblossum_2014' );
-define( 'VACB2014_AUTH_ID', '' );
-define( 'VACB2014_AUTH_PASS', '' );
+define( 'VACB2014_AUTH_ID', '' );   // A blank, admin, root, wenmaster, pass and password cannot be used.
+define( 'VACB2014_AUTH_PASS', '' ); // A blank, admin, root, wenmaster, pass and password cannot be used.
 
 get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );
