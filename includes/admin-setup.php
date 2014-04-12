@@ -16,7 +16,7 @@ if ( ! function_exists( '_visualive_theme_basic_auth' ) ) :
 function _visualive_theme_basic_auth() {
 	$auth_id   = VACB2014_AUTH_ID;
 	$auth_pass = VACB2014_AUTH_PASS;
-	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password')
+	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password');
 
 	nocache_headers();
 
@@ -43,6 +43,27 @@ function _visualive_theme_basic_auth() {
 }
 endif; // _visualive_theme_basic_auth
 add_action( 'login_init', '_visualive_theme_basic_auth', 0 );
+
+
+/**
+ * The message of the purport that initial setting of theme is carried out is sent.
+ *
+ * @return string
+ */
+if ( ! function_exists( '_visualive_theme_admin_setup_message' ) ) :
+function _visualive_theme_admin_setup_message() {
+	$auth_id   = VACB2014_AUTH_ID;
+	$auth_pass = VACB2014_AUTH_PASS;
+	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password');
+	// functions.phpを開いて、VACB2014_AUTH_IDとVACB2014_AUTH_PASSを編集して、セットアップを完成してください。
+	$message   = __( 'Please open ' . get_template_directory() . '/functions.php, edit VACB2014_AUTH_ID and VACB2014_AUTH_PASS, and complete a setup.', VACB2014_TEXTDOMAIN );
+
+	if ( in_array( $auth_id, $improper ) || in_array( $auth_pass, $improper ) ) {
+		echo "<div id='message' class='error'><p><strong>$message</strong></p></div>";
+	}
+}
+endif; // _visualive_theme_admin_setup_message
+add_action( 'admin_notices', '_visualive_theme_admin_setup_message' );
 
 
 /**
