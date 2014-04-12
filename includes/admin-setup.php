@@ -12,6 +12,33 @@ add_filter( 'auto_update_theme', '__return_true' );
 add_filter( 'login_errors', '__return_false' );
 
 
+if ( ! function_exists( '_visualive_theme_basic_auth' ) ) :
+function _visualive_theme_basic_auth() {
+	nocache_headers();
+	if ( is_user_logged_in() )
+		return;
+
+	/**
+	 * Echo basic auth
+	 *
+	 * @link http://www.phpbook.jp/tutorial/auth/index1.html
+	 */
+	if ( ! isset($_SERVER['PHP_AUTH_USER']) && ! isset($_SERVER['PHP_AUTH_PW']) ) {
+		header( 'WWW-Authenticate: Basic realm="Private Page"' );
+		header( 'HTTP/1.0 401 Unauthorized' );
+		die( __('Authorization Required.') );
+	} else {
+		if ( $_SERVER['PHP_AUTH_USER'] != VACB2014_AUTH_ID || $_SERVER['PHP_AUTH_PW'] != VACB2014_AUTH_PASS ) {
+			header( 'WWW-Authenticate: Basic realm="Private Page"' );
+			header( 'HTTP/1.0 401 Unauthorized' );
+			die( __('Authorization Required.') );
+		}
+	}
+}
+endif; // _visualive_theme_basic_auth
+add_action( 'login_init', '_visualive_theme_basic_auth', 0 );
+
+
 /**
  * Login page custom css
  *

@@ -21,6 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 // ini_set( 'display_errors', 0 );
 define( 'VACB2014_TEXTDOMAIN', 'va_cherryblossum_2014' );
+define( 'VACB2014_AUTH_ID', 'admin' );
+define( 'VACB2014_AUTH_PASS', 'pass' );
 
 get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );
