@@ -14,9 +14,14 @@ add_filter( 'login_errors', '__return_false' );
 
 if ( ! function_exists( '_visualive_theme_basic_auth' ) ) :
 function _visualive_theme_basic_auth() {
+	$auth_id   = VACB2014_AUTH_ID;
+	$auth_pass = VACB2014_AUTH_PASS;
+
 	nocache_headers();
-	if ( is_user_logged_in() )
+
+	if ( is_user_logged_in() || in_array( $auth_id, array('', 'admin', 'root', 'webmaster') ) || in_array( $auth_pass, array('', 'pass', 'password', 'root') ) ) {
 		return;
+	}
 
 	/**
 	 * Echo basic auth
@@ -28,7 +33,7 @@ function _visualive_theme_basic_auth() {
 		header( 'HTTP/1.0 401 Unauthorized' );
 		die( __('Authorization Required.') );
 	} else {
-		if ( $_SERVER['PHP_AUTH_USER'] != VACB2014_AUTH_ID || $_SERVER['PHP_AUTH_PW'] != VACB2014_AUTH_PASS ) {
+		if ( $_SERVER['PHP_AUTH_USER'] != $auth_id || $_SERVER['PHP_AUTH_PW'] != $auth_pass ) {
 			header( 'WWW-Authenticate: Basic realm="Private Page"' );
 			header( 'HTTP/1.0 401 Unauthorized' );
 			die( __('Authorization Required.') );
