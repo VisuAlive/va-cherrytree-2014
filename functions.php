@@ -26,7 +26,8 @@ get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );
 get_template_part( 'includes/theme', 'posttype' );
 get_template_part( 'includes/theme', 'metabox' );
-get_template_part( 'includes/theme', 'option' );
+get_template_part( 'includes/theme', 'options' );
+
 // Plugin includes
 get_template_part( 'includes/plugin', 'hack' );
 get_template_part( 'includes/plugin', 'admin-postlist-addcolumns' );

@@ -8,7 +8,7 @@
 * Bill Erickson ( [@billerickson](http://twitter.com/billerickson ) / [billerickson.net](http://billerickson.net/) )
 * Andrew Norcross ( [@norcross](http://twitter.com/norcross ) / [andrewnorcross.com](http://andrewnorcross.com/) )
 
-**Version**: 1.1.2  
+**Version**: 1.1.3  
 **Requires at least**: 3.5  
 **Tested up to**: 3.9-alpha  
 **License**: GPLv2  
@@ -96,6 +96,12 @@ This script is easy to install. If you can't figure it out you probably shouldn'
 4. Profit.
 
 ## Changelog
+
+### 1.1.3
+**Bug Fixes**  
+
+* Update `cmb_get_field_value` function as it was passing the parameters to `cmb_get_field` in the wrong order.
+* Fix repeating fields not working correctly if meta key or prefix contained an integer.
 
 ### 1.1.2
 
