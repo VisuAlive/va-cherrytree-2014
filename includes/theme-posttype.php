@@ -12,9 +12,9 @@ function _visualive_theme_change_sidemenu_text() {
 	global $submenu;
 
 	// Change menu item
-	$menu[5][0] = __( 'Blog', 'VACT2014_TEXTDOMAIN' );
+	$menu[5][0] = __( 'Blog', 'VACB2014_TEXTDOMAIN' );
 	// Change post submenu
-	$submenu['edit.php'][5][0] = __( 'All Blogs', 'VACT2014_TEXTDOMAIN' );
+	$submenu['edit.php'][5][0] = __( 'All Blogs', 'VACB2014_TEXTDOMAIN' );
 }
 add_action( 'admin_menu', '_visualive_theme_change_sidemenu_text' );
 
@@ -30,14 +30,14 @@ function _visualive_theme_change_posttype_labels() {
 
 	// Get the post labels
 	$postLabels = $wp_post_types['post']->labels;
-	$postLabels->name               = __( 'Blog', 'VACT2014_TEXTDOMAIN' );
+	$postLabels->name               = __( 'Blog', 'VACB2014_TEXTDOMAIN' );
 	// $postLabels->singular_name      = 'Articles';
 	// $postLabels->add_new            = 'Add Articles';
-	$postLabels->add_new_item       = __( 'Add Blog', 'VACT2014_TEXTDOMAIN' );
-	$postLabels->edit_item          = __( 'Edit Blog', 'VACT2014_TEXTDOMAIN' );
+	$postLabels->add_new_item       = __( 'Add Blog', 'VACB2014_TEXTDOMAIN' );
+	$postLabels->edit_item          = __( 'Edit Blog', 'VACB2014_TEXTDOMAIN' );
 	// $postLabels->new_item           = 'Articles';
-	$postLabels->view_item          = __( 'View Blog', 'VACT2014_TEXTDOMAIN' );
-	$postLabels->search_items       = __( 'Search Blogs', 'VACT2014_TEXTDOMAIN' );
+	$postLabels->view_item          = __( 'View Blog', 'VACB2014_TEXTDOMAIN' );
+	$postLabels->search_items       = __( 'Search Blogs', 'VACB2014_TEXTDOMAIN' );
 	// $postLabels->not_found          = 'No Articles found';
 	// $postLabels->not_found_in_trash = 'No Articles found in Trash';
 }
@@ -51,9 +51,9 @@ add_action( 'init', '_visualive_theme_change_posttype_labels' );
  */
 function _visualive_theme_register_post_type() {
 	register_post_type( 'info', array(
-		'label'               => __( 'Information', 'VACT2014_TEXTDOMAIN' ),
+		'label'               => __( 'Information', 'VACB2014_TEXTDOMAIN' ),
 		'labels'              => array(
-									'all_items' => __( 'All Informations', 'VACT2014_TEXTDOMAIN' )
+									'all_items' => __( 'All Informations', 'VACB2014_TEXTDOMAIN' )
 								),
 		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 		'taxonomies'          => array( 'info_cat' ),
@@ -72,9 +72,9 @@ function _visualive_theme_register_post_type() {
 	) ); // register_post_type
 
 	register_post_type( 'showcase', array(
-		'label'               => __( 'Showcase', 'VACT2014_TEXTDOMAIN' ),
+		'label'               => __( 'Showcase', 'VACB2014_TEXTDOMAIN' ),
 		'labels'              => array(
-									'all_items' => __( 'All Showcases', 'VACT2014_TEXTDOMAIN' )
+									'all_items' => __( 'All Showcases', 'VACB2014_TEXTDOMAIN' )
 								),
 		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 		'taxonomies'          => array( 'sc_cat' ),

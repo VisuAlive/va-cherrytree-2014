@@ -68,7 +68,7 @@ if ( ! function_exists( '_visualive_theme_custom_admin_footer_text' ) ) :
  * @param string $code
  */
 function _visualive_theme_custom_admin_footer_text() {
-	return __( 'ウェブサイト制作でお困りの際は <a href="http://visualive.jp/" target="_blank">ヴィジュアライブ</a> 迄お問い合わせください。', VACT2014_TEXTDOMAIN );
+	return __( 'ウェブサイト制作でお困りの際は <a href="http://visualive.jp/" target="_blank">ヴィジュアライブ</a> 迄お問い合わせください。', VACB2014_TEXTDOMAIN );
 }
 endif;
 add_filter( 'admin_footer_text', '_visualive_theme_custom_admin_footer_text' );

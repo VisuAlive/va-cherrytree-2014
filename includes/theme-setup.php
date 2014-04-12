@@ -29,7 +29,7 @@ function _visualive_theme_setup() {
 	 * replace to change 'va_official_2014' to the name of your theme in all
 	 * template files.
 	 */
-	load_theme_textdomain( VACT2014_TEXTDOMAIN, get_template_directory() . '/languages' );
+	load_theme_textdomain( VACB2014_TEXTDOMAIN, get_template_directory() . '/languages' );
 	// This theme styles the visual editor to resemble the theme style.
 	add_editor_style( 'assets/css/editor-style.css' );
 	/*
@@ -106,7 +106,7 @@ function _visualive_theme_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 ) {
-		$title = "$title $sep " . sprintf( __( 'Page %s', VACT2014_TEXTDOMAIN ), max( $paged, $page ) );
+		$title = "$title $sep " . sprintf( __( 'Page %s', VACB2014_TEXTDOMAIN ), max( $paged, $page ) );
 	}
 
 	return $title;

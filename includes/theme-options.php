@@ -34,7 +34,7 @@ class myprefix_Admin{
 	 */
 	public function __construct() {
 		// Set our title
-		$this->title = __( 'Site Options', VACT2014_TEXTDOMAIN );
+		$this->title = __( 'Site Options', VACB2014_TEXTDOMAIN );
 	}
 
 	/**
@@ -101,14 +101,14 @@ class myprefix_Admin{
 			'show_names' => true,
 			'fields'     => array(
 				array(
-					'name' => __( 'Test Text', VACT2014_TEXTDOMAIN ),
-					'desc' => __( 'field description (optional)', VACT2014_TEXTDOMAIN ),
+					'name' => __( 'Test Text', VACB2014_TEXTDOMAIN ),
+					'desc' => __( 'field description (optional)', VACB2014_TEXTDOMAIN ),
 					'id'   => self::$prefix . 'test_text',
 					'type' => 'text',
 				),
 				array(
-					'name'    => __( 'Test Color Picker', VACT2014_TEXTDOMAIN ),
-					'desc'    => __( 'field description (optional)', VACT2014_TEXTDOMAIN ),
+					'name'    => __( 'Test Color Picker', VACB2014_TEXTDOMAIN ),
+					'desc'    => __( 'field description (optional)', VACB2014_TEXTDOMAIN ),
 					'id'      => self::$prefix . 'test_colorpicker',
 					'type'    => 'colorpicker',
 					'default' => '#ffffff'
