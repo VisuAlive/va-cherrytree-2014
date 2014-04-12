@@ -24,6 +24,7 @@ define( 'VACT2014_TEXTDOMAIN', 'va_cherrytree_2014' );
 
 get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );
+get_template_part( 'includes/theme', 'posttype' );
 get_template_part( 'includes/theme', 'metabox' );
 get_template_part( 'includes/theme', 'option' );
 // Plugin includes

@@ -42,9 +42,38 @@ function _visualive_theme_setup() {
 	 * See: http://jetpack.me/support/infinite-scroll/
 	 */
 	add_theme_support( 'infinite-scroll', array( 'container' => 'main', 'footer' => 'page' ) );
+	/**
+	 * Remove filter & action
+	 */
+	remove_action( 'wp_head', 'wp_generator' );
+	remove_action( 'rss_head', 'the_generator' );
+	remove_action( 'rss2_head', 'the_generator' );
+	remove_action( 'rdf_header', 'the_generator' );
+	remove_action( 'atom_head', 'the_generator' );
+	remove_action( 'opml_head', 'the_generator' );
+	remove_action( 'app_head', 'the_generator' );
+	remove_action( 'commentsrss2_head', 'the_generator' );
+	remove_action( 'comments_atom_head', 'the_generator' );
 }
 endif; // _visualive_theme_setup
 add_action( 'after_setup_theme', '_visualive_theme_setup' );
+
+
+if ( ! function_exists( '_visualive_theme_remove_cssjs_ver' ) ) :
+/**
+ * head内に出力されるlink-tag and script-tagよりversion情報を削除する
+ *
+ * @return string
+ */
+function _visualive_theme_remove_cssjs_ver( $src ) {
+	if ( !is_user_logged_in() && strpos( $src, '?ver=' ) ) {
+		$src = remove_query_arg( 'ver', $src );
+	}
+	return $src;
+}
+endif; // _visualive_theme_remove_cssjs_ver
+add_filter( 'style_loader_src', '_visualive_theme_remove_cssjs_ver', 10, 2 );
+add_filter( 'script_loader_src', '_visualive_theme_remove_cssjs_ver', 10, 2 );
 
 
 if ( ! function_exists( '_visualive_theme_wp_title' ) ) :

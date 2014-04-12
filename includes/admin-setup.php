@@ -5,9 +5,25 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! current_user_can('update_core') ) {
 	define( 'DISALLOW_FILE_MODS', true );
 	define( 'DISALLOW_FILE_EDIT', true );
+	define( 'DISALLOW_UNFILTERED_HTML', true );
 }
 add_filter( 'auto_update_plugin', '__return_true' );
 add_filter( 'auto_update_theme', '__return_true' );
+add_filter( 'login_errors', '__return_false' );
+
+
+/**
+ * Login page custom css
+ *
+ * @return string
+ */
+if ( ! function_exists( '_visualive_theme_admin_css_url' ) ) :
+function _visualive_theme_admin_css_url() {
+	wp_enqueue_style( 'va-login', get_stylesheet_directory_uri() . '/assets/css/login.css', array() );
+	wp_print_styles();
+}
+endif;
+add_action( 'login_enqueue_scripts', '_visualive_theme_admin_css_url' );
 
 
 if ( ! function_exists( '_visualive_theme_remove_dashboard_widgets' ) ) :
