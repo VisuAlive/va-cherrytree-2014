@@ -32,12 +32,12 @@ function _visualive_theme_basic_auth() {
 	if ( ! isset($_SERVER['PHP_AUTH_USER']) && ! isset($_SERVER['PHP_AUTH_PW']) ) {
 		header( 'WWW-Authenticate: Basic realm="Private Page"' );
 		header( 'HTTP/1.0 401 Unauthorized' );
-		die( __('Authorization Required.') );
+		die( __('Authorization Required.', VACB2014_TEXTDOMAIN) );
 	} else {
 		if ( $_SERVER['PHP_AUTH_USER'] != $auth_id || $_SERVER['PHP_AUTH_PW'] != $auth_pass ) {
 			header( 'WWW-Authenticate: Basic realm="Private Page"' );
 			header( 'HTTP/1.0 401 Unauthorized' );
-			die( __('Authorization Required.') );
+			die( __('Authorization Required.', VACB2014_TEXTDOMAIN) );
 		}
 	}
 }
@@ -56,7 +56,7 @@ function _visualive_theme_admin_setup_message() {
 	$auth_pass = VACB2014_AUTH_PASS;
 	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password');
 	// functions.phpを開いて、VACB2014_AUTH_IDとVACB2014_AUTH_PASSを編集して、セットアップを完成してください。
-	$message   = __( 'Please open ' . get_template_directory() . '/functions.php, edit VACB2014_AUTH_ID and VACB2014_AUTH_PASS, and complete a setup.', VACB2014_TEXTDOMAIN );
+	$message   = __( 'Please open ' . get_template_directory() . '/functions.php,<br>edit VACB2014_AUTH_ID and VACB2014_AUTH_PASS, and complete a setup.', VACB2014_TEXTDOMAIN );
 
 	if ( in_array( $auth_id, $improper ) || in_array( $auth_pass, $improper ) ) {
 		echo "<div id='message' class='error'><p><strong>$message</strong></p></div>";
@@ -101,7 +101,7 @@ function _visualive_theme_remove_dashboard_widgets() {
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
 }
 endif;
-add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' );
+// add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' );
 
 
 /**

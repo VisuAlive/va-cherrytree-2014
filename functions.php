@@ -27,11 +27,16 @@ define( 'VACB2014_AUTH_PASS', '' ); // A blank, admin, root, wenmaster, pass and
 get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );
 get_template_part( 'includes/theme', 'posttype' );
-get_template_part( 'includes/theme', 'metabox' );
-get_template_part( 'includes/theme', 'options' );
 
 // Plugin includes
 get_template_part( 'includes/plugin', 'hack' );
 get_template_part( 'includes/plugin', 'admin-postlist-addcolumns' );
 get_template_part( 'includes/plugin', 'post-discussion-closed' );
 
+
+
+function vacb2014_get_post_types() {
+	$default_post = array('post' => 'post', 'page' => 'page');
+	$custom_post  = get_post_types( array( 'public' => true, '_builtin' => false ), 'names' );
+	return array_merge( $default_post, $custom_post );
+}

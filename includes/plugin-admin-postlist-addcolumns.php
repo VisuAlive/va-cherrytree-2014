@@ -29,10 +29,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 if ( ! class_exists( 'VA_Admin_Postlist_Addcolumns' ) ) :
-define( 'VA_APAC_VERSION', '1.0.0' );
-define( 'VA_APAC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'VA_APAC_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-load_plugin_textdomain( 'va_dpac', false, VA_APAC_PLUGIN_PATH . '/languages' );
+// define( 'VA_APAC_VERSION', '1.0.0' );
+// define( 'VA_APAC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+// define( 'VA_APAC_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+// load_plugin_textdomain( 'va_dpac', false, VA_APAC_PLUGIN_PATH . '/languages' );
 
 class VA_Admin_Postlist_Addcolumns {
 	function __construct() {
@@ -49,13 +49,13 @@ class VA_Admin_Postlist_Addcolumns {
 	}
 	// add
 	function _va_apac_posts_add_columns( $defaults ) {
-		$defaults['post_modified'] = __( 'Last updated', VAT2014_TEXTDOMAIN );
-		$defaults['post_id'] = __( 'ID', VAT2014_TEXTDOMAIN );
+		$defaults['post_modified'] = __( 'Last updated', VACB2014_TEXTDOMAIN );
+		$defaults['post_id'] = __( 'ID', VACB2014_TEXTDOMAIN );
 		return $defaults;
 	}
 	function _va_apac_postos_echo_columns( $column_name, $id ) {
 		if( $column_name === 'post_modified' ){
-			echo get_the_modified_date( __( 'm.d.Y', VAT2014_TEXTDOMAIN ) );
+			echo get_the_modified_date( __( 'm.d.Y', VACB2014_TEXTDOMAIN ) );
 		}
 		if( $column_name === 'post_id' ){
 			echo intval( $id );
