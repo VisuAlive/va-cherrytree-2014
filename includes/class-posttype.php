@@ -6,7 +6,7 @@ class VA_PostType_Class {
 	public $type = false;
 	public $name = false;
 	public $slug = false;
-	public $taxonomy = array( 'cat', 'tag' );
+	public $taxonomy = array();
 	public $supports = array( 'title', 'editor', 'excerpt', 'thumbnail' );
 
 
@@ -28,7 +28,7 @@ class VA_PostType_Class {
 				'label'               => sprintf( __( '%1$s' ), $this->type ),
 				'labels'              => array(
 											'name'      => sprintf( __( '%1$s' ), $this->name ),
-											'all_items' => sprintf( __( 'All %1$s' ), $this->name )
+											'all_items' => sprintf( __( '%1$s一覧' ), $this->name )
 										),
 				'supports'            => $this->supports,
 				'taxonomies'          => array( $this->type . '_cat' ),
@@ -108,6 +108,20 @@ class VA_PostType_Class {
 			$admins->add_cap( 'va_' . $this->type . '_delete_otherss' );    // 他のユーザーの記事の削除
 			$admins->add_cap( 'va_' . $this->type . '_publishs' );          // 記事の公開
 			$admins->add_cap( 'va_' . $this->type . '_read_privates' );     // 他のユーザーの非公開記事の閲覧
+			$editors = get_role( 'editor' );
+			$editors->add_cap( 'va_' . $this->type . '_edit' );
+			$editors->add_cap( 'va_' . $this->type . '_read' );
+			$editors->add_cap( 'va_' . $this->type . '_delete' );
+			$editors->add_cap( 'va_' . $this->type . '_edits' );             // 記事の投稿
+			$editors->add_cap( 'va_' . $this->type . '_edit_publisheds' );   // 公開した記事の編集
+			$editors->add_cap( 'va_' . $this->type . '_edit_privates' );     // 他のユーザーの非公開記事の閲覧
+			$editors->add_cap( 'va_' . $this->type . '_edit_otherss' );      // 他のユーザーの記事の編集
+			$editors->add_cap( 'va_' . $this->type . '_deletes' );           // 記事の削除
+			$editors->add_cap( 'va_' . $this->type . '_delete_privates' );   // 他のユーザーの非公開記事の削除
+			$editors->add_cap( 'va_' . $this->type . '_delete_publisheds' ); // 公開した記事の削除
+			$editors->add_cap( 'va_' . $this->type . '_delete_otherss' );    // 他のユーザーの記事の削除
+			$editors->add_cap( 'va_' . $this->type . '_publishs' );          // 記事の公開
+			$editors->add_cap( 'va_' . $this->type . '_read_privates' );     // 他のユーザーの非公開記事の閲覧
 		endif;
 	}
 }
