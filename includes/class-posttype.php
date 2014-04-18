@@ -3,12 +3,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! class_exists( 'VA_PostType_Class' ) ) :
 class VA_PostType_Class {
-	public $type = false;
-	public $name = false;
-	public $slug = false;
-	public $taxonomy = array();
-	public $supports = array( 'title', 'editor', 'excerpt', 'thumbnail' );
-
+	public $type          = false;
+	public $name          = false;
+	public $slug          = false;
+	public $menu_position = 5;
+	public $menu_icon     = 'dashicons-admin-post';
+	public $has_archive   = true;
+	public $taxonomy      = array();
+	public $supports      = array( 'title', 'editor', 'excerpt', 'thumbnail' );
 
 	function __construct() {
 		add_action( 'init', array( $this, '_va_ptc_register_post_type' ) );
@@ -38,9 +40,10 @@ class VA_PostType_Class {
 				// 'show_in_menu'        => true,
 				// 'show_in_nav_menus'   => true,
 				// 'show_in_admin_bar'   => true,
-				'menu_position'       => 5,
+				'menu_position'       => $this->menu_position,
+				'menu_icon'           => $this->menu_icon,
 				// 'can_export'          => true,
-				'has_archive'         => true,
+				'has_archive'         => $this->has_archive,
 				//'exclude_from_search' => false,
 				//'publicly_queryable'  => true,
 				'map_meta_cap'        => true,

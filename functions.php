@@ -20,13 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 0.0.1
  */
 ini_set( 'display_errors', 1 );
+$GLOBALS['vacb_options'] = get_option('_vacb_options_');
 define( 'VACB2014_TEXTDOMAIN', 'va_cherryblossum_2014' );
-define( 'VACB2014_AUTH_ID', '' );   // A blank, admin, root, wenmaster, pass and password cannot be used.
-define( 'VACB2014_AUTH_PASS', '' ); // A blank, admin, root, wenmaster, pass and password cannot be used.
 
 get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );
-get_template_part( 'includes/theme', 'posttype' );
+get_template_part( 'includes/theme', 'options' );
+get_template_part( 'includes/theme', 'posttypes' );
 
 // Plugin includes
 get_template_part( 'includes/plugin', 'hack' );
@@ -34,9 +34,16 @@ get_template_part( 'includes/plugin', 'admin-postlist-addcolumns' );
 get_template_part( 'includes/plugin', 'post-discussion-closed' );
 
 
-
 function vacb2014_get_post_types() {
 	$default_post = array('post' => 'post', 'page' => 'page');
 	$custom_post  = get_post_types( array( 'public' => true, '_builtin' => false ), 'names' );
 	return array_merge( $default_post, $custom_post );
 }
+
+// function test( $post_states, $post ) {
+// 	if ( 'expiration' == $post->post_status )
+// 		$post_states['expiration'] = __('Expiration');
+
+// 	return $post_states;
+// }
+// add_filter( 'display_post_states', 'test', 10, 2 );

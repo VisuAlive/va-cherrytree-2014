@@ -12,15 +12,26 @@ add_filter( 'auto_update_theme', '__return_true' );
 add_filter( 'login_errors', '__return_false' );
 
 
+/**
+ * Include Vafpress Framework
+ */
+get_template_part( 'includes/vafpress-framework/bootstrap' );
+
+
+/**
+ * ログイン時にBasic認証をつける
+ */
 if ( ! function_exists( '_visualive_theme_basic_auth' ) ) :
 function _visualive_theme_basic_auth() {
-	$auth_id   = VACB2014_AUTH_ID;
-	$auth_pass = VACB2014_AUTH_PASS;
-	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password');
+	$auth_id       = ( ! empty( $GLOBALS['vacb_options']['vacb_general_security_basic_id'] ) ) ? get_stretched_password( $GLOBALS['vacb_options']['vacb_general_security_basic_id'] ) : '' ;
+	$auth_pw       = ( ! empty( $GLOBALS['vacb_options']['vacb_general_security_basic_pass'] ) ) ? get_stretched_password( $GLOBALS['vacb_options']['vacb_general_security_basic_pass'] ) : '' ;
+	$php_auth_user = ( isset( $_SERVER['PHP_AUTH_USER'] ) ) ? get_stretched_password( $_SERVER['PHP_AUTH_USER'] ) : '';
+	$php_auth_pw   = ( isset( $_SERVER['PHP_AUTH_PW'] ) ) ? get_stretched_password( $_SERVER['PHP_AUTH_PW'] ) : '';
+	$improper      = array('');
 
 	nocache_headers();
 
-	if ( is_user_logged_in() || in_array( $auth_id, $improper ) || in_array( $auth_pass, $improper ) ) {
+	if ( is_user_logged_in() || in_array( $auth_id, $improper ) || in_array( $auth_pw, $improper ) ) {
 		return;
 	}
 
@@ -29,20 +40,36 @@ function _visualive_theme_basic_auth() {
 	 *
 	 * @link http://www.phpbook.jp/tutorial/auth/index1.html
 	 */
-	if ( ! isset($_SERVER['PHP_AUTH_USER']) && ! isset($_SERVER['PHP_AUTH_PW']) ) {
+	if ( ! isset($php_auth_user) && ! isset($php_auth_pw) ) {
 		header( 'WWW-Authenticate: Basic realm="Private Page"' );
 		header( 'HTTP/1.0 401 Unauthorized' );
-		die( __('Authorization Required.', VACB2014_TEXTDOMAIN) );
+		die( __( 'Authorization Required.', VACB2014_TEXTDOMAIN ) );
 	} else {
-		if ( $_SERVER['PHP_AUTH_USER'] != $auth_id || $_SERVER['PHP_AUTH_PW'] != $auth_pass ) {
+		if ( $php_auth_user != $auth_id || $php_auth_pw != $auth_pw ) {
 			header( 'WWW-Authenticate: Basic realm="Private Page"' );
 			header( 'HTTP/1.0 401 Unauthorized' );
-			die( __('Authorization Required.', VACB2014_TEXTDOMAIN) );
+			die( __( 'Authorization Required.', VACB2014_TEXTDOMAIN ) );
 		}
 	}
 }
 endif; // _visualive_theme_basic_auth
 add_action( 'login_init', '_visualive_theme_basic_auth', 0 );
+
+
+/**
+ * salt + ストレッチングしたパスワードを取得
+ *
+ * @link http://www.websec-room.com/2013/02/27/246
+ */
+function get_stretched_password( $word ) {
+	$word = esc_attr($word);
+	$salt = LOGGED_IN_SALT; // Set wp-config.php
+	$hash = '';
+	for ( $i = 0; $i < 1000; $i++ ) {
+		$hash = hash( 'sha256', $hash . $salt . $word );
+	}
+	return $hash;
+}
 
 
 /**
@@ -52,8 +79,8 @@ add_action( 'login_init', '_visualive_theme_basic_auth', 0 );
  */
 if ( ! function_exists( '_visualive_theme_admin_setup_message' ) ) :
 function _visualive_theme_admin_setup_message() {
-	$auth_id   = VACB2014_AUTH_ID;
-	$auth_pass = VACB2014_AUTH_PASS;
+	$auth_id   = $GLOBALS['vacb_options']['vacb_general_security_basic_id'];
+	$auth_pass = $GLOBALS['vacb_options']['vacb_general_security_basic_pass'];
 	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password');
 	// functions.phpを開いて、VACB2014_AUTH_IDとVACB2014_AUTH_PASSを編集して、セットアップを完成してください。
 	$message   = __( 'Please open ' . get_template_directory() . '/functions.php,<br>edit VACB2014_AUTH_ID and VACB2014_AUTH_PASS, and complete a setup.', VACB2014_TEXTDOMAIN );
@@ -63,7 +90,7 @@ function _visualive_theme_admin_setup_message() {
 	}
 }
 endif; // _visualive_theme_admin_setup_message
-add_action( 'admin_notices', '_visualive_theme_admin_setup_message' );
+// add_action( 'admin_notices', '_visualive_theme_admin_setup_message' );
 
 
 /**
@@ -83,25 +110,27 @@ add_action( 'login_enqueue_scripts', '_visualive_theme_admin_css_url' );
 if ( ! function_exists( '_visualive_theme_remove_dashboard_widgets' ) ) :
 function _visualive_theme_remove_dashboard_widgets() {
 	global $wp_meta_boxes;
-	// 現在の状況
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
-	// 最近のコメント
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
-	// 被リンク
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
-	// プラグイン
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
-	// クイック投稿
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
-	// 最近の下書き
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
-	// WordPressブログ
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-	// WordPressフォーラム
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+	if ( ! current_user_can('update_core') ) {
+		// 現在の状況
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+		// 最近のコメント
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+		// 被リンク
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+		// プラグイン
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+		// クイック投稿
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+		// 最近の下書き
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
+		// WordPressブログ
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+		// WordPressフォーラム
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+	}
 }
 endif;
-// add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' );
+add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' );
 
 
 /**

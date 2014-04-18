@@ -72,8 +72,8 @@ function _visualive_theme_remove_cssjs_ver( $src ) {
 	return $src;
 }
 endif; // _visualive_theme_remove_cssjs_ver
-add_filter( 'style_loader_src', '_visualive_theme_remove_cssjs_ver', 10, 2 );
-add_filter( 'script_loader_src', '_visualive_theme_remove_cssjs_ver', 10, 2 );
+add_filter( 'style_loader_src', '_visualive_theme_remove_cssjs_ver', 1000, 2 );
+add_filter( 'script_loader_src', '_visualive_theme_remove_cssjs_ver', 1000, 2 );
 
 
 if ( ! function_exists( '_visualive_theme_wp_title' ) ) :
