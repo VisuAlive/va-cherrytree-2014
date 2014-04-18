@@ -1,0 +1,3 @@
+[submodule "includes/vafpress-framework"]
+	path = includes/vafpress-framework
+	url = https://github.com/vafour/vafpress-framework.git
