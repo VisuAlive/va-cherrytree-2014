@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 $vacb_mb_carousel = new VP_Metabox(
 	array(
-		'id'          => '_vacb_metaboxs_seo_',
+		'id'          => '_vacb_metaboxs_carousel_',
 		'types'       => array( 'carousel' ),
 		'title'       => __( 'Add Carousel', VACB2014_TEXTDOMAIN ),
 		'priority'    => 'high',
@@ -14,21 +14,21 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type' => 'notebox',
 				'name' => 'notebox',
-				'label' => __('Normal Announcement', 'vp_textdomain'),
-				'description' => __('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas', 'vp_textdomain'),
+				'label' => __( 'imgタグのalt属性について', VACB2014_TEXTDOMAIN ),
+				'description' => __( 'imgタグのalt属性はタイトルに入力した内容がalt属性に適用されます。', VACB2014_TEXTDOMAIN ),
 				'status' => 'info',
 			),
 			array(
 				'type'        => 'upload',
 				'name'        => 'vacb_carousel_image',
-				'label'       => __( 'Image', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'イメージ', VACB2014_TEXTDOMAIN ),
 				// 'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
 				'default'     => ''
 			),
 			array(
 				'type'        => 'radiobutton',
 				'name'        => 'vacb_carousel_url_filter',
-				'label'       => __( 'Anchor by', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
 				// 'description' => __( 'Different type will show different type of field', VACB2014_TEXTDOMAIN ),
 				'items'       => array(
 					array(
@@ -37,7 +37,7 @@ $vacb_mb_carousel = new VP_Metabox(
 					),
 					array(
 						'value' => 'page',
-						'label' => __( '固定', VACB2014_TEXTDOMAIN ),
+						'label' => __( '固定ページ', VACB2014_TEXTDOMAIN ),
 					),
 					array(
 						'value' => 'info',
@@ -140,38 +140,42 @@ $vacb_mb_carousel = new VP_Metabox(
 					'field'    => 'vacb_carousel_url_filter',
 					'function' => 'vacb_dep_is_url',
 				),
+				'validation'  => 'url'
 			) // textbox
 		) // template
 	)
 );
 
 
-// array(
-// 	'type' => 'select',
-// 	'name' => 'vacb_se_pages',
-// 	'label' => __( 'Pages', VACB2014_TEXTDOMAIN ),
-// 	'description' => __( 'Select field with WP Pages Data Source', VACB2014_TEXTDOMAIN ),
-// 	'items' => array(
-// 		'data' => array(
-// 			array(
-// 				'source' => 'function',
-// 				'value' => 'vp_get_pages',
-// 			)
-// 		)
-// 	)
-// )
-
-// array(
-// 	'type' => 'select',
-// 	'name' => 'se_posts',
-// 	'label' => __( 'Posts', VACB2014_TEXTDOMAIN ),
-// 	'description' => __( 'Select field with WP Post Data Source', VACB2014_TEXTDOMAIN ),
-// 	'items' => array(
-// 		'data' => array(
-// 			array(
-// 				'source' => 'function',
-// 				'value' => 'vp_get_posts'
-// 			)
-// 		)
-// 	)
-// )
+$vacb_mb_showcase = new VP_Metabox(
+	array(
+		'id'          => '_vacb_metaboxs_showcase_',
+		'types'       => array( 'showcase' ),
+		'title'       => __( 'Showcase Data', VACB2014_TEXTDOMAIN ),
+		'priority'    => 'high',
+		'template'    => array(
+			array(
+				'type'        => 'textbox',
+				'name'        => 'vacb_showcase_client',
+				'label'       => __( 'クライアント名', VACB2014_TEXTDOMAIN ),
+				// 'description' => __( 'URL to filter.', VACB2014_TEXTDOMAIN ),
+				// 'default'     => 'abcdefg',
+			), // textbox
+			array(
+				'type'        => 'upload',
+				'name'        => 'vacb_showcase_image',
+				'label'       => __( 'イメージ', VACB2014_TEXTDOMAIN ),
+				// 'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
+				'default'     => ''
+			),
+			array(
+				'type'        => 'textbox',
+				'name'        => 'vacb_showcase_url',
+				'label'       => __( 'URL', VACB2014_TEXTDOMAIN ),
+				// 'description' => __( 'URL to filter.', VACB2014_TEXTDOMAIN ),
+				// 'default'     => 'abcdefg',
+				'validation'  => 'url'
+			) // textbox
+		) // template
+	)
+);
