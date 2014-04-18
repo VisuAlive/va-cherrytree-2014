@@ -23,10 +23,10 @@ get_template_part( 'includes/vafpress-framework/bootstrap' );
  */
 if ( ! function_exists( '_visualive_theme_basic_auth' ) ) :
 function _visualive_theme_basic_auth() {
-	$auth_id       = ( ! empty( $GLOBALS['vacb_options']['vacb_general_security_basic_id'] ) ) ? get_stretched_password( $GLOBALS['vacb_options']['vacb_general_security_basic_id'] ) : '' ;
-	$auth_pw       = ( ! empty( $GLOBALS['vacb_options']['vacb_general_security_basic_pass'] ) ) ? get_stretched_password( $GLOBALS['vacb_options']['vacb_general_security_basic_pass'] ) : '' ;
-	$php_auth_user = ( isset( $_SERVER['PHP_AUTH_USER'] ) ) ? get_stretched_password( $_SERVER['PHP_AUTH_USER'] ) : '';
-	$php_auth_pw   = ( isset( $_SERVER['PHP_AUTH_PW'] ) ) ? get_stretched_password( $_SERVER['PHP_AUTH_PW'] ) : '';
+	$auth_id       = ( ! empty( $GLOBALS['vacb_options']['vacb_general_security_basic_id'] ) ) ? vacb_get_stretched_password( $GLOBALS['vacb_options']['vacb_general_security_basic_id'] ) : '' ;
+	$auth_pw       = ( ! empty( $GLOBALS['vacb_options']['vacb_general_security_basic_pass'] ) ) ? vacb_get_stretched_password( $GLOBALS['vacb_options']['vacb_general_security_basic_pass'] ) : '' ;
+	$php_auth_user = ( isset( $_SERVER['PHP_AUTH_USER'] ) ) ? vacb_get_stretched_password( $_SERVER['PHP_AUTH_USER'] ) : '';
+	$php_auth_pw   = ( isset( $_SERVER['PHP_AUTH_PW'] ) ) ? vacb_get_stretched_password( $_SERVER['PHP_AUTH_PW'] ) : '';
 	$improper      = array('');
 
 	nocache_headers();
@@ -61,7 +61,7 @@ add_action( 'login_init', '_visualive_theme_basic_auth', 0 );
  *
  * @link http://www.websec-room.com/2013/02/27/246
  */
-function get_stretched_password( $word ) {
+function vacb_get_stretched_password( $word ) {
 	$word = esc_attr($word);
 	$salt = LOGGED_IN_SALT; // Set wp-config.php
 	$hash = '';

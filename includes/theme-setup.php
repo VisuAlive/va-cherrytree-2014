@@ -169,15 +169,3 @@ function _visualive_theme_post_classes( $classes ) {
 }
 endif;
 add_filter( 'post_class', '_visualive_theme_post_classes' );
-
-
-/**
- * Initialize the metabox class.
- */
-if ( ! function_exists( '_visualive_theme_initialize_cmb_meta_boxes' ) ) :
-function _visualive_theme_initialize_cmb_meta_boxes() {
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
-		get_template_part( 'includes/cmb/init' );
-}
-endif;
-add_action( 'init', '_visualive_theme_initialize_cmb_meta_boxes', 9999 );
