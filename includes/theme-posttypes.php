@@ -108,9 +108,9 @@ add_action( 'dashboard_glance_items', '_vacb2014_posttype_dashboard' );
 if ( ! function_exists( '_vacb2014_posttype_dashboard_style' ) ) :
 function _vacb2014_posttype_dashboard_style() {
 	echo '<style type="text/css">
-		.info-count a:before {content:"\f348"!important}
-		.showcase-count a:before {content:"\f497"!important}
-		.carousel-count a:before {content:"\f161"!important}
+		.info-count a:before {content:"\f348" !important;}
+		.showcase-count a:before {content:"\f497" !important;}
+		.carousel-count a:before {content:"\f161" !important;}
 		</style>';
 }
 endif;
