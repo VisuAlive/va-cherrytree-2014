@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * @package VA CherryBlossum 2014
  * @version 0.0.1
- * @author KUCKLU <kucklu@visualive.jp>
+ * @author KUCKLU <kuck1u@visualive.jp>
  * @copyright Copyright (c) 2014 KUCKLU, VisuAlive.
  * @license http://opensource.org/licenses/gpl-2.0.php GPLv2
  * @link http://visualive.jp/

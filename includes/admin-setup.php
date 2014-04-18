@@ -130,8 +130,24 @@ function _visualive_theme_remove_dashboard_widgets() {
 	}
 }
 endif;
-add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' );
+if ( is_admin() ) { add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' ); }
 
+
+if ( ! function_exists( '_visualive_theme_remove_metabox' ) ) :
+function _visualive_theme_remove_metabox() {
+	remove_meta_box( 'slugdiv',          'post', 'normal' );
+	remove_meta_box( 'authordiv',        'post', 'normal' );
+	remove_meta_box( 'postcustom',       'post', 'normal' );
+	remove_meta_box( 'commentstatusdiv', 'post', 'normal' );
+
+	remove_meta_box( 'slugdiv',          'page', 'normal' );
+	remove_meta_box( 'authordiv',        'page', 'normal' );
+	remove_meta_box( 'postcustom',       'page', 'normal' );
+	remove_meta_box( 'commentstatusdiv', 'page', 'normal' );
+}
+endif;
+if ( is_admin() ) { add_action( 'admin_menu', '_visualive_theme_remove_metabox' ); }
+// ! current_user_can('update_core')
 
 /**
  * フッタの先頭に何かを出力する場合、echo
@@ -142,7 +158,7 @@ add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' );
 // 	echo '<p>in_admin_footer</p>';
 // }
 // endif;
-// add_filter( 'in_admin_footer', '_visualive_theme_in_admin_footer' );
+// if ( is_admin() ) { add_filter( 'in_admin_footer', '_visualive_theme_in_admin_footer' ); }
 
 
 if ( ! function_exists( '_visualive_theme_custom_admin_footer_text' ) ) :
@@ -154,7 +170,7 @@ function _visualive_theme_custom_admin_footer_text() {
 	return __( 'ウェブサイト制作でお困りの際は <a href="http://visualive.jp/" target="_blank">ヴィジュアライブ</a> 迄お問い合わせください。', VACB2014_TEXTDOMAIN );
 }
 endif;
-add_filter( 'admin_footer_text', '_visualive_theme_custom_admin_footer_text' );
+if ( is_admin() ) { add_filter( 'admin_footer_text', '_visualive_theme_custom_admin_footer_text' ); }
 
 
 if ( ! function_exists( '_visualive_theme_custom_update_footer' ) ) :
@@ -166,4 +182,4 @@ function _visualive_theme_custom_update_footer() {
 	return 'Powered by VisuAlive';
 }
 endif;
-add_filter( 'update_footer', '_visualive_theme_custom_update_footer', 9999 );
+if ( is_admin() ) { add_filter( 'update_footer', '_visualive_theme_custom_update_footer', 9999 ); }

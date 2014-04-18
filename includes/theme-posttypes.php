@@ -39,10 +39,11 @@ function vacb2014_register_posttype() {
 	$posttype_carousel->name      = 'カルーセル';
 	$posttype_carousel->supports  = array( 'title', 'page-attributes' );
 	$posttype_carousel->menu_icon = 'dashicons-format-gallery';
-	// add_post_type_support( 'carousel', 'page-attributes' );
+
+	add_post_type_support( 'page', 'excerpt' );
 }
 endif;
-add_action( 'after_setup_theme', 'vacb2014_register_posttype' );
+if ( is_admin() ) { add_action( 'after_setup_theme', 'vacb2014_register_posttype' ); }
 
 
 /**
@@ -62,7 +63,7 @@ function _visualive_theme_change_sidemenu_text() {
 	$submenu['edit.php'][5][0] = __( 'ブログ一覧', VACB2014_TEXTDOMAIN );
 }
 endif;
-add_action( 'admin_menu', '_visualive_theme_change_sidemenu_text' );
+if ( is_admin() ) { add_action( 'admin_menu', '_visualive_theme_change_sidemenu_text' ); }
 
 
 /**
@@ -80,42 +81,7 @@ function _visualive_theme_change_posttype_labels() {
 	$postLabels->name = __( 'ブログ', VACB2014_TEXTDOMAIN );
 }
 endif;
-add_action( 'init', '_visualive_theme_change_posttype_labels' );
-
-
-/**
- * スラッグのデフォルト値をpost-***形式に変更
- *
- * @return string
- */
-if ( ! function_exists( '_vacb2014_auto_post_slug' ) ) :
-function _vacb2014_auto_post_slug( $slug, $post_ID, $post_status, $post_type, $post_title ) {
-	if ( preg_match( '/(%[0-9a-f]{2})+/', $slug ) ) {
-		// $slug = utf8_uri_encode( $post_type ) . '-' . $post_ID;
-		$slug = 'post-' . $post_ID;
-	}
-	return $slug;
-}
-endif;
-add_filter( 'wp_unique_post_slug', '_vacb2014_auto_post_slug', 10, 5 );
-
-
-/**
- * page-attributes がサポートされていたら、自動的に順序（menu_order）順に従って表示
- */
-if ( ! function_exists( '_vacb2014_archive_orderby_menu_order' ) ) :
-function _vacb2014_archive_orderby_menu_order( $wp_query ) {
-	if ( $wp_query->is_post_type_archive() && post_type_supports( $wp_query->query_vars['post_type'], 'page-attributes' ) ) {
-		if ( ! isset( $wp_query->query_vars['orderby'] ) ) {
-			$wp_query->query_vars['orderby'] = 'menu_order';
-		}
-		if ( ! isset( $wp_query->query_vars['order'] ) ) {
-			$wp_query->query_vars['order'] = 'ASC';
-		}
-	}
-}
-endif;
-add_action( 'pre_get_posts', '_vacb2014_archive_orderby_menu_order' );
+if ( is_admin() ) { add_action( 'init', '_visualive_theme_change_posttype_labels' ); }
 
 
 /**
@@ -140,7 +106,7 @@ function _vacb2014_posttype_dashboard() {
 	}
 }
 endif;
-add_action( 'dashboard_glance_items', '_vacb2014_posttype_dashboard' );
+if ( is_admin() ) { add_action( 'dashboard_glance_items', '_vacb2014_posttype_dashboard' ); }
 
 
 if ( ! function_exists( '_vacb2014_posttype_dashboard_style' ) ) :
@@ -152,7 +118,42 @@ function _vacb2014_posttype_dashboard_style() {
 		</style>';
 }
 endif;
-add_action('admin_head', '_vacb2014_posttype_dashboard_style');
+if ( is_admin() ) { add_action('admin_head', '_vacb2014_posttype_dashboard_style'); }
+
+
+/**
+ * スラッグのデフォルト値をpost-***形式に変更
+ *
+ * @return string
+ */
+if ( ! function_exists( '_vacb2014_auto_post_slug' ) ) :
+function _vacb2014_auto_post_slug( $slug, $post_ID, $post_status, $post_type, $post_title ) {
+	if ( preg_match( '/(%[0-9a-f]{2})+/', $slug ) ) {
+		// $slug = utf8_uri_encode( $post_type ) . '-' . $post_ID;
+		$slug = 'post-' . $post_ID;
+	}
+	return $slug;
+}
+endif;
+if ( is_admin() ) { add_filter( 'wp_unique_post_slug', '_vacb2014_auto_post_slug', 10, 5 ); }
+
+
+/**
+ * page-attributes がサポートされていたら、自動的に順序（menu_order）順に従って表示
+ */
+if ( ! function_exists( '_vacb2014_archive_orderby_menu_order' ) ) :
+function _vacb2014_archive_orderby_menu_order( $wp_query ) {
+	if ( $wp_query->is_post_type_archive() && post_type_supports( $wp_query->query_vars['post_type'], 'page-attributes' ) ) {
+		if ( ! isset( $wp_query->query_vars['orderby'] ) ) {
+			$wp_query->query_vars['orderby'] = 'menu_order';
+		}
+		if ( ! isset( $wp_query->query_vars['order'] ) ) {
+			$wp_query->query_vars['order'] = 'ASC';
+		}
+	}
+}
+endif;
+add_action( 'pre_get_posts', '_vacb2014_archive_orderby_menu_order' );
 
 
 /**

@@ -1,39 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-/*
-Plugin Name: VA Admin Postlist Addcolumns
-Description: Add the Post ID and Last updated Post list of management screen.
-Version: 1.0.0
-Plugin URI: http://visualive.jp/download/wordpress/plugins/
-Author: VisuAlive
-Author URI: http://visualive.jp/
-Text Domain: va_dcc
-Domain Path: /languages
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-VisuAlive WordPress Plugin, Copyright (C) 2013 VisuAlive Inc
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-if ( ! class_exists( 'VA_Admin_Postlist_Addcolumns' ) ) :
-// define( 'VA_APAC_VERSION', '1.0.0' );
-// define( 'VA_APAC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-// define( 'VA_APAC_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-// load_plugin_textdomain( 'va_dpac', false, VA_APAC_PLUGIN_PATH . '/languages' );
-
+if ( ! class_exists( 'VA_Admin_Postlist_Addcolumns' ) && is_admin() ) :
 class VA_Admin_Postlist_Addcolumns {
 	function __construct() {
 		// sort request

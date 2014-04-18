@@ -1,40 +1,10 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-/*
-Plugin Name: VA Admin Discussion Closed
-Description: A comment, trackback, and the pingback are compulsorily closed by default.
-Version: 1.0.0
-Plugin URI: http://visualive.jp/download/wordpress/plugins/
-Author: VisuAlive
-Author URI: http://visualive.jp/
-Text Domain: va_dcc
-Domain Path: /languages
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-VisuAlive WordPress Plugin, Copyright (C) 2013 VisuAlive Inc
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 
 if ( ! class_exists( 'VA_Post_Discussion_Closed' ) ) :
-define( 'VA_PDC_VERSION', '1.0.0' );
-define( 'VA_PDC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'VA_PDC_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-load_plugin_textdomain( 'va_pdc', false, VA_PDC_PLUGIN_PATH . '/languages' );
-
 class VA_Post_Discussion_Closed {
+	private $target_post_type = array( 'page', 'showcase', 'carousel', 'attachment', 'link' );
+
 	function __construct() {
 		add_filter( 'comments_open', array( $this, '_va_pdc_comment_close' ), 9999, 2 );
 		add_filter( 'pings_open', array( $this, '_va_pdc_comment_close' ), 9999, 2 );
@@ -53,7 +23,7 @@ class VA_Post_Discussion_Closed {
 		$post_id = (int)$post_id;
 		$post = get_post( $post_id );
 
-		if ( $post AND in_array( $post->post_type, array( 'page', 'attachment', 'link' ) ) ) {
+		if ( $post AND in_array( $post->post_type, $this->target_post_type ) ) {
 			$open = false;
 		}
 
@@ -73,10 +43,10 @@ class VA_Post_Discussion_Closed {
 	 * @link http://kachibito.net/wp-code/show-an-urgent-message-in-admin-panel
 	 * @return string
 	 */
-	private function va_pdc_show_message( $message, $errormsg = false, $target_post_type = false ) {
+	private function va_pdc_show_message( $message, $errormsg = false, $target_post_type = array('') ) {
 		$post_type = get_post_type();
 
-		if ( $target_post_type AND $post_type == $target_post_type ) {
+		if ( $target_post_type AND in_array( $post_type, $target_post_type ) ) {
 			if ( $errormsg ) {
 				echo '<div id="message" class="error">';
 			} else {
@@ -89,11 +59,12 @@ class VA_Post_Discussion_Closed {
 	 * @return callback
 	 */
 	public function _va_pdc_show_admin_messages() {
-		$this->va_pdc_show_message( __("ディカッションにて「コメントの投稿を許可する」を有効にしても、固定ページではコメント投稿は有効になりません。", "va_pdc"), true, 'page' );
+		$post_type = get_post_type();
+		$this->va_pdc_show_message( __("ディカッションにて「コメントの投稿を許可する」を有効にしても、" . esc_attr( get_post_type_object( $post_type )->labels->name ) . "ではコメント投稿は有効になりません。", VACB2014_TEXTDOMAIN ), true, $this->target_post_type );
 	}
 	/**
 	 * 固定ページの入稿画面から一部入力欄を削除
-	 * @return callback
+	 * @return callback 
 	 */
 	public function _va_pdc_remove_extra_meta_boxes() {
 		remove_meta_box( 'commentstatusdiv', 'page' , 'normal' );
