@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! class_exists( 'VA_Post_Discussion_Closed' ) ) :
 class VA_Post_Discussion_Closed {
-	private $target_post_type = array( 'page', 'showcase', 'carousel', 'attachment', 'link' );
+	private $target_post_type = array( 'page', 'info', 'showcase', 'carousel', 'attachment', 'link' );
 
 	function __construct() {
 		add_filter( 'comments_open', array( $this, '_va_pdc_comment_close' ), 9999, 2 );
@@ -60,7 +60,11 @@ class VA_Post_Discussion_Closed {
 	 */
 	public function _va_pdc_show_admin_messages() {
 		$post_type = get_post_type();
-		$this->va_pdc_show_message( __("ディカッションにて「コメントの投稿を許可する」を有効にしても、" . esc_attr( get_post_type_object( $post_type )->labels->name ) . "ではコメント投稿は有効になりません。", VACB2014_TEXTDOMAIN ), true, $this->target_post_type );
+		if ( $post_type ) {
+			$name = esc_attr( get_post_type_object( $post_type )->labels->name );
+			$target = $this->target_post_type;
+			$this->va_pdc_show_message( sprintf( __('ディカッションにて「コメントの投稿を許可する」を有効にしても、%sではコメント投稿は有効になりません。', VACB2014_TEXTDOMAIN ), $name ), true, $target );
+		}
 	}
 	/**
 	 * 固定ページの入稿画面から一部入力欄を削除

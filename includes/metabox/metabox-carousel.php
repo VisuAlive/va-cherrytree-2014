@@ -15,7 +15,7 @@ $vacb_mb_carousel = new VP_Metabox(
 				'type' => 'notebox',
 				'name' => 'notebox',
 				'label' => __( 'imgタグのalt属性について', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'imgタグのalt属性はタイトルに入力した内容がalt属性に適用されます。', VACB2014_TEXTDOMAIN ),
+				'description' => __( 'imgタグのalt属性は、タイトルに入力した内容がalt属性に適用されます。', VACB2014_TEXTDOMAIN ),
 				'status' => 'info',
 			),
 			array(
@@ -61,8 +61,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_post',
-				'label'       => __( 'Choose post', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'Post to filter.', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
+				'description' => __( 'リンク先を選択してください。', VACB2014_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -79,8 +79,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_page',
-				'label'       => __( 'Choose page', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'Page to filter.', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
+				'description' => __( 'リンク先を選択してください。', VACB2014_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -97,8 +97,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_info',
-				'label'       => __( 'Choose info', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'Info to filter.', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
+				'description' => __( 'リンク先のページを選択してください。', VACB2014_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -116,7 +116,7 @@ $vacb_mb_carousel = new VP_Metabox(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_showcase',
 				'label'       => __( 'Choose showcase', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'Showcase to filter.', VACB2014_TEXTDOMAIN ),
+				'description' => __( 'リンク先のページを選択してください。', VACB2014_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -141,57 +141,6 @@ $vacb_mb_carousel = new VP_Metabox(
 					'function' => 'vacb_dep_is_url',
 				),
 				'validation'  => 'url'
-			) // textbox
-		) // template
-	)
-);
-
-
-$vacb_mb_showcase = new VP_Metabox(
-	array(
-		'id'          => '_vacb_metaboxs_showcase_',
-		'types'       => array( 'showcase' ),
-		'title'       => __( 'Showcase Data', VACB2014_TEXTDOMAIN ),
-		'priority'    => 'high',
-		'template'    => array(
-			array(
-				'type'        => 'textbox',
-				'name'        => 'vacb_showcase_client',
-				'label'       => __( 'クライアント名', VACB2014_TEXTDOMAIN )
-			), // textbox
-			array(
-				'type'        => 'upload',
-				'name'        => 'vacb_showcase_image',
-				'label'       => __( 'サイトイメージ', VACB2014_TEXTDOMAIN ),
-				'default'     => ''
-			),
-			array(
-				'type'        => 'textbox',
-				'name'        => 'vacb_showcase_url',
-				'label'       => __( 'サイトURL', VACB2014_TEXTDOMAIN ),
-				'validation'  => 'url'
-			) // textbox
-		) // template
-	)
-);
-
-
-$vacb_mb_seo = new VP_Metabox(
-	array(
-		'id'          => '_vacb_metaboxs_seo_',
-		'types'       => array( 'post', 'page', 'info', 'showcase' ),
-		'title'       => __( 'SEO', VACB2014_TEXTDOMAIN ),
-		'priority'    => 'high',
-		'template'    => array(
-			array(
-				'type'        => 'textbox',
-				'name'        => 'vacb_seo_title',
-				'label'       => __( 'タイトル', VACB2014_TEXTDOMAIN )
-			), // textbox
-			array(
-				'type'        => 'textarea',
-				'name'        => 'vacb_seo_description',
-				'label'       => __( 'ディスクリプション', VACB2014_TEXTDOMAIN )
 			) // textbox
 		) // template
 	)

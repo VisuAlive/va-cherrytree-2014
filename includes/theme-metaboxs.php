@@ -11,6 +11,8 @@ get_template_part( 'includes/metabox/data-sources' );
  * Create instance of Metaboxs
  */
 get_template_part( 'includes/metabox/metabox', 'carousel' );
+get_template_part( 'includes/metabox/metabox', 'showcase' );
+get_template_part( 'includes/metabox/metabox', 'seo' );
 
 
 

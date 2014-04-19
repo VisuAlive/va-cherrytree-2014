@@ -1,7 +1,11 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-
+/**
+ * コールバック
+ *
+ * @return 
+ */
 VP_Security::instance()->whitelist_function( 'vacb_dep_is_tag' );
 function vacb_dep_is_tag( $value ) {
 	if($value === 'tag')
@@ -44,3 +48,43 @@ function vacb_dep_is_url( $value ) {
 		return true;
 	return false;
 }
+
+
+/**
+ * ポストIDとポストタイトルを取得
+ *
+ * @return array
+ */
+function vacb_get_post( $type = null ) {
+	switch ( $type ) {
+		case 'info':
+			$posttye = 'info';
+			break;
+		case 'showcase':
+			$posttye = 'showcase';
+			break;
+		default:
+			$posttye = 'post';
+			break;
+	}
+	$wp_posts = get_posts( array(
+		'posts_per_page' => -1,
+		'post_type' => $posttye
+	) );
+
+	$result = array();
+	foreach ($wp_posts as $post) {
+		$result[] = array( 'value' => $post->ID, 'label' => $post->post_title );
+	}
+	return $result;
+}
+function vacb_get_posts() {
+	return vacb_get_post();
+}
+function vacb_get_infos() {
+	return vacb_get_post( 'info' );
+}
+function vacb_get_showcases() {
+	return vacb_get_post( 'showcase' );
+}
+

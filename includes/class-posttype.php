@@ -27,25 +27,26 @@ class VA_PostType_Class {
 	function _va_ptc_register_post_type() {
 		if ( $this->type && $this->name) :
 			register_post_type( $this->type, array(
-				'label'               => sprintf( __( '%1$s' ), $this->type ),
+				'label'               => sprintf( __( '%s' ), $this->type ),
 				'labels'              => array(
-											'name'      => sprintf( __( '%1$s' ), $this->name ),
-											'all_items' => sprintf( __( '%1$s一覧' ), $this->name )
+											'name'      => sprintf( __( '%s' ), $this->name ),
+											'all_items' => sprintf( __( '%s一覧' ), $this->name )
 										),
 				'supports'            => $this->supports,
 				'taxonomies'          => array( $this->type . '_cat' ),
 				'hierarchical'        => false,
 				'public'              => true,
-				// 'show_ui'             => true,
-				// 'show_in_menu'        => true,
-				// 'show_in_nav_menus'   => true,
-				// 'show_in_admin_bar'   => true,
+				'show_ui'             => true,
+				'show_in_menu'        => true,
+				'show_in_nav_menus'   => true,
+				'show_in_admin_bar'   => true,
 				'menu_position'       => $this->menu_position,
 				'menu_icon'           => $this->menu_icon,
-				// 'can_export'          => true,
+				'can_export'          => true,
 				'has_archive'         => $this->has_archive,
-				//'exclude_from_search' => false,
-				//'publicly_queryable'  => true,
+				'exclude_from_search' => false,
+				'publicly_queryable'  => true,
+				'query_var'           => true,
 				'map_meta_cap'        => true,
 				'capability_type'     => $this->type,
 				'capabilities'        => array(

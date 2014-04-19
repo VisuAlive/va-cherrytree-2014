@@ -17,7 +17,7 @@ class VA_Admin_Postlist_Addcolumns {
 	}
 	// add
 	function _va_apac_posts_add_columns( $defaults ) {
-		$defaults['post_modified'] = __( 'Last updated', VACB2014_TEXTDOMAIN );
+		$defaults['post_modified'] = __( '最終更新日時', VACB2014_TEXTDOMAIN );
 		$defaults['post_id'] = __( 'ID', VACB2014_TEXTDOMAIN );
 		return $defaults;
 	}

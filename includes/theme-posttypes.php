@@ -43,7 +43,7 @@ function vacb2014_register_posttype() {
 	add_post_type_support( 'page', 'excerpt' );
 }
 endif;
-if ( is_admin() ) { add_action( 'after_setup_theme', 'vacb2014_register_posttype' ); }
+add_action( 'init', 'vacb2014_register_posttype', 0 );
 
 
 /**

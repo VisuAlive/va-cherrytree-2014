@@ -56,42 +56,34 @@ $theme_options = new VP_Option(
 																'type'        => 'section',
 																'title'       => __( 'meta:ogp', VACB2014_TEXTDOMAIN ),
 																'name'        => 'vacb_general_seo_ogp_section',
-																//'description' => __( 'Meta OGP Setting', VACB2014_TEXTDOMAIN ),
+																//'description' => __( 'Meta AND OGP Setting', VACB2014_TEXTDOMAIN ),
 																'fields'      => array(
-																	array(
-																		'type'        => 'textbox',
-																		'name'        => 'vacb_general_seo_ogp_title',
-																		'label'       => __( 'Site name', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
-																	),
-																	array(
-																		'type'        => 'textbox',
-																		'name'        => 'vacb_general_seo_ogp_url',
-																		'label'       => __( 'Site url', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
-																		'validation'  => 'url',
-																	),
-																	array(
-																		'type'        => 'textarea',
-																		'name'        => 'vacb_general_seo_ogp_description',
-																		'label'       => __( 'Description', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
-																	),
+																	// array(
+																	// 	'type'        => 'textbox',
+																	// 	'name'        => 'vacb_general_seo_ogp_title',
+																	// 	'label'       => __( 'Site name', VACB2014_TEXTDOMAIN ),
+																	// 	'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
+																	// ),
+																	// array(
+																	// 	'type'        => 'textbox',
+																	// 	'name'        => 'vacb_general_seo_ogp_url',
+																	// 	'label'       => __( 'Site url', VACB2014_TEXTDOMAIN ),
+																	// 	'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
+																	// 	'validation'  => 'url',
+																	// ),
+																	// array(
+																	// 	'type'        => 'textarea',
+																	// 	'name'        => 'vacb_general_seo_ogp_description',
+																	// 	'label'       => __( 'Description', VACB2014_TEXTDOMAIN ),
+																	// 	'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
+																	// ),
 																	array(
 																		'type'        => 'upload',
 																		'name'        => 'vacb_general_seo_ogp_image',
-																		'label'       => __( 'Image', VACB2014_TEXTDOMAIN ),
+																		'label'       => __( 'Default image', VACB2014_TEXTDOMAIN ),
 																		'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
 																		'default'     => ''
-																	)
-																) // fields
-															), // section
-															array(
-																'type'        => 'section',
-																'title'       => __( 'ogp:Social Account', VACB2014_TEXTDOMAIN ),
-																'name'        => 'vacb_general_seo_sns_section',
-																//'description' => __( 'Social Account Setting', VACB2014_TEXTDOMAIN ),
-																'fields'      => array(
+																	),
 																	array(
 																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_seo_ogp_admins_id',
@@ -101,11 +93,18 @@ $theme_options = new VP_Option(
 																	),
 																	array(
 																		'type'        => 'textbox',
+																		'name'        => 'vacb_general_seo_ogp_app_id',
+																		'label'       => __( 'Facebook App ID', VACB2014_TEXTDOMAIN ),
+																		'description' => __( 'Your Profile App ID is your Facebook Application ID.<br>It is common and is used.', VACB2014_TEXTDOMAIN ),
+																		'validation'  => 'numeric'
+																	),
+																	array(
+																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_seo_ogp_twitter_id',
 																		'label'       => __( 'Twitter Account', VACB2014_TEXTDOMAIN ),
 																		'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
 																	)
-																)
+																) // fields
 															), // section
 															array(
 																'type'   => 'section',
@@ -116,7 +115,7 @@ $theme_options = new VP_Option(
 																		'type'        => 'checkbox',
 																		'name'        => 'vacb_general_seo_noindex',
 																		'label'       => __( 'Check noindex', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'Use noindex for Archives.<br>It is common and is used.', VACB2014_TEXTDOMAIN ),
+																		'description' => __( 'Use noindex for Archives.', VACB2014_TEXTDOMAIN ),
 																		'items'       => array(
 																			array(
 																				'value' => 'category',
@@ -125,6 +124,10 @@ $theme_options = new VP_Option(
 																			array(
 																				'value' => 'tag',
 																				'label' => __( 'Tag', VACB2014_TEXTDOMAIN ),
+																			),
+																			array(
+																				'value' => 'tax',
+																				'label' => __( 'Taxonomy', VACB2014_TEXTDOMAIN ),
 																			),
 																			array(
 																				'value' => 'search',
@@ -137,10 +140,14 @@ $theme_options = new VP_Option(
 																			array(
 																				'value' => 'author',
 																				'label' => __( 'Author', VACB2014_TEXTDOMAIN ),
+																			),
+																			array(
+																				'value' => 'attachment',
+																				'label' => __( 'Media', VACB2014_TEXTDOMAIN ),
 																			)
-																		)
-																	)
-																),
+																		) // items
+																	) // checkbox
+																), // fields
 															), // section
 														) // controls
 													) // SEO Setting

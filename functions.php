@@ -35,51 +35,6 @@ get_template_part( 'includes/plugin', 'admin-postlist-addcolumns' );
 get_template_part( 'includes/plugin', 'post-discussion-closed' );
 get_template_part( 'includes/plugin', 'simple-expires' );
 
-function vacb_get_post_types() {
-	$default_post = array('post' => 'post', 'page' => 'page');
-	$custom_post  = get_post_types( array( 'public' => true, '_builtin' => false ), 'names' );
-	return array_merge( $default_post, $custom_post );
-}
-
-/**
- * ポストIDとポストタイトルを取得
- * Vafpress Framework で使用
- *
- * @return array
- */
-function vacb_get_post( $type = null ) {
-	switch ( $type ) {
-		case 'info':
-			$posttye = 'info';
-			break;
-		case 'showcase':
-			$posttye = 'showcase';
-			break;
-		default:
-			$posttye = 'post';
-			break;
-	}
-	$wp_posts = get_posts( array(
-		'posts_per_page' => -1,
-		'post_type' => $posttye
-	) );
-
-	$result = array();
-	foreach ($wp_posts as $post) {
-		$result[] = array( 'value' => $post->ID, 'label' => $post->post_title );
-	}
-	return $result;
-}
-function vacb_get_posts() {
-	return vacb_get_post();
-}
-function vacb_get_infos() {
-	return vacb_get_post( 'info' );
-}
-function vacb_get_showcases() {
-	return vacb_get_post( 'showcase' );
-}
-
 
 // function test( $post_states, $post ) {
 // 	if ( 'expiration' == $post->post_status )
