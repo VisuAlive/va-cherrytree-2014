@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'VA_Simple_Expires' ) ) :
 class VA_Simple_Expires {
 	function __construct() {
-		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 		add_action( 'admin_menu', array( $this, 'loadAdmin' ) );
 		add_action( 'admin_head', array( $this, 'add_post_status' ) );
 		add_action( 'init', array( $this, 'simple_expires' ) );
@@ -12,14 +11,7 @@ class VA_Simple_Expires {
 		add_action( 'save_post', array( $this, 'scadenza_save_postdata' ) );
 	}
 
-	function deactivation() {
-		//  remove rows from wp_postmeta tables
-		global $wpdb;
-		$wpdb->query( $wpdb->prepare("DELETE FROM $wpdb->postmeta WHERE meta_key='scadenza-enable' OR meta_key='scadenza-date'" ) );
-	}
-
 	function loadAdmin() {
-		wp_enqueue_script( 'vase-validate', get_stylesheet_directory_uri() . '/assets/js/vendor/jquery.validate.pack.js', array('jquery') );
 		wp_enqueue_style( 'vase-style', get_stylesheet_directory_uri() . '/assets/css/plugin/vase-style.css' );
 	}
 
