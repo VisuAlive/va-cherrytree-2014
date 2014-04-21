@@ -202,24 +202,40 @@ endif; // _visualive_theme_body_classes
 add_filter( 'body_class', '_visualive_theme_body_classes' );
 
 
+if ( ! function_exists( '_visualive_theme_post_classes' ) ) :
 /**
  * Extend the default WordPress post classes.
- *
- * Adds a post class to denote:
- * Non-password protected page with a post thumbnail.
- *
- * @since Twenty Fourteen 1.0
  *
  * @param array $classes A list of existing post class values.
  * @return array The filtered post class list.
  */
-if ( ! function_exists( '_visualive_theme_post_classes' ) ) :
 function _visualive_theme_post_classes( $classes ) {
+	global $post, $posts;
+
 	if ( ! post_password_required() && has_post_thumbnail() ) {
 		$classes[] = 'has-post-thumbnail';
 	}
+	if ( is_home() AND !is_paged() AND ($post == $posts[0]) ) {
+		$classes[] = 'firstpost';
+	}
+	$classes[] = 'editor-area';
 
 	return $classes;
 }
-endif;
+endif; // _visualive_theme_post_classes
 add_filter( 'post_class', '_visualive_theme_post_classes' );
+
+
+if ( ! function_exists( '_visualive_theme_editor_classes' ) ) :
+/**
+ * Extend the default WordPress post classes.
+ *
+ * @param array $classes A list of existing post class values.
+ * @return array The filtered post class list.
+ */
+function _visualive_theme_editor_classes( $classes ){
+	$classes['body_class'] = 'editor-area';
+	return $classes;
+}
+endif; // _visualive_theme_editor_classes
+add_filter( 'tiny_mce_before_init', '_visualive_theme_editor_classes' );
