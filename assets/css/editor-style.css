@@ -1,82 +1,98 @@
-/* =WordPress Core
+/* =WordPress Core http://codex.wordpress.org/CSS
 -------------------------------------------------------------- */
+/* line 3, ../scss/editor-style.scss */
 .alignnone {
-	margin: 5px 20px 20px 0;
+  margin: 5px 20px 20px 0;
 }
 
+/* line 8, ../scss/editor-style.scss */
 .aligncenter,
 div.aligncenter {
-	display: block;
-	margin: 5px auto 5px auto;
+  display: block;
+  margin: 5px auto 5px auto;
 }
 
+/* line 13, ../scss/editor-style.scss */
 .alignright {
-	float:right;
-	margin: 5px 0 20px 20px;
+  float: right;
+  margin: 5px 0 20px 20px;
 }
 
+/* line 18, ../scss/editor-style.scss */
 .alignleft {
-	float: left;
-	margin: 5px 20px 20px 0;
+  float: left;
+  margin: 5px 20px 20px 0;
 }
 
+/* line 23, ../scss/editor-style.scss */
 .aligncenter {
-	display: block;
-	margin: 5px auto 5px auto;
+  display: block;
+  margin: 5px auto 5px auto;
 }
 
+/* line 28, ../scss/editor-style.scss */
 a img.alignright {
-	float: right;
-	margin: 5px 0 20px 20px;
+  float: right;
+  margin: 5px 0 20px 20px;
 }
 
+/* line 33, ../scss/editor-style.scss */
 a img.alignnone {
-	margin: 5px 20px 20px 0;
+  margin: 5px 20px 20px 0;
 }
 
+/* line 37, ../scss/editor-style.scss */
 a img.alignleft {
-	float: left;
-	margin: 5px 20px 20px 0;
+  float: left;
+  margin: 5px 20px 20px 0;
 }
 
+/* line 42, ../scss/editor-style.scss */
 a img.aligncenter {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
+/* line 48, ../scss/editor-style.scss */
 .wp-caption {
-	padding: 5px 3px 10px;
-	max-width: 96%; /* Image does not overflow the content area */
-	border: 1px solid #f0f0f0;
-	background: #fff;
-	text-align: center;
+  padding: 5px 3px 10px;
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  border: 1px solid #f0f0f0;
+  background: #fff;
+  text-align: center;
 }
 
+/* line 56, ../scss/editor-style.scss */
 .wp-caption.alignnone {
-	margin: 5px 20px 20px 0;
+  margin: 5px 20px 20px 0;
 }
 
+/* line 60, ../scss/editor-style.scss */
 .wp-caption.alignleft {
-	margin: 5px 20px 20px 0;
+  margin: 5px 20px 20px 0;
 }
 
+/* line 64, ../scss/editor-style.scss */
 .wp-caption.alignright {
-	margin: 5px 0 20px 20px;
+  margin: 5px 0 20px 20px;
 }
 
+/* line 68, ../scss/editor-style.scss */
 .wp-caption img {
-	margin: 0;
-	padding: 0;
-	max-width: 98.5%;
-	width: auto;
-	height: auto;
-	border: 0 none;
+  margin: 0;
+  padding: 0;
+  max-width: 98.5%;
+  width: auto;
+  height: auto;
+  border: 0 none;
 }
 
+/* line 77, ../scss/editor-style.scss */
 .wp-caption p.wp-caption-text {
-	margin: 0;
-	padding: 0 4px 5px;
-	font-size: 11px;
-	line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px;
+  font-size: 11px;
+  line-height: 17px;
 }
