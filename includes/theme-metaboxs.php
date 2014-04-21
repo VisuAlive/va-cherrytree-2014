@@ -19,8 +19,8 @@ get_template_part( 'includes/metabox/metabox', 'seo' );
 // array(
 // 	'type' => 'select',
 // 	'name' => 'vacb_se_pages',
-// 	'label' => __( 'Pages', VACB2014_TEXTDOMAIN ),
-// 	'description' => __( 'Select field with WP Pages Data Source', VACB2014_TEXTDOMAIN ),
+// 	'label' => __( 'Pages', VACB_TEXTDOMAIN ),
+// 	'description' => __( 'Select field with WP Pages Data Source', VACB_TEXTDOMAIN ),
 // 	'items' => array(
 // 		'data' => array(
 // 			array(
@@ -34,8 +34,8 @@ get_template_part( 'includes/metabox/metabox', 'seo' );
 // array(
 // 	'type' => 'select',
 // 	'name' => 'se_posts',
-// 	'label' => __( 'Posts', VACB2014_TEXTDOMAIN ),
-// 	'description' => __( 'Select field with WP Post Data Source', VACB2014_TEXTDOMAIN ),
+// 	'label' => __( 'Posts', VACB_TEXTDOMAIN ),
+// 	'description' => __( 'Select field with WP Post Data Source', VACB_TEXTDOMAIN ),
 // 	'items' => array(
 // 		'data' => array(
 // 			array(

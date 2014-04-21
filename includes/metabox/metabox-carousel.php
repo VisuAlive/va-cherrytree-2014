@@ -8,52 +8,52 @@ $vacb_mb_carousel = new VP_Metabox(
 	array(
 		'id'          => '_vacb_metaboxs_carousel_',
 		'types'       => array( 'carousel' ),
-		'title'       => __( 'Add Carousel', VACB2014_TEXTDOMAIN ),
+		'title'       => __( 'Add Carousel', VACB_TEXTDOMAIN ),
 		'priority'    => 'high',
 		'template'    => array(
 			array(
 				'type' => 'notebox',
 				'name' => 'notebox',
-				'label' => __( 'imgタグのalt属性について', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'imgタグのalt属性は、タイトルに入力した内容がalt属性に適用されます。', VACB2014_TEXTDOMAIN ),
+				'label' => __( 'imgタグのalt属性について', VACB_TEXTDOMAIN ),
+				'description' => __( 'imgタグのalt属性は、タイトルに入力した内容がalt属性に適用されます。', VACB_TEXTDOMAIN ),
 				'status' => 'info',
 			),
 			array(
 				'type'        => 'upload',
 				'name'        => 'vacb_carousel_image',
-				'label'       => __( 'イメージ', VACB2014_TEXTDOMAIN ),
-				// 'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'イメージ', VACB_TEXTDOMAIN ),
+				// 'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN ),
 				'default'     => ''
 			),
 			array(
 				'type'        => 'radiobutton',
 				'name'        => 'vacb_carousel_link_filter',
-				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
-				// 'description' => __( 'Different type will show different type of field', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB_TEXTDOMAIN ),
+				// 'description' => __( 'Different type will show different type of field', VACB_TEXTDOMAIN ),
 				'items'       => array(
 					array(
 						'value' => 'post',
-						'label' => __( '投稿', VACB2014_TEXTDOMAIN ),
+						'label' => __( '投稿', VACB_TEXTDOMAIN ),
 					),
 					array(
 						'value' => 'page',
-						'label' => __( '固定ページ', VACB2014_TEXTDOMAIN ),
+						'label' => __( '固定ページ', VACB_TEXTDOMAIN ),
 					),
 					array(
 						'value' => 'info',
-						'label' => __( 'お知らせ', VACB2014_TEXTDOMAIN ),
+						'label' => __( 'お知らせ', VACB_TEXTDOMAIN ),
 					),
 					array(
 						'value' => 'showcase',
-						'label' => __( 'ショーケース', VACB2014_TEXTDOMAIN ),
+						'label' => __( 'ショーケース', VACB_TEXTDOMAIN ),
 					),
 					array(
 						'value' => 'url',
-						'label' => __( '任意リンク', VACB2014_TEXTDOMAIN ),
+						'label' => __( '任意リンク', VACB_TEXTDOMAIN ),
 					),
 					array(
 						'value' => 'none',
-						'label' => __( 'リンク無', VACB2014_TEXTDOMAIN ),
+						'label' => __( 'リンク無', VACB_TEXTDOMAIN ),
 					)
 				),
 				'default'     => 'none'
@@ -61,8 +61,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_post',
-				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'リンク先を選択してください。', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB_TEXTDOMAIN ),
+				'description' => __( 'リンク先を選択してください。', VACB_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -79,8 +79,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_page',
-				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'リンク先を選択してください。', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB_TEXTDOMAIN ),
+				'description' => __( 'リンク先を選択してください。', VACB_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -97,8 +97,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_info',
-				'label'       => __( 'リンク先', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'リンク先のページを選択してください。', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'リンク先', VACB_TEXTDOMAIN ),
+				'description' => __( 'リンク先のページを選択してください。', VACB_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -115,8 +115,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'select',
 				'name'        => 'vacb_carousel_link_showcase',
-				'label'       => __( 'Choose showcase', VACB2014_TEXTDOMAIN ),
-				'description' => __( 'リンク先のページを選択してください。', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'Choose showcase', VACB_TEXTDOMAIN ),
+				'description' => __( 'リンク先のページを選択してください。', VACB_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
@@ -133,8 +133,8 @@ $vacb_mb_carousel = new VP_Metabox(
 			array(
 				'type'        => 'textbox',
 				'name'        => 'vacb_carousel_link_url',
-				'label'       => __( 'Edit url', VACB2014_TEXTDOMAIN ),
-				// 'description' => __( 'URL to filter.', VACB2014_TEXTDOMAIN ),
+				'label'       => __( 'Edit url', VACB_TEXTDOMAIN ),
+				// 'description' => __( 'URL to filter.', VACB_TEXTDOMAIN ),
 				// 'default'     => 'abcdefg',
 				'dependency' => array(
 					'field'    => 'vacb_carousel_link_filter',

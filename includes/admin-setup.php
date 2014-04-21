@@ -43,12 +43,12 @@ function _visualive_theme_basic_auth() {
 	if ( ! isset($php_auth_user) && ! isset($php_auth_pw) ) {
 		header( 'WWW-Authenticate: Basic realm="Private Page"' );
 		header( 'HTTP/1.0 401 Unauthorized' );
-		die( __( 'Authorization Required.', VACB2014_TEXTDOMAIN ) );
+		die( __( 'Authorization Required.', VACB_TEXTDOMAIN ) );
 	} else {
 		if ( $php_auth_user != $auth_id || $php_auth_pw != $auth_pw ) {
 			header( 'WWW-Authenticate: Basic realm="Private Page"' );
 			header( 'HTTP/1.0 401 Unauthorized' );
-			die( __( 'Authorization Required.', VACB2014_TEXTDOMAIN ) );
+			die( __( 'Authorization Required.', VACB_TEXTDOMAIN ) );
 		}
 	}
 }
@@ -83,7 +83,7 @@ function _visualive_theme_admin_setup_message() {
 	$auth_pass = $GLOBALS['vacb_options']['vacb_general_security_basic_pass'];
 	$improper  = array('', 'root', 'admin', 'webmaster', 'pass', 'password');
 	// functions.phpを開いて、VACB2014_AUTH_IDとVACB2014_AUTH_PASSを編集して、セットアップを完成してください。
-	$message   = __( 'Please open ' . get_template_directory() . '/functions.php,<br>edit VACB2014_AUTH_ID and VACB2014_AUTH_PASS, and complete a setup.', VACB2014_TEXTDOMAIN );
+	$message   = __( 'Please open ' . get_template_directory() . '/functions.php,<br>edit VACB2014_AUTH_ID and VACB2014_AUTH_PASS, and complete a setup.', VACB_TEXTDOMAIN );
 
 	if ( in_array( $auth_id, $improper ) || in_array( $auth_pass, $improper ) ) {
 		echo "<div id='message' class='error'><p><strong>$message</strong></p></div>";
@@ -167,7 +167,7 @@ if ( ! function_exists( '_visualive_theme_custom_admin_footer_text' ) ) :
  * @param string $code
  */
 function _visualive_theme_custom_admin_footer_text() {
-	return __( 'ウェブサイト制作でお困りの際は <a href="http://visualive.jp/" target="_blank">ヴィジュアライブ</a> 迄お問い合わせください。', VACB2014_TEXTDOMAIN );
+	return __( 'ウェブサイト制作でお困りの際は <a href="http://visualive.jp/" target="_blank">ヴィジュアライブ</a> 迄お問い合わせください。', VACB_TEXTDOMAIN );
 }
 endif;
 if ( is_admin() ) { add_filter( 'admin_footer_text', '_visualive_theme_custom_admin_footer_text' ); }

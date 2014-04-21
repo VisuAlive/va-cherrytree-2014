@@ -58,9 +58,9 @@ function _visualive_theme_change_sidemenu_text() {
 	global $submenu;
 
 	// Change menu item
-	$menu[5][0] = __( 'ブログ', VACB2014_TEXTDOMAIN );
+	$menu[5][0] = __( 'ブログ', VACB_TEXTDOMAIN );
 	// Change post submenu
-	$submenu['edit.php'][5][0] = __( 'ブログ一覧', VACB2014_TEXTDOMAIN );
+	$submenu['edit.php'][5][0] = __( 'ブログ一覧', VACB_TEXTDOMAIN );
 }
 endif;
 if ( is_admin() ) { add_action( 'admin_menu', '_visualive_theme_change_sidemenu_text' ); }
@@ -78,7 +78,7 @@ function _visualive_theme_change_posttype_labels() {
 
 	// Get the post labels
 	$postLabels = $wp_post_types['post']->labels;
-	$postLabels->name = __( 'ブログ', VACB2014_TEXTDOMAIN );
+	$postLabels->name = __( 'ブログ', VACB_TEXTDOMAIN );
 }
 endif;
 if ( is_admin() ) { add_action( 'init', '_visualive_theme_change_posttype_labels' ); }

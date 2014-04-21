@@ -17,13 +17,13 @@ class VA_Admin_Postlist_Addcolumns {
 	}
 	// add
 	function _va_apac_posts_add_columns( $defaults ) {
-		$defaults['post_modified'] = __( '最終更新日時', VACB2014_TEXTDOMAIN );
-		$defaults['post_id'] = __( 'ID', VACB2014_TEXTDOMAIN );
+		$defaults['post_modified'] = __( '最終更新日時', VACB_TEXTDOMAIN );
+		$defaults['post_id'] = __( 'ID', VACB_TEXTDOMAIN );
 		return $defaults;
 	}
 	function _va_apac_postos_echo_columns( $column_name, $id ) {
 		if( $column_name === 'post_modified' ){
-			echo get_the_modified_date( __( 'm.d.Y', VACB2014_TEXTDOMAIN ) );
+			echo get_the_modified_date( __( 'Y.m.d', VACB_TEXTDOMAIN ) );
 		}
 		if( $column_name === 'post_id' ){
 			echo intval( $id );

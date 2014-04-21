@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 ini_set( 'display_errors', 1 );
 $GLOBALS['vacb_options'] = get_option('_vacb_options_');
-define( 'VACB2014_TEXTDOMAIN', 'va-cherryblossum-2014' );
+define( 'VACB_TEXTDOMAIN', 'va-cherryblossum-2014' );
 
 get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );

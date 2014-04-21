@@ -32,9 +32,9 @@ class VA_Simple_Expires {
 		if( in_array($now_posttype, $get_posttype) ) :
 			if($post->post_status == 'expiration'){
 				$complete = ' selected=\"selected\"';
-				$label = '<span id=\"post-status-display\"> ' . __( '公開終了', VACB2014_TEXTDOMAIN ) . '</span>';
+				$label = '<span id=\"post-status-display\"> ' . __( '公開終了', VACB_TEXTDOMAIN ) . '</span>';
 			}
-			$option = '<option value=\"expiration\" '.$complete.'> ' . __( '公開終了', VACB2014_TEXTDOMAIN ) . '</option>';
+			$option = '<option value=\"expiration\" '.$complete.'> ' . __( '公開終了', VACB_TEXTDOMAIN ) . '</option>';
 			?>
 <script>
 jQuery(document).ready(function($){
@@ -51,14 +51,14 @@ jQuery(document).ready(function($){
 
 		// Register post status
 		register_post_status( 'expiration', array(
-			'label'                     => _x( '公開終了', 'post', VACB2014_TEXTDOMAIN ),
+			'label'                     => _x( '公開終了', 'post', VACB_TEXTDOMAIN ),
 			'protected'                 => true,
 			'_builtin'                  => true,
 			'public'                    => false,
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( '公開終了 <span class="count">(%s)</span>', '公開終了 <span class="count">(%s)</span>', VACB2014_TEXTDOMAIN )
+			'label_count'               => _n_noop( '公開終了 <span class="count">(%s)</span>', '公開終了 <span class="count">(%s)</span>', VACB_TEXTDOMAIN )
 		) );
 
 		//20 june 2011: bug fix by Kevin Roberts for timezone
@@ -90,7 +90,7 @@ jQuery(document).ready(function($){
 	function scadenza_add_custom_box() {
 		$custom_post_types = $this->va_se_get_post_types();
 		foreach ( $custom_post_types as $t ) {
-			add_meta_box( 'scadenza_plugin', __( '公開終了日時設定', VACB2014_TEXTDOMAIN ), array( $this, 'scadenza_' ), $t, 'side', 'high' );
+			add_meta_box( 'scadenza_plugin', __( '公開終了日時設定', VACB_TEXTDOMAIN ), array( $this, 'scadenza_' ), $t, 'side', 'high' );
 		}
 	}
 
@@ -98,7 +98,7 @@ jQuery(document).ready(function($){
 	function scadenza_( $post ) {
 		global $wp_locale;
 		// Use nonce for verification
-		wp_nonce_field( VACB2014_TEXTDOMAIN, 'va-simple-expires-nonce' );
+		wp_nonce_field( VACB_TEXTDOMAIN, 'va-simple-expires-nonce' );
 
 		$scadenza = get_post_meta( $post->ID,'scadenza-date', true );
 		$time_adj = current_time('timestamp');
@@ -157,7 +157,7 @@ jQuery(document).ready(function($){
 		echo'<div id="timestampdiv_scadenza" class="">';
 		$the_data = get_post_meta( $post->ID, 'scadenza-enable', true );
 		// Checkbox for scheduling this Post / Page, or ignoring
-		$items = array( __( '有効にする', VACB2014_TEXTDOMAIN ), __( '無効にする', VACB2014_TEXTDOMAIN ) );
+		$items = array( __( '有効にする', VACB_TEXTDOMAIN ), __( '無効にする', VACB_TEXTDOMAIN ) );
 		$value = array( 1, 0 );
 		$i     = 0;
 		foreach( $value as $item ) {
@@ -167,7 +167,7 @@ jQuery(document).ready(function($){
 		} // end foreach
 		echo "<br>\n<br>\n";
 		echo '<div class="">' . $years . $month . $days . '<br>' . $time_h . ' : ' . $time_i . '</div></div>';
-		echo "<p>".__( '公開終了日時を入力', VACB2014_TEXTDOMAIN )."</p>";
+		echo "<p>".__( '公開終了日時を入力', VACB_TEXTDOMAIN )."</p>";
 	}
 
 
@@ -181,7 +181,7 @@ jQuery(document).ready(function($){
 			$nonce = NULL;
 		}
 
-		if ( ! wp_verify_nonce( $nonce, VACB2014_TEXTDOMAIN ) ) {
+		if ( ! wp_verify_nonce( $nonce, VACB_TEXTDOMAIN ) ) {
 			return $post_id;
 		}
 

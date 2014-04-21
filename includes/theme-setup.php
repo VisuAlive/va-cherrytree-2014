@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_template_part( 'includes/theme', 'tags' );
+get_template_part( 'includes/theme', 'hack' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -31,7 +32,7 @@ function _visualive_theme_setup() {
 	 * replace to change 'va_official_2014' to the name of your theme in all
 	 * template files.
 	 */
-	load_theme_textdomain( VACB2014_TEXTDOMAIN, get_template_directory() . '/languages' );
+	load_theme_textdomain( VACB_TEXTDOMAIN, get_template_directory() . '/languages' );
 	// This theme styles the visual editor to resemble the theme style.
 	add_editor_style( 'assets/css/editor-style.css' );
 	/*
@@ -61,69 +62,6 @@ function _visualive_theme_setup() {
 }
 endif; // _visualive_theme_setup
 add_action( 'after_setup_theme', '_visualive_theme_setup' );
-
-
-if ( ! function_exists( '_visualive_theme_remove_cssjs_ver' ) ) :
-/**
- * head内に出力されるlink-tag and script-tagよりversion情報を削除する
- *
- * @return string
- */
-function _visualive_theme_remove_cssjs_ver( $src ) {
-	if ( !is_user_logged_in() && strpos( $src, '?ver=' ) ) {
-		$src = remove_query_arg( 'ver', $src );
-	}
-	return $src;
-}
-endif; // _visualive_theme_remove_cssjs_ver
-add_filter( 'style_loader_src', '_visualive_theme_remove_cssjs_ver', 1000, 2 );
-add_filter( 'script_loader_src', '_visualive_theme_remove_cssjs_ver', 1000, 2 );
-
-
-if ( ! function_exists( '_visualive_theme_wp_title' ) ) :
-/**
- * Create a nicely formatted and more specific title element text for output
- * in head of document, based on current view.
- *
- * @since Twenty Fourteen 1.0 ( Custom VisuAlive )
- *
- * @param string $title Default title text for current view.
- * @param string $sep Optional separator.
- * @return string The filtered title.
- */
-function _visualive_theme_wp_title( $title, $sep ) {
-	global $paged, $page, $post;
-
-	$meta_title = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_title');
-
-	if ( is_feed() ) {
-		return $title;
-	}
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		$title = $title;
-	}
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 ) {
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'twentyfourteen' ), max( $paged, $page ) );
-
-	}
-
-	// Add a single page title
-	if ( is_singular() && ! empty($meta_title) ) {
-		$title = $meta_title . ' ' . $sep . ' ' . get_bloginfo( 'name' );
-	}
-
-	return $title;
-}
-endif; // _visualive_theme_wp_title
-add_filter( 'wp_title', '_visualive_theme_wp_title', 10, 2 );
 
 
 if ( ! function_exists( '_visualive_theme_the_meta_tags' ) ) :
@@ -194,36 +132,6 @@ function _visualive_theme_the_meta_tags() {
 }
 endif; // _visualive_theme_the_meta_tags
 add_filter( 'wp_head', '_visualive_theme_the_meta_tags', 0 );
-
-
-if ( ! function_exists( '_visualive_theme_bloginfo' ) ) :
-/**
- * Change the description
- *
- * @return string
- */
-function _visualive_theme_bloginfo( $output, $show) {
-	$meta_description = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_description');
-
-	switch( $show ) :
-		case 'description':
-				if ( is_home() || is_front_page() ) {
-					$output = $output;
-				}
-				if ( is_singular() || is_single() || is_page() ) {
-					if ( ! empty($meta_description) ) {
-						$output = $meta_description;
-					} elseif ( get_the_excerpt() ) {
-						$output = get_the_excerpt();
-					}
-				}
-			break;
-	endswitch;
-
-	return $output;
-}
-endif; // _visualive_theme_bloginfo
-add_filter( 'bloginfo', '_visualive_theme_bloginfo', 10, 2 );
 
 
 if ( ! function_exists( '_visualive_theme_page_menu_args' ) ) :

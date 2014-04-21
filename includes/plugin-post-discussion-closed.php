@@ -63,7 +63,7 @@ class VA_Post_Discussion_Closed {
 		if ( $post_type ) {
 			$name = esc_attr( get_post_type_object( $post_type )->labels->name );
 			$target = $this->target_post_type;
-			$this->va_pdc_show_message( sprintf( __('ディカッションにて「コメントの投稿を許可する」を有効にしても、%sではコメント投稿は有効になりません。', VACB2014_TEXTDOMAIN ), $name ), true, $target );
+			$this->va_pdc_show_message( sprintf( __('ディカッションにて「コメントの投稿を許可する」を有効にしても、%sではコメント投稿は有効になりません。', VACB_TEXTDOMAIN ), $name ), true, $target );
 		}
 	}
 	/**

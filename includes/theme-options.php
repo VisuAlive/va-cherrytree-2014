@@ -10,37 +10,37 @@ $theme_options = new VP_Option(
 		'option_key'            => '_vacb_options_',                       // options key in db, required
 		'page_slug'             => 'vacb_options',                         // options page slug, required
 		'template'              => array(                                  // template file path or array, required
-										'title' => __( 'VA CherryBlossum 2014 Options', VACB2014_TEXTDOMAIN ),
+										'title' => __( 'VA CherryBlossum 2014 Options', VACB_TEXTDOMAIN ),
 										'logo'  => get_template_directory_uri() . '/assets/images/img/option.png',
 										'menus' => array(
 											array(
-												'title' => __( 'General Settings', VACB2014_TEXTDOMAIN ),
+												'title' => __( 'General Settings', VACB_TEXTDOMAIN ),
 												'name'  => 'vacb_general',
 												'icon'  => 'font-awesome:fa-cogs',
 												'menus' => array(
 													array(
-														'title' => __( 'Security', VACB2014_TEXTDOMAIN ),
+														'title' => __( 'Security', VACB_TEXTDOMAIN ),
 														'name'  => 'vacb_general_security',
 														'icon' => 'font-awesome:fa-key',
 														'controls' => array(
 															array(
 																'type'        => 'section',
-																'title'       => __( 'Basic attestation', VACB2014_TEXTDOMAIN ),
+																'title'       => __( 'Basic attestation', VACB_TEXTDOMAIN ),
 																'name'        => 'vacb_general_security_basic_attestation',
-																//'description' => __( 'Meta OGP Setting', VACB2014_TEXTDOMAIN ),
+																//'description' => __( 'Meta OGP Setting', VACB_TEXTDOMAIN ),
 																'fields'      => array(
 																	array(
 																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_security_basic_id',
-																		'label'       => __( 'Id', VACB2014_TEXTDOMAIN ),
-																		//'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
+																		'label'       => __( 'Id', VACB_TEXTDOMAIN ),
+																		//'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN ),
 																		'validation'  => 'alphanumeric'
 																	),
 																	array(
 																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_security_basic_pass',
-																		'label'       => __( 'Password', VACB2014_TEXTDOMAIN ),
-																		//'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
+																		'label'       => __( 'Password', VACB_TEXTDOMAIN ),
+																		//'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN ),
 																		'validation'  => 'alphanumeric'
 																	)
 																) // fields
@@ -48,102 +48,102 @@ $theme_options = new VP_Option(
 														) // controls
 													), // Basic Attestation Setting 
 													array(
-														'title'    => __( 'SEO', VACB2014_TEXTDOMAIN ),
+														'title'    => __( 'SEO', VACB_TEXTDOMAIN ),
 														'name'     => 'vacb_general_seo',
 														'icon'     => 'font-awesome:fa-sitemap',
 														'controls' => array(
 															array(
 																'type'        => 'section',
-																'title'       => __( 'meta:ogp', VACB2014_TEXTDOMAIN ),
+																'title'       => __( 'meta:ogp', VACB_TEXTDOMAIN ),
 																'name'        => 'vacb_general_seo_ogp_section',
-																//'description' => __( 'Meta AND OGP Setting', VACB2014_TEXTDOMAIN ),
+																//'description' => __( 'Meta AND OGP Setting', VACB_TEXTDOMAIN ),
 																'fields'      => array(
 																	// array(
 																	// 	'type'        => 'textbox',
 																	// 	'name'        => 'vacb_general_seo_ogp_title',
-																	// 	'label'       => __( 'Site name', VACB2014_TEXTDOMAIN ),
-																	// 	'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
+																	// 	'label'       => __( 'Site name', VACB_TEXTDOMAIN ),
+																	// 	'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN )
 																	// ),
 																	// array(
 																	// 	'type'        => 'textbox',
 																	// 	'name'        => 'vacb_general_seo_ogp_url',
-																	// 	'label'       => __( 'Site url', VACB2014_TEXTDOMAIN ),
-																	// 	'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
+																	// 	'label'       => __( 'Site url', VACB_TEXTDOMAIN ),
+																	// 	'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN ),
 																	// 	'validation'  => 'url',
 																	// ),
 																	// array(
 																	// 	'type'        => 'textarea',
 																	// 	'name'        => 'vacb_general_seo_ogp_description',
-																	// 	'label'       => __( 'Description', VACB2014_TEXTDOMAIN ),
-																	// 	'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
+																	// 	'label'       => __( 'Description', VACB_TEXTDOMAIN ),
+																	// 	'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN )
 																	// ),
 																	array(
 																		'type'        => 'upload',
 																		'name'        => 'vacb_general_seo_ogp_image',
-																		'label'       => __( 'Default image', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN ),
+																		'label'       => __( 'Default image', VACB_TEXTDOMAIN ),
+																		'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN ),
 																		'default'     => ''
 																	),
 																	array(
 																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_seo_ogp_admins_id',
-																		'label'       => __( 'Facebook Admins ID', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'Your Profile Admin ID is your Facebook profile ID.<br>It is common and is used.', VACB2014_TEXTDOMAIN ),
+																		'label'       => __( 'Facebook Admins ID', VACB_TEXTDOMAIN ),
+																		'description' => __( 'Your Profile Admin ID is your Facebook profile ID.<br>It is common and is used.', VACB_TEXTDOMAIN ),
 																		'validation'  => 'numeric'
 																	),
 																	array(
 																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_seo_ogp_app_id',
-																		'label'       => __( 'Facebook App ID', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'Your Profile App ID is your Facebook Application ID.<br>It is common and is used.', VACB2014_TEXTDOMAIN ),
+																		'label'       => __( 'Facebook App ID', VACB_TEXTDOMAIN ),
+																		'description' => __( 'Your Profile App ID is your Facebook Application ID.<br>It is common and is used.', VACB_TEXTDOMAIN ),
 																		'validation'  => 'numeric'
 																	),
 																	array(
 																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_seo_ogp_twitter_id',
-																		'label'       => __( 'Twitter Account', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'It is common and is used.', VACB2014_TEXTDOMAIN )
+																		'label'       => __( 'Twitter Account', VACB_TEXTDOMAIN ),
+																		'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN )
 																	)
 																) // fields
 															), // section
 															array(
 																'type'   => 'section',
-																'title'  => __( 'Noindex', VACB2014_TEXTDOMAIN ),
+																'title'  => __( 'Noindex', VACB_TEXTDOMAIN ),
 																'name'   => 'vacb_general_seo_noindex_section',
 																'fields' => array(
 																	array(
 																		'type'        => 'checkbox',
 																		'name'        => 'vacb_general_seo_noindex',
-																		'label'       => __( 'Check noindex', VACB2014_TEXTDOMAIN ),
-																		'description' => __( 'Use noindex for Archives.', VACB2014_TEXTDOMAIN ),
+																		'label'       => __( 'Check noindex', VACB_TEXTDOMAIN ),
+																		'description' => __( 'Use noindex for Archives.', VACB_TEXTDOMAIN ),
 																		'items'       => array(
 																			array(
 																				'value' => 'category',
-																				'label' => __( 'Category', VACB2014_TEXTDOMAIN ),
+																				'label' => __( 'Category', VACB_TEXTDOMAIN ),
 																			),
 																			array(
 																				'value' => 'tag',
-																				'label' => __( 'Tag', VACB2014_TEXTDOMAIN ),
+																				'label' => __( 'Tag', VACB_TEXTDOMAIN ),
 																			),
 																			array(
 																				'value' => 'tax',
-																				'label' => __( 'Taxonomy', VACB2014_TEXTDOMAIN ),
+																				'label' => __( 'Taxonomy', VACB_TEXTDOMAIN ),
 																			),
 																			array(
 																				'value' => 'search',
-																				'label' => __( 'Search', VACB2014_TEXTDOMAIN ),
+																				'label' => __( 'Search', VACB_TEXTDOMAIN ),
 																			),
 																			array(
 																				'value' => 'date',
-																				'label' => __( 'Date', VACB2014_TEXTDOMAIN ),
+																				'label' => __( 'Date', VACB_TEXTDOMAIN ),
 																			),
 																			array(
 																				'value' => 'author',
-																				'label' => __( 'Author', VACB2014_TEXTDOMAIN ),
+																				'label' => __( 'Author', VACB_TEXTDOMAIN ),
 																			),
 																			array(
 																				'value' => 'attachment',
-																				'label' => __( 'Media', VACB2014_TEXTDOMAIN ),
+																				'label' => __( 'Media', VACB_TEXTDOMAIN ),
 																			)
 																		) // items
 																	) // checkbox
@@ -160,7 +160,7 @@ $theme_options = new VP_Option(
 		'use_util_menu'         => true,                                   // default to true, shows utility menu
 		'minimum_role'          => 'edit_theme_options',                   // default to 'edit_theme_options'
 		'layout'                => 'fixed',                                // fluid or fixed, default to fixed
-		'page_title'            => __( 'Theme Options', VACB2014_TEXTDOMAIN ), // page title
-		'menu_label'            => __( 'Theme Options', VACB2014_TEXTDOMAIN ), // menu label
+		'page_title'            => __( 'Theme Options', VACB_TEXTDOMAIN ), // page title
+		'menu_label'            => __( 'Theme Options', VACB_TEXTDOMAIN ), // menu label
 	)
 );
