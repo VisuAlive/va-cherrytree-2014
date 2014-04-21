@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 0.0.1
  */
-// ini_set( 'display_errors', 1 );
+ini_set( 'display_errors', 1 );
 $GLOBALS['vacb_options'] = get_option('_vacb_options_');
 define( 'VACB_TEXTDOMAIN', 'va-cherryblossum-2014' );
 
@@ -43,3 +43,4 @@ get_template_part( 'includes/plugin', 'simple-expires' );
 // 	return $post_states;
 // }
 // add_filter( 'display_post_states', 'test', 10, 2 );
+

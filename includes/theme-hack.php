@@ -25,11 +25,9 @@ function _visualive_theme_wp_title( $title, $sep ) {
 	$title .= get_bloginfo( 'name' );
 
 	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
+	if ( is_home() || is_front_page() ) {
 		$title = $title;
 	}
-
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 ) {
 		$title = "$title $sep " . sprintf( __( 'Page %s', 'twentyfourteen' ), max( $paged, $page ) );
@@ -54,16 +52,20 @@ if ( ! function_exists( '_visualive_theme_bloginfo' ) ) :
  * @return string
  */
 function _visualive_theme_bloginfo( $output, $show) {
-	$meta_description = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_description');
-	$post = get_post( get_the_ID(), 'OBJECT', 'edit' );
-	$post_content = visualive_theme_escape_text( $post->post_content );
-	$post_excerpt = visualive_theme_escape_text( $post->post_excerpt );
+	if ( ! is_login_page() )
+		return $output;
 
 	switch( $show ) :
 		case 'description':
 				if ( is_home() || is_front_page() ) {
 					$output = $output;
 				} elseif ( is_singular() || is_single() || is_page() ) {
+					$meta_description = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_description');
+					$meta_description = ( ! empty( $meta_description ) ) ? $meta_description : '';
+					$post = get_post( get_the_ID(), 'OBJECT', 'edit' );
+					$post_content = ( ! empty( $post ) ) ? visualive_theme_escape_text( $post->post_content ) : '';
+					$post_excerpt = ( ! empty( $post ) ) ? visualive_theme_escape_text( $post->post_excerpt ) : '';
+
 					if ( ! empty($meta_description) ) {
 						$output = $meta_description;
 					} elseif ( ! empty($post_excerpt) ) {

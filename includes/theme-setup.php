@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_template_part( 'includes/theme', 'tags' );
+get_template_part( 'includes/theme', 'hack' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
