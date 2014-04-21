@@ -46,42 +46,42 @@ endif;
 add_action( 'init', 'vacb2014_register_posttype', 0 );
 
 
-/**
- * Replace menu text within the admin sidebar menu
- *
- * @link http://goo.gl/rLC2W
- * @return array
- */
-if ( ! function_exists( '_visualive_theme_change_sidemenu_text' ) ) :
-function _visualive_theme_change_sidemenu_text() {
-	global $menu;
-	global $submenu;
+// /**
+//  * Replace menu text within the admin sidebar menu
+//  *
+//  * @link http://goo.gl/rLC2W
+//  * @return array
+//  */
+// if ( ! function_exists( '_visualive_theme_change_sidemenu_text' ) ) :
+// function _visualive_theme_change_sidemenu_text() {
+// 	global $menu;
+// 	global $submenu;
 
-	// Change menu item
-	$menu[5][0] = __( 'ブログ', VACB_TEXTDOMAIN );
-	// Change post submenu
-	$submenu['edit.php'][5][0] = __( 'ブログ一覧', VACB_TEXTDOMAIN );
-}
-endif;
-if ( is_admin() ) { add_action( 'admin_menu', '_visualive_theme_change_sidemenu_text' ); }
+// 	// Change menu item
+// 	$menu[5][0] = __( 'ブログ', VACB_TEXTDOMAIN );
+// 	// Change post submenu
+// 	$submenu['edit.php'][5][0] = __( 'ブログ一覧', VACB_TEXTDOMAIN );
+// }
+// endif;
+// if ( is_admin() ) { add_action( 'admin_menu', '_visualive_theme_change_sidemenu_text' ); }
 
 
-/**
- * Change the post type labels
- *
- * @link http://goo.gl/rLC2W
- * @return Object
- */
-if ( ! function_exists( '_visualive_theme_change_posttype_labels' ) ) :
-function _visualive_theme_change_posttype_labels() {
-	global $wp_post_types;
+// /**
+//  * Change the post type labels
+//  *
+//  * @link http://goo.gl/rLC2W
+//  * @return Object
+//  */
+// if ( ! function_exists( '_visualive_theme_change_posttype_labels' ) ) :
+// function _visualive_theme_change_posttype_labels() {
+// 	global $wp_post_types;
 
-	// Get the post labels
-	$postLabels = $wp_post_types['post']->labels;
-	$postLabels->name = __( 'ブログ', VACB_TEXTDOMAIN );
-}
-endif;
-if ( is_admin() ) { add_action( 'init', '_visualive_theme_change_posttype_labels' ); }
+// 	// Get the post labels
+// 	$postLabels = $wp_post_types['post']->labels;
+// 	$postLabels->name = __( 'ブログ', VACB_TEXTDOMAIN );
+// }
+// endif;
+// if ( is_admin() ) { add_action( 'init', '_visualive_theme_change_posttype_labels' ); }
 
 
 /**

@@ -108,6 +108,25 @@ $theme_options = new VP_Option(
 															), // section
 															array(
 																'type'   => 'section',
+																'title'  => __( 'Google', VACB_TEXTDOMAIN ),
+																'name'   => 'vacb_general_seo_noindex_section',
+																'fields' => array(
+																	array(
+																		'type'        => 'textbox',
+																		'name'        => 'vacb_general_seo_analytics',
+																		'label'       => __( 'UA Tracking ID', VACB_TEXTDOMAIN ),
+																		'description' => __( 'Sample:UA-00000000-0.', VACB_TEXTDOMAIN )
+																	),
+																	array(
+																		'type'        => 'textbox',
+																		'name'        => 'vacb_general_seo_webmastertool',
+																		'label'       => __( 'WebMasterTool', VACB_TEXTDOMAIN ),
+																		'description' => __( 'The portion of the content attribute of a meta tag is inputted.', VACB_TEXTDOMAIN )
+																	)
+																) // fields
+															), // section
+															array(
+																'type'   => 'section',
 																'title'  => __( 'Noindex', VACB_TEXTDOMAIN ),
 																'name'   => 'vacb_general_seo_noindex_section',
 																'fields' => array(
@@ -147,8 +166,8 @@ $theme_options = new VP_Option(
 																			)
 																		) // items
 																	) // checkbox
-																), // fields
-															), // section
+																) // fields
+															) // section
 														) // controls
 													) // SEO Setting
 												)

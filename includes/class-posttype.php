@@ -50,19 +50,19 @@ class VA_PostType_Class {
 				'map_meta_cap'        => true,
 				'capability_type'     => $this->type,
 				'capabilities'        => array(
-					'edit_post'                 => 'va_' . $this->type . '_edit',
-					'read_post'                 => 'va_' . $this->type . '_read',
-					'delete_post'               => 'va_' . $this->type . '_delete',
-					'edit_posts'                => 'va_' . $this->type . '_edits',            // 記事の投稿
-					'edit_published_posts'      => 'va_' . $this->type . '_edit_publisheds',  // 公開した記事の編集
-					'edit_private_posts'        => 'va_' . $this->type . '_edit_privates',    // 他のユーザーの非公開記事の閲覧
-					'edit_others_posts'         => 'va_' . $this->type . '_edit_otherss',     // 他のユーザーの記事の編集
-					'delete_posts'              => 'va_' . $this->type . '_deletes',          // 記事の削除
-					'delete_private_posts'      => 'va_' . $this->type . '_delete_privates',  // 他のユーザーの非公開記事の削除
-					'delete_published_posts'    => 'va_' . $this->type . '_delete_publisheds',// 公開した記事の削除
-					'delete_others_posts'       => 'va_' . $this->type . '_delete_otherss',   // 他のユーザーの記事の削除
-					'publish_posts'             => 'va_' . $this->type . '_publishs',         // 記事の公開
-					'read_private_posts'        => 'va_' . $this->type . '_read_privates'     // 他のユーザーの非公開記事の閲覧
+					'edit_post'                 => 'edit_' . $this->type,
+					'read_post'                 => 'read_' . $this->type,
+					'delete_post'               => 'delete_' . $this->type,
+					'edit_posts'                => 'edit_' . $this->type . 's',            // 記事の投稿
+					'edit_published_posts'      => 'edit_published_' . $this->type . 's',  // 公開した記事の編集
+					'edit_private_posts'        => 'edit_private_' . $this->type . 's',    // 他のユーザーの非公開記事の閲覧
+					'edit_others_posts'         => 'edit_others_' . $this->type . 's',     // 他のユーザーの記事の編集
+					'delete_posts'              => 'delete_' . $this->type . 's',          // 記事の削除
+					'delete_private_posts'      => 'delete_private_' . $this->type . 's',  // 他のユーザーの非公開記事の削除
+					'delete_published_posts'    => 'delete_published_' . $this->type . 's',// 公開した記事の削除
+					'delete_others_posts'       => 'delete_others_' . $this->type . 's',   // 他のユーザーの記事の削除
+					'publish_posts'             => 'publish_' . $this->type . 's',         // 記事の公開
+					'read_private_posts'        => 'read_private_' . $this->type . 's'     // 他のユーザーの非公開記事の閲覧
 				)
 			) ); // register_post_type
 		endif;
@@ -99,33 +99,51 @@ class VA_PostType_Class {
 	function _va_ptc_add_posttype_caps() {
 		if ( $this->type  ) :
 			$admins = get_role( 'administrator' );
-			$admins->add_cap( 'va_' . $this->type . '_edit' );
-			$admins->add_cap( 'va_' . $this->type . '_read' );
-			$admins->add_cap( 'va_' . $this->type . '_delete' );
-			$admins->add_cap( 'va_' . $this->type . '_edits' );             // 記事の投稿
-			$admins->add_cap( 'va_' . $this->type . '_edit_publisheds' );   // 公開した記事の編集
-			$admins->add_cap( 'va_' . $this->type . '_edit_privates' );     // 他のユーザーの非公開記事の閲覧
-			$admins->add_cap( 'va_' . $this->type . '_edit_otherss' );      // 他のユーザーの記事の編集
-			$admins->add_cap( 'va_' . $this->type . '_deletes' );           // 記事の削除
-			$admins->add_cap( 'va_' . $this->type . '_delete_privates' );   // 他のユーザーの非公開記事の削除
-			$admins->add_cap( 'va_' . $this->type . '_delete_publisheds' ); // 公開した記事の削除
-			$admins->add_cap( 'va_' . $this->type . '_delete_otherss' );    // 他のユーザーの記事の削除
-			$admins->add_cap( 'va_' . $this->type . '_publishs' );          // 記事の公開
-			$admins->add_cap( 'va_' . $this->type . '_read_privates' );     // 他のユーザーの非公開記事の閲覧
+			$admins->add_cap( 'edit_' . $this->type );
+			$admins->add_cap( 'read_' . $this->type );
+			$admins->add_cap( 'delete_' . $this->type );
+			$admins->add_cap( 'edit_' . $this->type . 's' );                 // 記事の投稿
+			$admins->add_cap( 'edit_published_' . $this->type . 's' );       // 公開した記事の編集
+			$admins->add_cap( 'edit_private_' . $this->type . 's' );         // 他のユーザーの非公開記事の閲覧
+			$admins->add_cap( 'edit_others_' . $this->type . 's' );          // 他のユーザーの記事の編集
+			$admins->add_cap( 'delete_' . $this->type . $this->type . 's' ); // 記事の削除
+			$admins->add_cap( 'delete_private_' . $this->type . 's' );       // 他のユーザーの非公開記事の削除
+			$admins->add_cap( 'delete_published_' . $this->type . 's' );     // 公開した記事の削除
+			$admins->add_cap( 'delete_others_' . $this->type . 's' );        // 他のユーザーの記事の削除
+			$admins->add_cap( 'publish_' . $this->type . 's' );              // 記事の公開
+			$admins->add_cap( 'read_private_' . $this->type . 's' );         // 他のユーザーの非公開記事の閲覧
 			$editors = get_role( 'editor' );
-			$editors->add_cap( 'va_' . $this->type . '_edit' );
-			$editors->add_cap( 'va_' . $this->type . '_read' );
-			$editors->add_cap( 'va_' . $this->type . '_delete' );
-			$editors->add_cap( 'va_' . $this->type . '_edits' );             // 記事の投稿
-			$editors->add_cap( 'va_' . $this->type . '_edit_publisheds' );   // 公開した記事の編集
-			$editors->add_cap( 'va_' . $this->type . '_edit_privates' );     // 他のユーザーの非公開記事の閲覧
-			$editors->add_cap( 'va_' . $this->type . '_edit_otherss' );      // 他のユーザーの記事の編集
-			$editors->add_cap( 'va_' . $this->type . '_deletes' );           // 記事の削除
-			$editors->add_cap( 'va_' . $this->type . '_delete_privates' );   // 他のユーザーの非公開記事の削除
-			$editors->add_cap( 'va_' . $this->type . '_delete_publisheds' ); // 公開した記事の削除
-			$editors->add_cap( 'va_' . $this->type . '_delete_otherss' );    // 他のユーザーの記事の削除
-			$editors->add_cap( 'va_' . $this->type . '_publishs' );          // 記事の公開
-			$editors->add_cap( 'va_' . $this->type . '_read_privates' );     // 他のユーザーの非公開記事の閲覧
+			$editors->add_cap( 'edit_' . $this->type );
+			$editors->add_cap( 'read_' . $this->type );
+			$editors->add_cap( 'delete_' . $this->type );
+			$editors->add_cap( 'edit_' . $this->type . 's' );                 // 記事の投稿
+			$editors->add_cap( 'edit_published_' . $this->type . 's' );       // 公開した記事の編集
+			$editors->add_cap( 'edit_private_' . $this->type . 's' );         // 他のユーザーの非公開記事の閲覧
+			$editors->add_cap( 'edit_others_' . $this->type . 's' );          // 他のユーザーの記事の編集
+			$editors->add_cap( 'delete_' . $this->type . $this->type . 's' ); // 記事の削除
+			$editors->add_cap( 'delete_private_' . $this->type . 's' );       // 他のユーザーの非公開記事の削除
+			$editors->add_cap( 'delete_published_' . $this->type . 's' );     // 公開した記事の削除
+			$editors->add_cap( 'delete_others_' . $this->type . 's' );        // 他のユーザーの記事の削除
+			$editors->add_cap( 'publish_' . $this->type . 's' );              // 記事の公開
+			$editors->add_cap( 'read_private_' . $this->type . 's' );         // 他のユーザーの非公開記事の閲覧
+
+			add_role( $this->type, $this->name, array(
+				'read'                                      => true, // True allows that capability, False specifically removes it.
+				'edit_' . $this->type                       => true,
+				'read_' . $this->type                       => true,
+				'delete_' . $this->type                     => true,
+				'edit_' . $this->type . 's'                 => true, // 記事の投稿
+				'edit_published_' . $this->type . 's'       => true, // 公開した記事の編集
+				'edit_private_' . $this->type . 's'         => true, // 他のユーザーの非公開記事の閲覧
+				'edit_others_' . $this->type . 's'          => true, // 他のユーザーの記事の編集
+				'delete_' . $this->type . $this->type . 's' => true, // 記事の削除
+				'delete_private_' . $this->type . 's'       => true, // 他のユーザーの非公開記事の削除
+				'delete_published_' . $this->type . 's'     => true, // 公開した記事の削除
+				'delete_others_' . $this->type . 's'        => true, // 他のユーザーの記事の削除
+				'publish_' . $this->type . 's'              => true, // 記事の公開
+				'read_private_' . $this->type . 's'         => true, // 他のユーザーの非公開記事の閲覧
+				'upload_files'                              => true  // last in array needs no comma!
+			));
 		endif;
 	}
 }

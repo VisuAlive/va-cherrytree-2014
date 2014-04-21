@@ -2,7 +2,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_template_part( 'includes/theme', 'tags' );
-get_template_part( 'includes/theme', 'hack' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -72,9 +71,10 @@ if ( ! function_exists( '_visualive_theme_the_meta_tags' ) ) :
  */
 function _visualive_theme_the_meta_tags() {
 	$metatag      = '';
+	$options      = $GLOBALS['vacb_options'];
 	$meta_title   = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_title');
 	$meta_noindex = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_noindex');
-	$noindex      = $GLOBALS['vacb_options']['vacb_general_seo_noindex'];
+	$noindex      = $options['vacb_general_seo_noindex'];
 
 	/**
 	 * Noindex
@@ -92,7 +92,13 @@ function _visualive_theme_the_meta_tags() {
 		$metatag .= '<meta name="robots" content="noindex,follow">' . "\n";
 	}
 	/**
-	 * OGP周り
+	 * SEO
+	 */
+	if ( ! empty($options['vacb_general_seo_webmastertool']) ) {
+		$metatag .= '<meta name="google-site-verification" content="' . $options['vacb_general_seo_webmastertool'] . '">' . "\n";
+	}
+	/**
+	 * OGP
 	 */
 	// <link rel="author" href="">
 	// <link rel="publisher" href="">
@@ -112,19 +118,19 @@ function _visualive_theme_the_meta_tags() {
 	$metatag .= '<meta property="og:description" content="' . esc_attr( get_bloginfo('description', 'display') ) . '">' . "\n";
 	if ( ( is_singular() || is_single() || is_page() ) && get_post_thumbnail_id() ) {
 		$metatag .= '<meta property="og:image" content="' . esc_url( wp_get_attachment_url( get_post_thumbnail_id() ) ) .'">' . "\n";
-	} elseif ( ! empty($GLOBALS['vacb_options']['vacb_general_seo_ogp_image']) ) {
-		$metatag .= '<meta property="og:image" content="' . esc_url( $GLOBALS['vacb_options']['vacb_general_seo_ogp_image'] ) .'">' . "\n";
+	} elseif ( ! empty($options['vacb_general_seo_ogp_image']) ) {
+		$metatag .= '<meta property="og:image" content="' . esc_url( $options['vacb_general_seo_ogp_image'] ) .'">' . "\n";
 	}
 	$metatag .= '<meta property="og:site_name" content="' . get_bloginfo('name') . '">' . "\n";
-	if ( ! empty($GLOBALS['vacb_options']['vacb_general_seo_ogp_admins_id']) ) {
-		$metatag .= '<meta property="fb:admins" content="' . esc_attr( $GLOBALS['vacb_options']['vacb_general_seo_ogp_admins_id'] ) . '">' . "\n";
+	if ( ! empty($options['vacb_general_seo_ogp_admins_id']) ) {
+		$metatag .= '<meta property="fb:admins" content="' . esc_attr( $options['vacb_general_seo_ogp_admins_id'] ) . '">' . "\n";
 	}
-	if ( ! empty($GLOBALS['vacb_options']['vacb_general_seo_ogp_app_id']) ) {
-		$metatag .= '<meta property="fb:app_id" content="' . esc_attr( $GLOBALS['vacb_options']['vacb_general_seo_ogp_app_id'] ) . '">' . "\n";
+	if ( ! empty($options['vacb_general_seo_ogp_app_id']) ) {
+		$metatag .= '<meta property="fb:app_id" content="' . esc_attr( $options['vacb_general_seo_ogp_app_id'] ) . '">' . "\n";
 	}
 	$metatag .= '<meta name="twitter:card" content="summary">' . "\n";
-	if ( ! empty($GLOBALS['vacb_options']['vacb_general_seo_ogp_twitter_id']) ) {
-		$metatag .= '<meta name="twitter:site" content="@' . esc_attr( $GLOBALS['vacb_options']['vacb_general_seo_ogp_twitter_id'] ) . '">' . "\n";
+	if ( ! empty($options['vacb_general_seo_ogp_twitter_id']) ) {
+		$metatag .= '<meta name="twitter:site" content="@' . esc_attr( $options['vacb_general_seo_ogp_twitter_id'] ) . '">' . "\n";
 	}
 	$metatag .= '<meta name="twitter:description" content="' . esc_attr( get_bloginfo('description', 'display') ) . '">' . "\n";
 
@@ -132,6 +138,34 @@ function _visualive_theme_the_meta_tags() {
 }
 endif; // _visualive_theme_the_meta_tags
 add_filter( 'wp_head', '_visualive_theme_the_meta_tags', 0 );
+
+
+if ( ! function_exists( '_visualive_theme_google_analytics' ) ) :
+/**
+ * Echo Goolge Analytics JS code.
+ *
+ * @return string
+ */
+function _visualive_theme_google_analytics() {
+	$tracking_id = $GLOBALS['vacb_options']['vacb_general_seo_analytics'];
+	$domain = str_replace( array("http://","https://"), '', get_bloginfo('url') );
+
+	if ( ! empty($tracking_id) ) :
+?>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '<?php echo esc_attr($tracking_id); ?>', '<?php echo esc_attr($domain); ?>');
+ga('send', 'pageview');
+</script>
+<?php
+	endif;
+}
+endif; // _visualive_theme_page_menu_args
+if ( ! is_admin() ) { add_filter( 'wp_footer', '_visualive_theme_google_analytics', 9999 ); }
 
 
 if ( ! function_exists( '_visualive_theme_page_menu_args' ) ) :
