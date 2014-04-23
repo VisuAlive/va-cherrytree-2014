@@ -1,6 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Shortcodes in WordPress Widget Area
+ */
+add_filter('widget_text', 'do_shortcode');
+
+
 if ( ! function_exists( '_visualive_theme_wp_title' ) ) :
 /**
  * Create a nicely formatted and more specific title element text for output
