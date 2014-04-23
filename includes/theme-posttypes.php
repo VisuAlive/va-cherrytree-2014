@@ -11,6 +11,12 @@ function vacb2014_register_posttype() {
 	$posttype_info->menu_icon = 'dashicons-info';
 	$posttype_info->taxonomy  = array( 'cat' );
 
+	$posttype_dl            = new VA_PostType_Class;
+	$posttype_dl->type      = 'download';
+	$posttype_dl->name      = 'ダウンロード';
+	$posttype_dl->menu_icon = 'dashicons-download';
+	$posttype_dl->taxonomy  = array( 'cat', 'tag' );
+
 	$posttype_sc            = new VA_PostType_Class;
 	$posttype_sc->type      = 'showcase';
 	$posttype_sc->name      = 'ショーケース';
@@ -107,18 +113,6 @@ function _vacb2014_posttype_dashboard() {
 }
 endif;
 if ( is_admin() ) { add_action( 'dashboard_glance_items', '_vacb2014_posttype_dashboard' ); }
-
-
-if ( ! function_exists( '_vacb2014_posttype_dashboard_style' ) ) :
-function _vacb2014_posttype_dashboard_style() {
-	echo '<style type="text/css">
-		.info-count a:before {content:"\f348" !important;}
-		.showcase-count a:before {content:"\f497" !important;}
-		.carousel-count a:before {content:"\f161" !important;}
-		</style>';
-}
-endif;
-if ( is_admin() ) { add_action('admin_head', '_vacb2014_posttype_dashboard_style'); }
 
 
 /**
