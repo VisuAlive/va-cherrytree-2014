@@ -24,24 +24,27 @@
 </style>
 </head>
 <body <?php body_class(); ?>>
+<!-- <div class="loading"><div class="loading-animation fa fa-cog"></div></div> -->
+<div class="loader-wrap"><div class="loader">Loading<span class="fa fa-cog"></span></div></div>
+
 <div class="off-canvas-wrap" data-offcanvas>
 <div class="inner-wrap">
 
 <header>
-	<div class="fixed">
-		<nav class="top-bar" data-topbar>
-			<ul class="title-area">
-				<li class="name">
-					<h1><a href="<?php echo home_url('/'); ?>"><?php bloginfo('name') ?></a></h1>
-				</li>
-			</ul>
-			<div class="right-small">
-				<a class="right-off-canvas-toggle menu-icon" href="javascript:void(0);"><span class="fa fa-bars"></span></a>
-			</div>
-		</nav>
-	</div>
+	<nav class="top-bar" data-topbar>
+		<ul class="title-area">
+			<li class="name">
+				<h1><a href="<?php echo home_url('/'); ?>"><?php bloginfo('name') ?></a></h1>
+			</li>
+		</ul>
+		<div class="right-small">
+			<a class="right-off-canvas-toggle menu-icon" href="javascript:void(0);"><span class="fa fa-bars"></span></a>
+		</div>
+	</nav>
 </header>
 
-<div class="img-holder" data-image="https://raw.github.com/pederan/ImageScroll/master/demo/img/autumn_season-1600x900.jpg" data-image-mobile="https://raw.github.com/pederan/ImageScroll/master/demo/img/autumn_season-800x450.jpg" data-width="1600" data-height="900"></div>
+<div class="img-holder" data-image="https://raw.github.com/pederan/ImageScroll/master/demo/img/autumn_season-1600x900.jpg" data-image-mobile="https://raw.github.com/pederan/ImageScroll/master/demo/img/autumn_season-800x450.jpg" data-width="1600" data-height="900">
+	test
+</div>
 
 <div class="content-wrap">
