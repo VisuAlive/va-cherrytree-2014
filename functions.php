@@ -1,8 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
- * @package VA CherryBlossum 2014
- * @version 0.0.1
+ * The Functions
+ *
+ * @package WordPress
+ * @subpackage VA_CherryBlossum_2014
+ * @since VA CherryBlossum 2014 1.0.0
+ * @version 1.0.0
  * @author KUCKLU <kuck1u@visualive.jp>
  * @copyright Copyright (c) 2014 KUCKLU, VisuAlive.
  * @license http://opensource.org/licenses/gpl-2.0.php GPLv2
@@ -16,10 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * - フックに登録するだけのコールバック関数は_visualive_theme_を接頭辞とします。
  * - フックに登録する場合、特定の事情がなければ関数定義のすぐ下に書いてください。
  * - admin-setupを先に読み込みその後theme-setup読み込む。theme-setupの後にmetaboxやoption等を必要に応じて読み込むようにしてください。
- *
- * @since 0.0.1
  */
-ini_set( 'display_errors', 1 );
+// ini_set( 'display_errors', 1 );
 $GLOBALS['vacb_options'] = get_option('_vacb_options_');
 define( 'VACB_TEXTDOMAIN', 'va-cherryblossum-2014' );
 

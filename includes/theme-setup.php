@@ -1,4 +1,16 @@
 <?php
+/**
+ * The Theme Setup
+ *
+ * @package WordPress
+ * @subpackage VA_CherryBlossum_2014
+ * @since VA CherryBlossum 2014 1.0.0
+ * @version 1.0.0
+ * @author KUCKLU <kuck1u@visualive.jp>
+ * @copyright Copyright (c) 2014 KUCKLU, VisuAlive.
+ * @license http://opensource.org/licenses/gpl-2.0.php GPLv2
+ * @link http://visualive.jp/
+ */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_template_part( 'includes/theme', 'tags' );
@@ -13,7 +25,7 @@ if ( ! isset( $content_width ) ) {
 
 if ( ! function_exists( '_visualive_theme_setup' ) ) :
 /**
- * VA Official 2014 setup.
+ * VA CherryBlossum 2014 setup.
  *
  * Set up theme defaults and registers support for various WordPress features.
  *
@@ -21,15 +33,15 @@ if ( ! function_exists( '_visualive_theme_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support post thumbnails.
  *
- * @since VA Official 2014 1.0
+ * @since VA CherryBlossum 2014 1.0
  */
 function _visualive_theme_setup() {
 	/*
-	 * Make VA Official 2014 available for translation.
+	 * Make VA CherryBlossum 2014 available for translation.
 	 *
 	 * Translations can be added to the /languages/ directory.
-	 * If you're building a theme based on VA Official 2014, use a find and
-	 * replace to change 'va_official_2014' to the name of your theme in all
+	 * If you're building a theme based on VA CherryBlossum 2014, use a find and
+	 * replace to change 'visualive_theme' to the name of your theme in all
 	 * template files.
 	 */
 	load_theme_textdomain( VACB_TEXTDOMAIN, get_template_directory() . '/languages' );
@@ -42,6 +54,13 @@ function _visualive_theme_setup() {
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'caption', 'gallery' ) );
 	// Enable support for Post Thumbnails, and declare two sizes.
 	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 672, 372, true );
+	add_image_size( 'va-cherryblossum-fullwidth', 1038, 576, true );
+	// This theme uses wp_nav_menu() in two locations.
+	register_nav_menus( array(
+		'primary'   => __( 'Top primary menu', VACB_TEXTDOMAIN ),
+		'secondary' => __( 'Secondary menu in left sidebar', VACB_TEXTDOMAIN ),
+	) );
 	/**
 	 * Add theme support for Infinite Scroll.
 	 * See: http://jetpack.me/support/infinite-scroll/
@@ -50,18 +69,85 @@ function _visualive_theme_setup() {
 	/**
 	 * Remove filter & action
 	 */
-	remove_action( 'wp_head', 'wp_generator' );
-	remove_action( 'rss_head', 'the_generator' );
-	remove_action( 'rss2_head', 'the_generator' );
-	remove_action( 'rdf_header', 'the_generator' );
-	remove_action( 'atom_head', 'the_generator' );
-	remove_action( 'opml_head', 'the_generator' );
-	remove_action( 'app_head', 'the_generator' );
-	remove_action( 'commentsrss2_head', 'the_generator' );
+	remove_action( 'wp_head',            'wp_generator' );
+	remove_action( 'rss_head',           'the_generator' );
+	remove_action( 'rss2_head',          'the_generator' );
+	remove_action( 'rdf_header',         'the_generator' );
+	remove_action( 'atom_head',          'the_generator' );
+	remove_action( 'opml_head',          'the_generator' );
+	remove_action( 'app_head',           'the_generator' );
+	remove_action( 'commentsrss2_head',  'the_generator' );
 	remove_action( 'comments_atom_head', 'the_generator' );
 }
 endif; // _visualive_theme_setup
 add_action( 'after_setup_theme', '_visualive_theme_setup' );
+
+if ( ! function_exists( '_visualive_theme_widgets_init' ) ) :
+/**
+ * Register three VA Cherry Blossum widget areas.
+ *
+ * @return void
+ */
+function _visualive_theme_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Primary Sidebar', VACB_TEXTDOMAIN ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Main sidebar that appears on the left.', VACB_TEXTDOMAIN ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Content Sidebar', VACB_TEXTDOMAIN ),
+		'id'            => 'sidebar-2',
+		'description'   => __( 'Additional sidebar that appears on the right.', VACB_TEXTDOMAIN ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget Area', VACB_TEXTDOMAIN ),
+		'id'            => 'sidebar-3',
+		'description'   => __( 'Appears in the footer section of the site.', VACB_TEXTDOMAIN ),
+		'before_widget' => '<aside id="%1$s" class="medium-4 columns widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+} // _visualive_theme_widgets_init
+endif;
+add_action( 'widgets_init', '_visualive_theme_widgets_init' );
+
+
+if ( ! function_exists( '_visualive_theme_scripts' ) ) :
+/**
+ * Enqueue scripts and styles for the front end.
+ *
+ * @return void
+ */
+function _visualive_theme_scripts() {
+	// Add Lato font, used in the main stylesheet.
+	wp_enqueue_style( 'va-cherryblossum-style', get_template_directory_uri() . '/assets/css/app.css', array(), null );
+	wp_enqueue_style( 'fort-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array(), null );
+
+	// Load the Internet Explorer specific stylesheet.
+	// wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
+	// wp_style_add_data( 'twentyfourteen-ie', 'conditional', 'lt IE 9' );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+	wp_enqueue_script( 'modernizr',  get_template_directory_uri() . '/assets/js/vendor/modernizr.js', array(), '', false );
+	wp_enqueue_script( 'va-cherryblossum-core',  get_template_directory_uri() . '/assets/js/app.min.js', array( 'jquery' ), '', true );
+
+	// if ( is_active_sidebar( 'sidebar-3' ) ) {
+	// 	wp_enqueue_script( 'jquery-masonry' );
+	// }
+} // _visualive_theme_scripts
+endif;
+add_action( 'wp_enqueue_scripts', '_visualive_theme_scripts' );
 
 
 if ( ! function_exists( '_visualive_theme_the_meta_tags' ) ) :
