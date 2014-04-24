@@ -1,3 +1,6 @@
 [submodule "includes/vafpress-framework"]
 	path = includes/vafpress-framework
 	url = https://github.com/vafour/vafpress-framework.git
+[submodule "assets/js/vendor/ImageScroll"]
+	path = assets/js/vendor/ImageScroll
+	url = https://github.com/pederan/Parallax-ImageScroll.git
