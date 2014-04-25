@@ -20,7 +20,7 @@
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
 // $base-font-size: 100%;
 
-// The $base-font-size is 100% while $base-line-height is 150%
+// The $base-line-height is 100% while $base-font-size is 150%
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
@@ -39,7 +39,7 @@
 // Global
 
 // We use these to control various global styles
-// $body-bg: #fff;
+// $body-bg: #333;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -164,7 +164,6 @@
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
-// $anchor-text-decoration-hover: none;
 // $anchor-font-color: $primary-color;
 // $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
 
@@ -569,7 +568,6 @@
 // $inline-list-opposite-margin: 0;
 // $inline-list-bottom-margin: rem-calc(17);
 // $inline-list-default-float-margin: rem-calc(-22);
-// $inline-list-default-float-list-margin: rem-calc(22);
 
 // $inline-list-padding: 0;
 
@@ -769,7 +767,7 @@
 
 // Pagination
 
-// $include-pagination-classes: $include-html-classes;
+// $include-html-nav-classes: $include-html-classes;
 
 // We use these to control the pagination container
 // $pagination-height: rem-calc(24);
@@ -1170,7 +1168,7 @@
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: #222;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin

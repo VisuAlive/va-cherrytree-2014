@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_template_part( 'includes/theme', 'tags' );
 get_template_part( 'includes/theme', 'hack' );
+get_template_part( 'includes/class', 'top-bar-walker' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -59,7 +60,7 @@ function _visualive_theme_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'primary'   => __( 'Top primary menu', VACB_TEXTDOMAIN ),
-		'secondary' => __( 'Secondary menu in left sidebar', VACB_TEXTDOMAIN ),
+		'offcanvas' => __( 'Off canvas menu', VACB_TEXTDOMAIN ),
 	) );
 	/**
 	 * Add theme support for Infinite Scroll.
@@ -81,6 +82,43 @@ function _visualive_theme_setup() {
 }
 endif; // _visualive_theme_setup
 add_action( 'after_setup_theme', '_visualive_theme_setup' );
+
+/**
+ * Top bar
+ */
+function _visualive_theme_primary_menu() {
+	wp_nav_menu(array( 
+		'container' => false,                           // remove nav container
+		'container_class' => '',                        // class of container
+		'menu' => '',                                   // menu name
+		'menu_class' => 'top-bar-menu right',           // adding custom nav class
+		'theme_location' => 'primary',                  // where it's located in the theme
+		'before' => '',                                 // before each link <a> 
+		'after' => '',                                  // after each link </a>
+		'link_before' => '',                            // before each link text
+		'link_after' => '',                             // after each link text
+		'depth' => 5,                                   // limit the depth of the nav
+		'fallback_cb' => false,                         // fallback function (see below)
+		'walker' => new Top_Bar_Walker()
+	));
+}
+function _visualive_theme_offcanvas_menu() {
+	wp_nav_menu(array( 
+		'container' => false,                           // remove nav container
+		'container_class' => '',                        // class of container
+		'menu' => '',                                   // menu name
+		'menu_class' => 'off-canvas-list',              // adding custom nav class
+		'theme_location' => 'offcanvas',                // where it's located in the theme
+		'before' => '',                                 // before each link <a> 
+		'after' => '',                                  // after each link </a>
+		'link_before' => '',                            // before each link text
+		'link_after' => '',                             // after each link text
+		'depth' => 1,                                   // limit the depth of the nav
+		'fallback_cb' => false,                         // fallback function (see below)
+		// 'items_wrap' => '%3$s',
+		'walker' => new Top_Bar_Walker()
+	));
+}
 
 if ( ! function_exists( '_visualive_theme_widgets_init' ) ) :
 /**
@@ -136,15 +174,17 @@ function _visualive_theme_scripts() {
 	// wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
 	// wp_style_add_data( 'twentyfourteen-ie', 'conditional', 'lt IE 9' );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-	wp_enqueue_script( 'modernizr',  get_template_directory_uri() . '/assets/js/vendor/modernizr.js', array(), '', false );
-	wp_enqueue_script( 'va-cherryblossum-core',  get_template_directory_uri() . '/assets/js/app.min.js', array( 'jquery' ), '', true );
+	wp_deregister_script( 'jquery' );
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), null );
+	wp_enqueue_script( 'va-cherryblossum-core', get_template_directory_uri() . '/assets/js/app.min.js', array( 'jquery' ), null, true );
 
 	// if ( is_active_sidebar( 'sidebar-3' ) ) {
 	// 	wp_enqueue_script( 'jquery-masonry' );
 	// }
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 } // _visualive_theme_scripts
 endif;
 add_action( 'wp_enqueue_scripts', '_visualive_theme_scripts' );
