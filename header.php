@@ -20,8 +20,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <?php wp_head(); ?>
-<style>
-</style>
+<script>
+jQuery(function($){
+	$(window).load(function(){
+		console.log('body : ' + $('body').height());
+		console.log('right-off-canvas-menu : ' + $('.right-off-canvas-menu').actual( 'height' ));
+	});
+});
+</script>
 </head>
 <body <?php body_class(); ?>>
 <div class="loader-wrap">
@@ -44,7 +50,7 @@
 </aside>
 
 <header>
-	<nav class="top-bar" data-topbar>
+	<nav class="top-bar" data-topbar data-options="is_hover: false">
 		<ul class="title-area">
 			<li class="name">
 				<h1><a href="<?php echo home_url('/'); ?>"><?php bloginfo('name') ?></a></h1>

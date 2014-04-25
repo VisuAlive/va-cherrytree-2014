@@ -23,7 +23,9 @@
 		color: #fff;
 	}
 }
-
+.off-canvas-wrap.move-right, .off-canvas-wrap.move-left {
+	height: auto;
+}
 
 /**
  * コンテンツ

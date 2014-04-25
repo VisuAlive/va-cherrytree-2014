@@ -8136,19 +8136,24 @@ body {
   color: #fff;
 }
 
+/* line 26, ../scss/app.scss */
+.off-canvas-wrap.move-right, .off-canvas-wrap.move-left {
+  height: auto;
+}
+
 /**
  * コンテンツ
  */
-/* line 31, ../scss/app.scss */
+/* line 33, ../scss/app.scss */
 .content-wrap {
   background-color: #fff;
 }
 
-/* line 35, ../scss/app.scss */
+/* line 37, ../scss/app.scss */
 .imageHolder {
   background-color: #fff;
 }
-/* line 37, ../scss/app.scss */
+/* line 39, ../scss/app.scss */
 .imageHolder img {
   z-index: -1;
 }

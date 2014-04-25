@@ -4,3 +4,6 @@
 [submodule "assets/js/vendor/ImageScroll"]
 	path = assets/js/vendor/ImageScroll
 	url = https://github.com/pederan/Parallax-ImageScroll.git
+[submodule "assets/js/vendor/actual"]
+	path = assets/js/vendor/actual
+	url = git@github.com:dreamerslab/jquery.actual.git
