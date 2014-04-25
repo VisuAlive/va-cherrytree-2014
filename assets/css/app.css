@@ -5792,14 +5792,14 @@ meta.foundation-mq-topbar {
 /* line 136, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .fixed.expanded:not(.top-bar) .top-bar-section {
   z-index: 98;
-  margin-top: 45px;
+  margin-top: 50px;
 }
 
 /* line 143, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar {
   overflow: hidden;
-  height: 45px;
-  line-height: 45px;
+  height: 50px;
+  line-height: 50px;
   position: relative;
   background: #333333;
   margin-bottom: 0;
@@ -5839,13 +5839,13 @@ meta.foundation-mq-topbar {
 }
 /* line 180, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar .name {
-  height: 45px;
+  height: 50px;
   margin: 0;
   font-size: 16px;
 }
 /* line 185, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar .name h1 {
-  line-height: 45px;
+  line-height: 50px;
   font-size: 1.0625rem;
   margin: 0;
 }
@@ -5855,7 +5855,7 @@ meta.foundation-mq-topbar {
   color: white;
   width: 75%;
   display: block;
-  padding: 0 15px;
+  padding: 0 16.66667px;
 }
 /* line 200, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar .toggle-topbar {
@@ -5871,13 +5871,13 @@ meta.foundation-mq-topbar {
   font-weight: bold;
   position: relative;
   display: block;
-  padding: 0 15px;
-  height: 45px;
-  line-height: 45px;
+  padding: 0 16.66667px;
+  height: 50px;
+  line-height: 50px;
 }
 /* line 218, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar .toggle-topbar.menu-icon {
-  right: 15px;
+  right: 16.66667px;
   top: 50%;
   margin-top: -16px;
   padding-left: 40px;
@@ -5954,7 +5954,7 @@ meta.foundation-mq-topbar {
   width: 100%;
   color: white;
   padding: 12px 0 12px 0;
-  padding-left: 15px;
+  padding-left: 16.66667px;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-size: 0.8125rem;
   font-weight: normal;
@@ -5963,8 +5963,8 @@ meta.foundation-mq-topbar {
 /* line 313, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li > a.button {
   font-size: 0.8125rem;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 16.66667px;
+  padding-left: 16.66667px;
   background-color: #008cba;
   border-color: #007095;
   color: white;
@@ -6022,8 +6022,8 @@ meta.foundation-mq-topbar {
 /* line 324, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li > button {
   font-size: 0.8125rem;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 16.66667px;
+  padding-left: 16.66667px;
   background-color: #008cba;
   border-color: #007095;
   color: white;
@@ -6095,7 +6095,7 @@ meta.foundation-mq-topbar {
 }
 /* line 354, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .has-form {
-  padding: 15px;
+  padding: 16.66667px;
 }
 /* line 357, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .has-dropdown {
@@ -6110,7 +6110,7 @@ meta.foundation-mq-topbar {
   border: inset 5px;
   border-color: transparent transparent transparent rgba(255, 255, 255, 0.4);
   border-left-style: solid;
-  margin-right: 15px;
+  margin-right: 16.66667px;
   margin-top: -4.5px;
   position: absolute;
   top: 50%;
@@ -6157,7 +6157,7 @@ meta.foundation-mq-topbar {
 /* line 397, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown li a {
   font-weight: normal;
-  padding: 8px 15px;
+  padding: 8px 16.66667px;
 }
 /* line 400, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown li a.parent-link {
@@ -6171,12 +6171,12 @@ meta.foundation-mq-topbar {
 /* line 408, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown li.title h5 a {
   color: white;
-  line-height: 22.5px;
+  line-height: 25px;
   display: block;
 }
 /* line 414, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown li.has-form {
-  padding: 8px 15px;
+  padding: 8px 16.66667px;
 }
 /* line 415, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown li .button, .top-bar-section .dropdown li button {
@@ -6184,7 +6184,7 @@ meta.foundation-mq-topbar {
 }
 /* line 418, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown label {
-  padding: 8px 15px 2px;
+  padding: 8px 16.66667px 2px;
   margin-bottom: 0;
   text-transform: uppercase;
   color: #777777;
@@ -6270,8 +6270,8 @@ meta.foundation-mq-topbar {
   }
   /* line 484, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section li:not(.has-form) a:not(.button) {
-    padding: 0 15px;
-    line-height: 45px;
+    padding: 0 16.66667px;
+    line-height: 50px;
     background: #333333;
   }
   /* line 488, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
@@ -6280,8 +6280,8 @@ meta.foundation-mq-topbar {
   }
   /* line 492, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section li.active:not(.has-form) a:not(.button) {
-    padding: 0 15px;
-    line-height: 45px;
+    padding: 0 16.66667px;
+    line-height: 50px;
     color: white;
     background: #008cba;
   }
@@ -6291,7 +6291,7 @@ meta.foundation-mq-topbar {
   }
   /* line 506, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-dropdown > a {
-    padding-right: 35px !important;
+    padding-right: 36.66667px !important;
   }
   /* line 508, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-dropdown > a:after {
@@ -6303,7 +6303,7 @@ meta.foundation-mq-topbar {
     border-color: rgba(255, 255, 255, 0.4) transparent transparent transparent;
     border-top-style: solid;
     margin-top: -2.5px;
-    top: 22.5px;
+    top: 25px;
   }
   /* line 517, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-dropdown.moved {
@@ -6347,9 +6347,9 @@ meta.foundation-mq-topbar {
   /* line 551, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .dropdown li a {
     color: white;
-    line-height: 45px;
+    line-height: 50px;
     white-space: nowrap;
-    padding: 12px 15px;
+    padding: 12px 16.66667px;
     background: #333333;
   }
   /* line 559, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
@@ -6378,14 +6378,14 @@ meta.foundation-mq-topbar {
     border-top: none;
     border-right: solid 1px #4e4e4e;
     clear: none;
-    height: 45px;
+    height: 50px;
     width: 0;
   }
   /* line 591, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-form {
     background: #333333;
-    padding: 0 15px;
-    height: 45px;
+    padding: 0 16.66667px;
+    height: 50px;
   }
   /* line 599, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .right li .dropdown {
@@ -7146,15 +7146,15 @@ blockquote p {
   -webkit-backface-visibility: hidden;
   background: #333333;
   color: white;
-  height: 2.8125rem;
-  line-height: 2.8125rem;
+  height: 3.125rem;
+  line-height: 3.125rem;
   position: relative;
 }
 /* line 156, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar h1, .tab-bar h2, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
   color: white;
   font-weight: bold;
-  line-height: 2.8125rem;
+  line-height: 3.125rem;
   margin: 0;
 }
 /* line 162, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
@@ -7164,8 +7164,8 @@ blockquote p {
 
 /* line 325, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .left-small {
-  width: 2.8125rem;
-  height: 2.8125rem;
+  width: 3.125rem;
+  height: 3.125rem;
   position: absolute;
   top: 0;
   border-right: solid 1px #1a1a1a;
@@ -7174,8 +7174,8 @@ blockquote p {
 
 /* line 326, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .right-small {
-  width: 2.8125rem;
-  height: 2.8125rem;
+  width: 3.125rem;
+  height: 3.125rem;
   position: absolute;
   top: 0;
   border-left: solid 1px #1a1a1a;
@@ -7187,7 +7187,7 @@ blockquote p {
   padding: 0 0.625rem;
   position: absolute;
   text-align: center;
-  height: 2.8125rem;
+  height: 3.125rem;
   top: 0;
 }
 @media only screen and (min-width: 40.063em) {
@@ -7199,24 +7199,24 @@ blockquote p {
 /* line 193, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar-section.left {
   left: 0;
-  right: 2.8125rem;
+  right: 3.125rem;
 }
 /* line 197, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar-section.right {
-  left: 2.8125rem;
+  left: 3.125rem;
   right: 0;
 }
 /* line 201, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar-section.middle {
-  left: 2.8125rem;
-  right: 2.8125rem;
+  left: 3.125rem;
+  right: 3.125rem;
 }
 
 /* line 332, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar .menu-icon {
   text-indent: 2.1875rem;
-  width: 2.8125rem;
-  height: 2.8125rem;
+  width: 3.125rem;
+  height: 3.125rem;
   display: block;
   line-height: 2.0625rem;
   padding: 0;
@@ -7236,8 +7236,8 @@ blockquote p {
   height: 0;
   width: 1rem;
   line-height: 1;
-  top: 0.9375rem;
-  left: 0.90625rem;
+  top: 1.09375rem;
+  left: 1.0625rem;
   box-shadow: 0 0px 0 1px white, 0 7px 0 1px white, 0 14px 0 1px white;
 }
 /* line 307, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
@@ -8115,10 +8115,30 @@ body {
   -moz-opacity: 0.5;
 }
 
+/* line 11, ../scss/app.scss */
+.f-topbar-fixed {
+  padding-top: 0 !important;
+}
+
 /**
  * グローバルメニュー
  */
-/* line 16, ../scss/app.scss */
+/* line 19, ../scss/app.scss */
+.top-bar .title-area a {
+  line-height: 48px;
+  padding-left: 5px !important;
+}
+/* line 23, ../scss/app.scss */
+.top-bar .title-area img {
+  vertical-align: bottom;
+}
+
+/* line 29, ../scss/app.scss */
+.hide-for-medium-down .top-bar .title-area a {
+  padding-left: 16px !important;
+}
+
+/* line 34, ../scss/app.scss */
 .menu-icon {
   display: block;
   width: 100%;
@@ -8126,7 +8146,7 @@ body {
   text-align: center;
   color: #fff;
 }
-/* line 22, ../scss/app.scss */
+/* line 40, ../scss/app.scss */
 .menu-icon:hover {
   color: #fff;
 }
@@ -8134,16 +8154,16 @@ body {
 /**
  * コンテンツ
  */
-/* line 31, ../scss/app.scss */
+/* line 49, ../scss/app.scss */
 .content-wrap {
   background-color: #fff;
 }
 
-/* line 35, ../scss/app.scss */
+/* line 53, ../scss/app.scss */
 .imageHolder {
   background-color: #fff;
 }
-/* line 37, ../scss/app.scss */
+/* line 55, ../scss/app.scss */
 .imageHolder img {
   z-index: -1;
 }

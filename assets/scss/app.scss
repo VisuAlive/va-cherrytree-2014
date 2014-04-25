@@ -8,11 +8,29 @@
 // #wrap, .imageHolder {
 // 	display: none;
 // }
-
+.f-topbar-fixed {
+padding-top: 0 !important;
+}
 
 /**
  * グローバルメニュー
  */
+.top-bar {
+	.title-area a {
+		line-height: 48px;
+		padding-left: 5px !important;
+	}
+	.title-area img {
+		vertical-align: bottom;
+	}
+}
+.hide-for-medium-down {
+	.top-bar {
+		.title-area a {
+			padding-left: 16px !important;
+		}
+	}
+}
 .menu-icon {
 	display: block;
 	width: 100%;

@@ -57,21 +57,27 @@
 	</ul>
 </aside>
 
-<header>
-	<nav class="top-bar" data-topbar data-options="is_hover: false">
+<header class="fixed hide-for-medium-down">
+	<nav class="top-bar" data-topbar>
 		<ul class="title-area">
 			<li class="name">
-				<h1><a href="<?php echo home_url('/'); ?>"><?php bloginfo('name') ?></a></h1>
+				<h1><a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/images/img/img-logo-white.png" alt="<?php bloginfo('name') ?>"></a></h1>
 			</li>
 		</ul>
-		<div class="right-small show-for-medium">
-			<a class="right-off-canvas-toggle menu-icon" href="#"><span class="fa fa-bars"></span></a>
-		</div>
-		<div class="right-small show-for-small">
-			<a class="right-off-canvas-toggle menu-icon" href="#"><span class="fa fa-bars"></span></a>
-		</div>
-		<div class="top-bar-section hide-for-medium">
+		<div class="top-bar-section">
 			<?php _visualive_theme_primary_menu(); ?>
+		</div>
+	</nav>
+</header>
+<header class="show-for-medium-down">
+	<nav class="top-bar" data-topbar>
+		<ul class="title-area">
+			<li class="name">
+				<h1><a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/images/img/img-logo-white.png" alt="<?php bloginfo('name') ?>"></a></h1>
+			</li>
+		</ul>
+		<div class="right-small">
+			<a class="right-off-canvas-toggle menu-icon" href="#"><span class="fa fa-bars"></span></a>
 		</div>
 	</nav>
 </header>
