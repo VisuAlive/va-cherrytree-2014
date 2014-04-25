@@ -17,13 +17,8 @@ jQuery(function($){
 	//画面のロード
 	$(window).load(function(){
 		$('#goTop').goToTop();
-		$('.loader-wrap').fadeOut(2000);
-		$('#wrap').css({'visibility':'visible'}).hide().fadeIn(2500);
-		$('.imageHolder').css({'visibility':'visible'}).hide().fadeIn(2500);
-		setTimeout(function(){
-			if(0 == document.body.scrollTop)
-				window.scrollTo(0, 1)
-		}, 100);
+		$('.loader-wrap').fadeOut();
+		setTimeout(scrollBy, 100, 0, 1);
 	});
 
 	// Androidの場合、スクロールバーを隠す
@@ -47,9 +42,9 @@ jQuery(function($){
 		//ボタン表示スクリプト
 		$(window).scroll(function() {
 			if ($('body').scrollTop() > 100) {
-				myThis.fadeIn(500);
+				myThis.fadeIn();
 			} else {
-				myThis.fadeOut(500);
+				myThis.fadeOut();
 			}
 		});
 
