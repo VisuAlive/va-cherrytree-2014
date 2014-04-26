@@ -7,3 +7,6 @@
 [submodule "assets/js/vendor/actual"]
 	path = assets/js/vendor/actual
 	url = git@github.com:dreamerslab/jquery.actual.git
+[submodule "assets/js/vendor/prefixfree"]
+	path = assets/js/vendor/prefixfree
+	url = git@github.com:LeaVerou/prefixfree.git
