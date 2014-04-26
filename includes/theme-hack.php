@@ -1,5 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! is_admin() ) :
+
 
 /**
  * Shortcodes in WordPress Widget Area
@@ -86,7 +88,7 @@ function _visualive_theme_bloginfo( $output, $show) {
 	return $output;
 }
 endif; // _visualive_theme_bloginfo
-if ( ! is_admin() ) { add_filter( 'bloginfo', '_visualive_theme_bloginfo', 10, 2 ); }
+add_filter( 'bloginfo', '_visualive_theme_bloginfo', 10, 2 );
 
 
 if ( ! function_exists( '_visualive_theme_excerpt' ) ) :
@@ -112,7 +114,7 @@ function _visualive_theme_excerpt( $output ) {
 	return $output;
 }
 endif; // _visualive_theme_bloginfo
-if ( ! is_admin() ) { add_filter( 'get_the_excerpt', '_visualive_theme_excerpt', 10, 2 ); }
+add_filter( 'get_the_excerpt', '_visualive_theme_excerpt', 10, 2 );
 
 
 if ( ! function_exists( '_visualive_theme_remove_cssjs_ver' ) ) :
@@ -130,3 +132,6 @@ function _visualive_theme_remove_cssjs_ver( $src ) {
 endif; // _visualive_theme_remove_cssjs_ver
 add_filter( 'style_loader_src', '_visualive_theme_remove_cssjs_ver', 1000, 2 );
 add_filter( 'script_loader_src', '_visualive_theme_remove_cssjs_ver', 1000, 2 );
+
+
+endif; // is_admin

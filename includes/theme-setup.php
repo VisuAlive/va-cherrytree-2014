@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * The Theme Setup
  *
@@ -11,11 +12,8 @@
  * @license http://opensource.org/licenses/gpl-2.0.php GPLv2
  * @link http://visualive.jp/
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-get_template_part( 'includes/theme', 'tags' );
 get_template_part( 'includes/theme', 'hack' );
-get_template_part( 'includes/class', 'top-bar-walker' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -83,42 +81,6 @@ function _visualive_theme_setup() {
 endif; // _visualive_theme_setup
 add_action( 'after_setup_theme', '_visualive_theme_setup' );
 
-/**
- * Top bar
- */
-function _visualive_theme_primary_menu() {
-	wp_nav_menu(array( 
-		'container' => false,                           // remove nav container
-		'container_class' => '',                        // class of container
-		'menu' => '',                                   // menu name
-		'menu_class' => 'top-bar-menu right',           // adding custom nav class
-		'theme_location' => 'primary',                  // where it's located in the theme
-		'before' => '',                                 // before each link <a> 
-		'after' => '',                                  // after each link </a>
-		'link_before' => '',                            // before each link text
-		'link_after' => '',                             // after each link text
-		'depth' => 5,                                   // limit the depth of the nav
-		'fallback_cb' => false,                         // fallback function (see below)
-		'walker' => new Top_Bar_Walker()
-	));
-}
-function _visualive_theme_offcanvas_menu() {
-	wp_nav_menu(array( 
-		'container' => false,                           // remove nav container
-		'container_class' => '',                        // class of container
-		'menu' => '',                                   // menu name
-		'menu_class' => 'off-canvas-list',              // adding custom nav class
-		'theme_location' => 'offcanvas',                // where it's located in the theme
-		'before' => '',                                 // before each link <a> 
-		'after' => '',                                  // after each link </a>
-		'link_before' => '',                            // before each link text
-		'link_after' => '',                             // after each link text
-		'depth' => 1,                                   // limit the depth of the nav
-		'fallback_cb' => false,                         // fallback function (see below)
-		// 'items_wrap' => '%3$s',
-		'walker' => new Top_Bar_Walker()
-	));
-}
 
 if ( ! function_exists( '_visualive_theme_widgets_init' ) ) :
 /**
@@ -158,6 +120,8 @@ function _visualive_theme_widgets_init() {
 endif;
 add_action( 'widgets_init', '_visualive_theme_widgets_init' );
 
+
+if ( ! is_admin() ) :
 
 if ( ! function_exists( '_visualive_theme_scripts' ) ) :
 /**
@@ -202,6 +166,12 @@ function _visualive_theme_the_meta_tags() {
 	$meta_title   = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_title');
 	$meta_noindex = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_noindex');
 	$noindex      = $options['vacb_general_seo_noindex'];
+	$admins_id    = $options['vacb_general_seo_ogp_admins_id'];
+	$admins_id    = ( preg_match("/^[a-zA-Z0-9]+$/", $admins_id) && ! empty($admins_id ) ) ? $admins_id : false ;
+	$app_id       = $options['vacb_general_seo_ogp_app_id'];
+	$app_id       = ( preg_match("/^[a-zA-Z0-9]+$/", $app_id) && ! empty($app_id ) ) ? $app_id : false ;
+	$twitter_id   = $options['vacb_general_seo_ogp_twitter_id'];
+	$twitter_id   = ( preg_match("/^[a-zA-Z0-9_]+$/", $twitter_id) && ! empty($twitter_id ) ) ? $twitter_id : false ;
 
 	/**
 	 * Noindex
@@ -222,7 +192,7 @@ function _visualive_theme_the_meta_tags() {
 	 * SEO
 	 */
 	if ( ! empty($options['vacb_general_seo_webmastertool']) ) {
-		$metatag .= '<meta name="google-site-verification" content="' . $options['vacb_general_seo_webmastertool'] . '">' . "\n";
+		$metatag .= '<meta name="google-site-verification" content="' . esc_attr( $options['vacb_general_seo_webmastertool'] ) . '">' . "\n";
 	}
 	/**
 	 * OGP
@@ -249,15 +219,15 @@ function _visualive_theme_the_meta_tags() {
 		$metatag .= '<meta property="og:image" content="' . esc_url( $options['vacb_general_seo_ogp_image'] ) .'">' . "\n";
 	}
 	$metatag .= '<meta property="og:site_name" content="' . get_bloginfo('name') . '">' . "\n";
-	if ( ! empty($options['vacb_general_seo_ogp_admins_id']) ) {
-		$metatag .= '<meta property="fb:admins" content="' . esc_attr( $options['vacb_general_seo_ogp_admins_id'] ) . '">' . "\n";
+	if ( $admins_id ) {
+		$metatag .= '<meta property="fb:admins" content="' . esc_attr( $admins_id ) . '">' . "\n";
 	}
-	if ( ! empty($options['vacb_general_seo_ogp_app_id']) ) {
-		$metatag .= '<meta property="fb:app_id" content="' . esc_attr( $options['vacb_general_seo_ogp_app_id'] ) . '">' . "\n";
+	if ( $app_id ) {
+		$metatag .= '<meta property="fb:app_id" content="' . esc_attr( $app_id ) . '">' . "\n";
 	}
 	$metatag .= '<meta name="twitter:card" content="summary">' . "\n";
-	if ( ! empty($options['vacb_general_seo_ogp_twitter_id']) ) {
-		$metatag .= '<meta name="twitter:site" content="@' . esc_attr( $options['vacb_general_seo_ogp_twitter_id'] ) . '">' . "\n";
+	if ( $twitter_id ) {
+		$metatag .= '<meta name="twitter:site" content="@' . esc_attr( $twitter_id ) . '">' . "\n";
 	}
 	$metatag .= '<meta name="twitter:description" content="' . esc_attr( get_bloginfo('description', 'display') ) . '">' . "\n";
 
@@ -265,6 +235,23 @@ function _visualive_theme_the_meta_tags() {
 }
 endif; // _visualive_theme_the_meta_tags
 add_filter( 'wp_head', '_visualive_theme_the_meta_tags', 0 );
+
+
+if ( ! function_exists( '_visualive_theme_google_ad_wrap' ) ) :
+/**
+ * Google Ad Wrap.
+ * Simple plugin to wrap a google_ad_section tag around comments and content
+ *
+ * @link http://svn.wp-plugins.org/google-ad-wrap/trunk/google-ad-wrap.php
+ * @return string
+ */
+function _visualive_theme_google_ad_wrap( $content ) {
+	return "<!-- google_ad_section_start -->\n" . $content . "<!-- google_ad_section_end -->\n";
+}
+endif;
+add_filter( 'the_content', '_visualive_theme_google_ad_wrap' );
+add_filter( 'the_excerpt', '_visualive_theme_google_ad_wrap' );
+add_filter( 'comment_text', '_visualive_theme_google_ad_wrap' );
 
 
 if ( ! function_exists( '_visualive_theme_google_analytics' ) ) :
@@ -275,9 +262,10 @@ if ( ! function_exists( '_visualive_theme_google_analytics' ) ) :
  */
 function _visualive_theme_google_analytics() {
 	$tracking_id = $GLOBALS['vacb_options']['vacb_general_seo_analytics'];
-	$domain = str_replace( array("http://","https://"), '', get_bloginfo('url') );
+	$tracking_id = ( preg_match("/^[a-zA-Z0-9-]+$/", $tracking_id) && ! empty($tracking_id) ) ? $tracking_id  : false ;
+	$domain      = str_replace( array("http://","https://"), '', get_bloginfo('url') );
 
-	if ( ! empty($tracking_id) ) :
+	if ( $tracking_id ) :
 ?>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -292,7 +280,7 @@ ga('send', 'pageview');
 	endif;
 }
 endif; // _visualive_theme_page_menu_args
-if ( ! is_admin() ) { add_filter( 'wp_footer', '_visualive_theme_google_analytics', 9999 ); }
+add_filter( 'wp_footer', '_visualive_theme_google_analytics', 9999 );
 
 
 if ( ! function_exists( '_visualive_theme_page_menu_args' ) ) :
@@ -351,17 +339,4 @@ function _visualive_theme_post_classes( $classes ) {
 endif; // _visualive_theme_post_classes
 add_filter( 'post_class', '_visualive_theme_post_classes' );
 
-
-if ( ! function_exists( '_visualive_theme_editor_classes' ) ) :
-/**
- * Extend the default WordPress post classes.
- *
- * @param array $classes A list of existing post class values.
- * @return array The filtered post class list.
- */
-function _visualive_theme_editor_classes( $classes ){
-	$classes['body_class'] = 'editor-area';
-	return $classes;
-}
-endif; // _visualive_theme_editor_classes
-add_filter( 'tiny_mce_before_init', '_visualive_theme_editor_classes' );
+endif; // ! is_admin
