@@ -16,15 +16,22 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * このファイルはBootstrapとして動きます。
  *
  * - ファイルの読み込みだけを行うようにしてください。
- * - 関数には必ず接頭辞としてvacb_をつけます。
- * - フックに登録するだけのコールバック関数は_visualive_theme_を接頭辞とします。
+ * - VA CherryBlossumシリーズとして今後も使用する関数
+ *   - 関数には必ず接頭辞としてvisualive_theme_をつけます。
+ *   - フックに登録するだけのコールバック関数は_visualive_theme_を接頭辞とします。
+ * - VA CherryBlossum 2014のみで使用する関数
+ *   - 関数には必ず接頭辞としてvacb2014_をつけます。
+ *   - フックに登録するだけのコールバック関数は_vacb2014_を接頭辞とします。
  * - フックに登録する場合、特定の事情がなければ関数定義のすぐ下に書いてください。
- * - admin-setupを先に読み込みその後theme-setup読み込む。theme-setupの後にmetaboxやoption等を必要に応じて読み込むようにしてください。
  */
 // ini_set( 'display_errors', 1 );
 $GLOBALS['vacb_options'] = get_option('_vacb_options_');
 define( 'VACB_TEXTDOMAIN', 'va-cherryblossum-2014' );
 
+
+get_template_part( 'includes/vafpress-framework/bootstrap' );
+get_template_part( 'includes/tags' );
+get_template_part( 'includes/login', 'setup' );
 get_template_part( 'includes/admin', 'setup' );
 get_template_part( 'includes/theme', 'setup' );
 get_template_part( 'includes/theme', 'options' );
@@ -36,13 +43,4 @@ get_template_part( 'includes/plugin', 'hack' );
 get_template_part( 'includes/plugin', 'admin-postlist-addcolumns' );
 get_template_part( 'includes/plugin', 'post-discussion-closed' );
 get_template_part( 'includes/plugin', 'simple-expires' );
-
-
-// function test( $post_states, $post ) {
-// 	if ( 'expiration' == $post->post_status )
-// 		$post_states['expiration'] = __('Expiration');
-
-// 	return $post_states;
-// }
-// add_filter( 'display_post_states', 'test', 10, 2 );
 
