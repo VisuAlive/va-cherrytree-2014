@@ -10,3 +10,6 @@
 [submodule "assets/js/vendor/prefixfree"]
 	path = assets/js/vendor/prefixfree
 	url = git@github.com:LeaVerou/prefixfree.git
+[submodule "assets/js/vendor/AnimatedHeader"]
+	path = assets/js/vendor/AnimatedHeader
+	url = git@github.com:codrops/AnimatedHeader.git
