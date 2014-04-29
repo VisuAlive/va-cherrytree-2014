@@ -13,3 +13,6 @@
 [submodule "assets/js/vendor/AnimatedHeader"]
 	path = assets/js/vendor/AnimatedHeader
 	url = git@github.com:codrops/AnimatedHeader.git
+[submodule "assets/js/vendor/SlitSlider"]
+	path = assets/js/vendor/SlitSlider
+	url = git@github.com:codrops/SlitSlider.git
