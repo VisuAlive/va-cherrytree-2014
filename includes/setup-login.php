@@ -1,9 +1,32 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( is_login_page() ) :
+/**
+ * The Setup login
+ *
+ * @package WordPress
+ * @subpackage VA_CherryBlossum_2014
+ * @since VA CherryBlossum 2014 1.0.0
+ * @version 1.0.0
+ * @author KUCKLU <kuck1u@visualive.jp>
+ * @copyright Copyright (c) 2014 KUCKLU, VisuAlive.
+ * @license http://opensource.org/licenses/gpl-2.0.php GPLv2
+ * @link http://visualive.jp/
+ */
 
 
-add_filter( 'login_errors', '__return_false' );
+if ( ! function_exists( '_visualive_theme_admin_css_url' ) ) :
+/**
+ * Login page custom css
+ *
+ * @return string
+ */
+function _visualive_theme_admin_css_url() {
+	wp_enqueue_style( 'va-login', get_stylesheet_directory_uri() . '/assets/css/login.css', array() );
+	wp_print_styles();
+}
+endif;
+add_action( 'login_enqueue_scripts', '_visualive_theme_admin_css_url' );
 
 
 if ( ! function_exists( '_visualive_theme_basic_auth' ) ) :
@@ -44,20 +67,6 @@ endif; // _visualive_theme_basic_auth
 add_action( 'login_init', '_visualive_theme_basic_auth', 0 );
 
 
-if ( ! function_exists( '_visualive_theme_admin_css_url' ) ) :
-/**
- * Login page custom css
- *
- * @return string
- */
-function _visualive_theme_admin_css_url() {
-	wp_enqueue_style( 'va-login', get_stylesheet_directory_uri() . '/assets/css/login.css', array() );
-	wp_print_styles();
-}
-endif;
-add_action( 'login_enqueue_scripts', '_visualive_theme_admin_css_url' );
-
-
 /**
  * salt + ストレッチングしたパスワードを取得
  *
@@ -73,5 +82,38 @@ function visualive_theme_get_stretched_password( $word ) {
 	return $hash;
 }
 
+
+/**
+ * Remove error message
+ */
+add_filter( 'login_errors', '__return_false' );
+
+
+if ( ! function_exists('_visualive_theme_login_headerurl') ) :
+/**
+ * Change login header url
+ *
+ * @return string
+ */
+function _visualive_theme_login_headerurl( $login_header_url ) {
+	$login_header_url = esc_url( home_url('/') );
+	return $login_header_url;
+}
+endif;
+add_filter( 'login_headerurl', '_visualive_theme_login_headerurl' );
+
+
+if ( ! function_exists('_visualive_theme_login_headertitle') ) :
+/**
+ * Change login header title
+ *
+ * @return string
+ */
+function _visualive_theme_login_headertitle( $login_header_title ) {
+	$login_header_title = esc_attr( get_bloginfo('name') );
+	return $login_header_title;
+}
+endif;
+add_filter( 'login_headertitle', '_visualive_theme_login_headertitle' );
 
 endif; // is_login_page

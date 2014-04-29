@@ -715,8 +715,8 @@ $tabbar-height: rem-calc(50);
 // $off-canvas-overlay-transition: background 300ms ease;
 // $off-canvas-overlay-cursor: pointer;
 // $off-canvas-overlay-box-shadow: -4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000, 0.5);
-// $off-canvas-overlay-background: rgba(#fff, 0.2);
-// $off-canvas-overlay-background-hover: rgba(#fff, 0.05);
+$off-canvas-overlay-background: rgba(#000, 0.6);
+$off-canvas-overlay-background-hover: rgba(#000, 0.4);
 
 // Transition Variables
 // $menu-slide: "transform 500ms ease";
@@ -1174,7 +1174,7 @@ $tabbar-height: rem-calc(50);
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: 50px;
+$topbar-height: 70px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar

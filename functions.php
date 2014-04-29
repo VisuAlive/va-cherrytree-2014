@@ -31,9 +31,9 @@ define( 'VACB_TEXTDOMAIN', 'va-cherryblossum-2014' );
 
 get_template_part( 'includes/vafpress-framework/bootstrap' );
 get_template_part( 'includes/tags' );
-get_template_part( 'includes/login', 'setup' );
-get_template_part( 'includes/admin', 'setup' );
-get_template_part( 'includes/theme', 'setup' );
+get_template_part( 'includes/setup', 'login' );
+get_template_part( 'includes/setup', 'admin' );
+get_template_part( 'includes/setup', 'theme' );
 get_template_part( 'includes/theme', 'options' );
 get_template_part( 'includes/theme', 'posttypes' );
 get_template_part( 'includes/theme', 'metaboxs' );

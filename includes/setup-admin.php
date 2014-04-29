@@ -1,6 +1,18 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( is_admin() ) :
+/**
+ * The Setup admin
+ *
+ * @package WordPress
+ * @subpackage VA_CherryBlossum_2014
+ * @since VA CherryBlossum 2014 1.0.0
+ * @version 1.0.0
+ * @author KUCKLU <kuck1u@visualive.jp>
+ * @copyright Copyright (c) 2014 KUCKLU, VisuAlive.
+ * @license http://opensource.org/licenses/gpl-2.0.php GPLv2
+ * @link http://visualive.jp/
+ */
 
 
 if ( ! current_user_can('update_core') ) {
@@ -10,6 +22,21 @@ if ( ! current_user_can('update_core') ) {
 }
 add_filter( 'auto_update_plugin', '__return_true' );
 add_filter( 'auto_update_theme',  '__return_true' );
+
+
+/**
+ * ユーザープロフィールの項目のカスタマイズ
+ */
+function _visualive_theme_user_meta( $meta ) {
+	//項目の追加
+	$meta['twitter'] = 'Twitter';
+	$meta['facebook'] = 'Facebook';
+	$meta['phone'] = '電話';
+	$meta['address'] = '住所';
+
+	return $meta;
+}
+add_filter( 'user_contactmethods', '_visualive_theme_user_meta' );
 
 
 /**

@@ -47,41 +47,16 @@
 <div id="wrap" class="off-canvas-wrap" data-offcanvas>
 <div class="inner-wrap">
 
-<aside class="right-off-canvas-menu">
-	<ul class="off-canvas-list">
-		<li><label>VisuAlive</label></li>
-		<?php wp_nav_menu(array( 'container' => false, 'depth' => 1, 'items_wrap' => '%3$s' )); ?>
-		<?php _visualive_theme_offcanvas_menu(); ?>
-		<?php wp_nav_menu(array( 'container' => false, 'depth' => 1, 'items_wrap' => '%3$s' )); ?>
-		<?php _visualive_theme_offcanvas_menu(); ?>
-	</ul>
-</aside>
+<?php get_template_part( 'parts', 'nav' ); ?>
+<?php get_template_part( 'parts', 'navm' ); ?>
 
-<header class="fixed hide-for-medium-down">
-	<nav class="top-bar" data-topbar>
-		<ul class="title-area">
-			<li class="name">
-				<h1><a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/images/img/img-logo-white.png" alt="<?php bloginfo('name') ?>"></a></h1>
-			</li>
-		</ul>
-		<div class="top-bar-section">
-			<?php _visualive_theme_primary_menu(); ?>
-		</div>
-	</nav>
+<header 
+	class="img-holder"
+	data-image="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/main/main_visual_4546_2.jpg"
+	data-image-mobile="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/main/main_visual_4546_2_m.jpg">
+	<h1 class="header-title">
+		<div class="header-title-inner"><?php echo get_bloginfo('name'); ?></div>
+	</h1>
 </header>
-<header class="show-for-medium-down">
-	<nav class="top-bar" data-topbar>
-		<ul class="title-area">
-			<li class="name">
-				<h1><a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/images/img/img-logo-white.png" alt="<?php bloginfo('name') ?>"></a></h1>
-			</li>
-		</ul>
-		<div class="right-small">
-			<a class="right-off-canvas-toggle menu-icon" href="#"><span class="fa fa-bars"></span></a>
-		</div>
-	</nav>
-</header>
-
-<div class="img-holder" data-image="https://raw.github.com/pederan/ImageScroll/master/demo/img/autumn_season-1600x900.jpg" data-image-mobile="https://raw.github.com/pederan/ImageScroll/master/demo/img/autumn_season-800x450.jpg" data-width="1600" data-height="900"></div>
 
 <div class="content-wrap">

@@ -4,15 +4,23 @@
  * Copyright 2014, VisuAlive
 */
 jQuery(function($){
-	var ua = navigator.userAgent,
-		touch = Modernizr.touch;
+	var ua       = navigator.userAgent,
+		touch    = Modernizr.touch,
+		parallax = $('.img-holder');
 	$(document).foundation();
 
 	// パララックス画像
-	$('.img-holder').imageScroll({
-		imageAttribute: (touch === true) ? 'image-mobile' : 'image',
-		touch: touch
-	});
+	if (parallax.length >= 1) {
+		$('.img-holder').imageScroll({
+			imageAttribute: (touch === true) ? 'image-mobile' : 'image',
+			touch: touch,
+			// coverRatio: 0.6,
+			mediaWidth: 1280,
+			mediaHeight: 753
+		});
+	} else {
+		$('body').addClass('not_parallax');
+	}
 
 	//画面のロード
 	$(window).load(function(){

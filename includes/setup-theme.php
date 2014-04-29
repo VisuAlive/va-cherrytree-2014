@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
- * The Theme Setup
+ * The Setup theme
  *
  * @package WordPress
  * @subpackage VA_CherryBlossum_2014
@@ -44,8 +44,10 @@ function _visualive_theme_setup() {
 	 * template files.
 	 */
 	load_theme_textdomain( VACB_TEXTDOMAIN, get_template_directory() . '/languages' );
+
 	// This theme styles the visual editor to resemble the theme style.
 	add_editor_style( 'assets/css/editor-style.css' );
+
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -60,6 +62,22 @@ function _visualive_theme_setup() {
 		'primary'   => __( 'Top primary menu', VACB_TEXTDOMAIN ),
 		'offcanvas' => __( 'Off canvas menu', VACB_TEXTDOMAIN ),
 	) );
+
+	/**
+	 * Setup the WordPress core custom header feature.
+	 */
+	add_theme_support( 'custom-header', apply_filters( 'designinglabo_custom_header_args', array(
+		'default-image'          => '',
+		'width'                  => 410,
+		'height'                 => 100,
+		'flex-height'            => true,
+		'flex-width'             => true,
+		'header-text'            => false,
+		// 'wp-head-callback'       => 'designinglabo_header_style',
+		// 'admin-head-callback'    => 'designinglabo_admin_header_style',
+		// 'admin-preview-callback' => 'designinglabo_admin_header_image',
+	) ) );
+
 	/**
 	 * Add theme support for Infinite Scroll.
 	 * See: http://jetpack.me/support/infinite-scroll/

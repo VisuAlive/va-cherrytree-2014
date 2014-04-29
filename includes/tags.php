@@ -28,7 +28,7 @@ function is_login_page() {
 /**
  * Top bar
  */
-function _visualive_theme_primary_menu() {
+function visualive_theme_primary_menu() {
 	wp_nav_menu(array( 
 		'container' => false,                           // remove nav container
 		'container_class' => '',                        // class of container
@@ -44,3 +44,39 @@ function _visualive_theme_primary_menu() {
 		'walker' => new Top_Bar_Walker()
 	));
 }
+
+
+/**
+ * Custom header.
+ *
+ * @return
+ */
+function visualive_theme_custom_header() {
+if ( get_header_image() ) :
+?>
+<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo get_bloginfo('name'); ?>"></a>
+<?php endif;
+}
+
+
+/**
+ * User profile.
+ *
+ * @return
+ */
+function visualive_theme_user_prof( $userid = false, $size = 180 ) {
+	if ( ! $userid || ! preg_match("/^[0-9]+$/", $userid) || ! preg_match("/^[0-9]+$/", $size))
+		return false;
+
+	$data = get_userdata( $userid );
+	$user['name']        = esc_html( $data->display_name );
+	$user['description'] = nl2br( esc_html( $data->description ) );
+	$user['avatar']      = get_avatar( $userid, $size, '', $data->display_name );
+	$user['archive']     = esc_url( get_author_posts_url( $userid ) );
+
+	return $user;
+?>
+
+<?php
+}
+

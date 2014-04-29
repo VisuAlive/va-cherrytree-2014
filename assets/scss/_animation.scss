@@ -1,0 +1,21 @@
+@keyframes spin {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
+}
+@keyframes gogoloader {
+	0% {
+		opacity: 0;
+		transform: scale(0,0);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1,1);
+	}
+}
