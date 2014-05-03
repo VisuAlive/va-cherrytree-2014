@@ -56,6 +56,9 @@ function _visualive_theme_setup() {
 	// Enable support for Post Thumbnails, and declare two sizes.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 672, 372, true );
+	add_image_size( 'column-3', 606, 428, true );
+	add_image_size( '636x470',  636, 470, true );
+	add_image_size( 'column-4', 440, 310, true );
 	add_image_size( 'va-cherryblossum-fullwidth', 1038, 576, true );
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(

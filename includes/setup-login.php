@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-if ( is_login_page() ) :
+if ( va_is_login() ) :
 /**
  * The Setup login
  *
@@ -116,4 +116,4 @@ function _visualive_theme_login_headertitle( $login_header_title ) {
 endif;
 add_filter( 'login_headertitle', '_visualive_theme_login_headertitle' );
 
-endif; // is_login_page
+endif; // va_is_login

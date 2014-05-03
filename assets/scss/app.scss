@@ -6,6 +6,10 @@
 @import "editor-style";
 @import "parts";
 
+body {
+	background: #222;
+}
+
 .no-touch .not_parallax {
 	padding-top: $topbar-height;
 }
@@ -25,11 +29,10 @@
 		right: 7%;
 		z-index: 10;
 		width: 700px;
-		color: #fff;
 		.header-title-inner {
 			padding: 0 20px;
 			background-color: rgba(0,0,0,0.4);
-			font-size: 100%;
+			color: #fff;
 		}
 	}
 }
@@ -40,22 +43,93 @@
 		bottom: 0;
 		left: 0;
 		z-index: 10;
-		margin: 0;
 		padding: 10px;
 		width: 100%;
 		background-color: rgba(0,0,0,0.4);
-		color: #fff;
-		font-size: 18px;
 		.header-title-inner {
+			margin: 0;
 			width: 270px;
+			color: #fff;
+			font-size: rem-calc(18);
 		}
 	}
 }
 
+.bottom {
+	margin-bottom: 30px;
+	@media #{$small-only} {
+		margin-bottom: 15px;
+	}
+}
+.bottom-inner {
+	@include max-screen(50em) {
+		margin-bottom: 15px;
+	}
+}
 
 /**
  * コンテンツ
  */
 .content-wrap {
 	background-color: #fff;
+	h2 {
+		font-weight: bold;
+	}
+	@media #{$small-only} {
+		h2 {
+			font-size: rem-calc(18);
+		}
+		h3 {
+			font-size: rem-calc(16);
+		}
+	}
+	@media #{$medium-only} {
+		h2 {
+			font-size: rem-calc(35);
+		}
+		h3 {
+			font-size: rem-calc(25);
+		}
+	}
+}
+
+
+/**
+ * フロントページ
+ */
+.home {
+	.content-wrap > .row {
+		@extend .bottom;
+	}
+	.small-12 > h2 {
+		margin: 30px auto;
+		text-align: center;
+		@media #{$small-only} {
+			margin: 15px auto;
+		}
+		& + h3 {
+			margin: -30px auto 30px;
+			text-align: center;
+			@media #{$small-only} {
+				margin: -15px auto 15px;
+			}
+		}
+	}
+	.service {
+		& > div {
+			@extend .bottom;
+		}
+		h3 {
+			text-align: center;
+			@media #{$small-only} {
+				font-weight: bold;
+				font-size: rem-calc(18);
+			}
+		}
+	}
+	.solution {
+		& > .large-8 {
+			@extend .bottom-inner;
+		}
+	}
 }

@@ -36,9 +36,9 @@ function vacb_dep_is_info( $value ) {
 		return true;
 	return false;
 }
-VP_Security::instance()->whitelist_function( 'vacb_dep_is_showcase' );
-function vacb_dep_is_showcase( $value ) {
-	if($value === 'showcase')
+VP_Security::instance()->whitelist_function( 'vacb_dep_is_works' );
+function vacb_dep_is_works( $value ) {
+	if($value === 'works')
 		return true;
 	return false;
 }
@@ -60,8 +60,8 @@ function vacb_get_post( $type = null ) {
 		case 'info':
 			$posttye = 'info';
 			break;
-		case 'showcase':
-			$posttye = 'showcase';
+		case 'works':
+			$posttye = 'works';
 			break;
 		default:
 			$posttye = 'post';
@@ -84,7 +84,7 @@ function vacb_get_posts() {
 function vacb_get_infos() {
 	return vacb_get_post( 'info' );
 }
-function vacb_get_showcases() {
-	return vacb_get_post( 'showcase' );
+function vacb_get_workss() {
+	return vacb_get_post( 'works' );
 }
 

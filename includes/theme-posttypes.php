@@ -11,17 +11,11 @@ function vacb2014_register_posttype() {
 	$posttype_info->menu_icon = 'dashicons-info';
 	$posttype_info->taxonomy  = array( 'cat' );
 
-	$posttype_dl            = new VA_PostType_Class;
-	$posttype_dl->type      = 'download';
-	$posttype_dl->name      = 'ダウンロード';
-	$posttype_dl->menu_icon = 'dashicons-download';
-	$posttype_dl->taxonomy  = array( 'cat', 'tag' );
-
-	$posttype_sc            = new VA_PostType_Class;
-	$posttype_sc->type      = 'showcase';
-	$posttype_sc->name      = 'ショーケース';
-	$posttype_sc->menu_icon = 'dashicons-media-document';
-	register_taxonomy( 'genre', 'showcase', array(
+	$posttype_works            = new VA_PostType_Class;
+	$posttype_works->type      = 'works';
+	$posttype_works->name      = '制作実績';
+	$posttype_works->menu_icon = 'dashicons-media-document';
+	register_taxonomy( 'genre', 'works', array(
 		'label'                      => 'ジャンル',
 		'hierarchical'               => true,
 		'public'                     => true,
@@ -30,7 +24,7 @@ function vacb2014_register_posttype() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
 	) ); // register_taxonomy
-	register_taxonomy( 'charge', 'showcase', array(
+	register_taxonomy( 'charge', 'works', array(
 		'label'                      => '担当箇所',
 		'hierarchical'               => true,
 		'public'                     => true,
@@ -39,6 +33,12 @@ function vacb2014_register_posttype() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
 	) ); // register_taxonomy
+
+	$posttype_dl            = new VA_PostType_Class;
+	$posttype_dl->type      = 'download';
+	$posttype_dl->name      = 'ダウンロード';
+	$posttype_dl->menu_icon = 'dashicons-download';
+	$posttype_dl->taxonomy  = array( 'cat', 'tag' );
 
 	$posttype_carousel            = new VA_PostType_Class;
 	$posttype_carousel->type      = 'carousel';
@@ -92,8 +92,8 @@ add_action( 'init', 'vacb2014_register_posttype', 0 );
 /**
  * page-attributes がサポートされていたら、自動的に順序（menu_order）順に従って表示
  */
-if ( ! function_exists( '_vacb2014_archive_orderby_menu_order' ) ) :
-function _vacb2014_archive_orderby_menu_order( $wp_query ) {
+if ( ! function_exists( '_visualive_theme_archive_orderby_menu_order' ) ) :
+function _visualive_theme_archive_orderby_menu_order( $wp_query ) {
 	if ( $wp_query->is_post_type_archive() && post_type_supports( $wp_query->query_vars['post_type'], 'page-attributes' ) ) {
 		if ( ! isset( $wp_query->query_vars['orderby'] ) ) {
 			$wp_query->query_vars['orderby'] = 'menu_order';
@@ -104,14 +104,14 @@ function _vacb2014_archive_orderby_menu_order( $wp_query ) {
 	}
 }
 endif;
-add_action( 'pre_get_posts', '_vacb2014_archive_orderby_menu_order' );
+add_action( 'pre_get_posts', '_visualive_theme_archive_orderby_menu_order' );
 
 
 /**
  * カスタム投稿タイプのアーカイブを作成
  */
-if ( ! function_exists( '_vacb2014_schoolsummary_monthly_archive' ) ) :
-function _vacb2014_schoolsummary_monthly_archive( $where, $r ) {
+if ( ! function_exists( '_visualive_theme_schoolsummary_monthly_archive' ) ) :
+function _visualive_theme_schoolsummary_monthly_archive( $where, $r ) {
 	global $my_archives_post_type;
 	$my_archives_post_type = '';
 	if ( isset($r['post_type']) ) {
@@ -120,5 +120,5 @@ function _vacb2014_schoolsummary_monthly_archive( $where, $r ) {
 	}
 	return $where;
 }
-endif; // _vacb2014_schoolsummary_monthly_archive
-add_filter( 'getarchives_where', '_vacb2014_schoolsummary_monthly_archive', 10, 2 );
+endif; // _visualive_theme_schoolsummary_monthly_archive
+add_filter( 'getarchives_where', '_visualive_theme_schoolsummary_monthly_archive', 10, 2 );

@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! class_exists( 'VA_Post_Discussion_Closed' ) ) :
 class VA_Post_Discussion_Closed {
-	private $target_post_type = array( 'page', 'info', 'showcase', 'carousel', 'attachment', 'link' );
+	private $target_post_type = array( 'page', 'info', 'works', 'carousel', 'attachment', 'link' );
 
 	function __construct() {
 		add_filter( 'comments_open', array( $this, '_va_pdc_comment_close' ), 9999, 2 );
@@ -15,7 +15,7 @@ class VA_Post_Discussion_Closed {
 	}
 	/**
 	 * Disable Comments
-	 * デフォルトで全固定ページのコメントをクローズ
+	 * デフォルトでコメントをクローズ
 	 * @link http://www.warna.info/archives/1199/
 	 * @return boolean
 	 */
@@ -45,8 +45,11 @@ class VA_Post_Discussion_Closed {
 	 */
 	private function va_pdc_show_message( $message, $errormsg = false, $target_post_type = array('') ) {
 		$post_type = get_post_type();
+		if ( ! $post_type ) {
+			$post_type = esc_attr( $_GET['post_type'] );
+		}
 
-		if ( $target_post_type AND in_array( $post_type, $target_post_type ) ) {
+		if ( in_array( $post_type, $target_post_type ) ) {
 			if ( $errormsg ) {
 				echo '<div id="message" class="error">';
 			} else {
@@ -60,9 +63,17 @@ class VA_Post_Discussion_Closed {
 	 */
 	public function _va_pdc_show_admin_messages() {
 		$post_type = get_post_type();
-		if ( $post_type ) {
+		if ( ! $post_type ) {
+			if ( isset( $_GET['post_type'] ) ) {
+				$post_type = esc_attr( $_GET['post_type'] );
+			} else {
+				$post_type = false;
+			}
+		}
+		$target = $this->target_post_type;
+
+		if ( in_array( $post_type, $target ) ) {
 			$name = esc_attr( get_post_type_object( $post_type )->labels->name );
-			$target = $this->target_post_type;
 			$this->va_pdc_show_message( sprintf( __('ディカッションにて「コメントの投稿を許可する」を有効にしても、%sではコメント投稿は有効になりません。', VACB_TEXTDOMAIN ), $name ), true, $target );
 		}
 	}
@@ -71,12 +82,12 @@ class VA_Post_Discussion_Closed {
 	 * @return callback 
 	 */
 	public function _va_pdc_remove_extra_meta_boxes() {
-		remove_meta_box( 'commentstatusdiv', 'page' , 'normal' );
-		remove_meta_box( 'commentstatusdiv', 'page' , 'advanced' );
-		remove_meta_box( 'commentstatusdiv', 'page' , 'side' );
-		remove_meta_box( 'commentsdiv', 'page' , 'normal' );
-		remove_meta_box( 'commentsdiv', 'page' , 'advanced' );
-		remove_meta_box( 'commentsdiv', 'page' , 'side' );
+		if ( is_array( $this->target_post_type ) ) {
+			foreach ($this->target_post_type as $key => $value) {
+				remove_meta_box( 'commentstatusdiv', $value, 'normal' ); // side or advanced
+				remove_meta_box( 'commentsdiv', $value, 'normal' );
+			}
+		}
 	}
 }
 new VA_Post_Discussion_Closed;

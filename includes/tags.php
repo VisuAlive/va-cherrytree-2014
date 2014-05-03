@@ -4,14 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 get_template_part( 'includes/class', 'top-bar-walker' );
 
 
-function visualive_theme_post_types() {
+function va_get_post_types() {
 	$default_post = array('post' => 'post', 'page' => 'page');
 	$custom_post  = get_post_types( array( 'public' => true, '_builtin' => false ), 'names' );
 	return array_merge( $default_post, $custom_post );
 }
 
 
-function visualive_theme_escape_text( $text ) {
+function va_get_escape_text( $text ) {
 	$text = strip_shortcodes( $text );
 	$text = strip_tags( $text );
 	$text = str_replace( array("\r\n","\r","\n"), '', $text );
@@ -20,7 +20,7 @@ function visualive_theme_escape_text( $text ) {
 }
 
 
-function is_login_page() {
+function va_is_login() {
 	return in_array( $GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php') );
 }
 
@@ -28,7 +28,7 @@ function is_login_page() {
 /**
  * Top bar
  */
-function visualive_theme_primary_menu() {
+function va_the_primary_menu() {
 	wp_nav_menu(array( 
 		'container' => false,                           // remove nav container
 		'container_class' => '',                        // class of container
@@ -51,7 +51,7 @@ function visualive_theme_primary_menu() {
  *
  * @return
  */
-function visualive_theme_custom_header() {
+function va_the_custom_header() {
 if ( get_header_image() ) :
 ?>
 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo get_bloginfo('name'); ?>"></a>
@@ -64,7 +64,7 @@ if ( get_header_image() ) :
  *
  * @return
  */
-function visualive_theme_user_prof( $userid = false, $size = 180 ) {
+function va_get_user_prof( $userid = false, $size = 180 ) {
 	if ( ! $userid || ! preg_match("/^[0-9]+$/", $userid) || ! preg_match("/^[0-9]+$/", $size))
 		return false;
 
@@ -75,8 +75,10 @@ function visualive_theme_user_prof( $userid = false, $size = 180 ) {
 	$user['archive']     = esc_url( get_author_posts_url( $userid ) );
 
 	return $user;
-?>
-
-<?php
 }
 
+
+function va_get_page_id( $slug = false ) {
+	$str = get_page_by_path( $slug );
+	return $str->ID;
+}

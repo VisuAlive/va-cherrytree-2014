@@ -106,7 +106,7 @@ class VA_PostType_Class {
 			$admins->add_cap( 'edit_published_' . $this->type . 's' );       // 公開した記事の編集
 			$admins->add_cap( 'edit_private_' . $this->type . 's' );         // 他のユーザーの非公開記事の閲覧
 			$admins->add_cap( 'edit_others_' . $this->type . 's' );          // 他のユーザーの記事の編集
-			$admins->add_cap( 'delete_' . $this->type . $this->type . 's' ); // 記事の削除
+			$admins->add_cap( 'delete_' . $this->type . 's' );               // 記事の削除
 			$admins->add_cap( 'delete_private_' . $this->type . 's' );       // 他のユーザーの非公開記事の削除
 			$admins->add_cap( 'delete_published_' . $this->type . 's' );     // 公開した記事の削除
 			$admins->add_cap( 'delete_others_' . $this->type . 's' );        // 他のユーザーの記事の削除
@@ -120,7 +120,7 @@ class VA_PostType_Class {
 			$editors->add_cap( 'edit_published_' . $this->type . 's' );       // 公開した記事の編集
 			$editors->add_cap( 'edit_private_' . $this->type . 's' );         // 他のユーザーの非公開記事の閲覧
 			$editors->add_cap( 'edit_others_' . $this->type . 's' );          // 他のユーザーの記事の編集
-			$editors->add_cap( 'delete_' . $this->type . $this->type . 's' ); // 記事の削除
+			$editors->add_cap( 'delete_' . $this->type . 's' );               // 記事の削除
 			$editors->add_cap( 'delete_private_' . $this->type . 's' );       // 他のユーザーの非公開記事の削除
 			$editors->add_cap( 'delete_published_' . $this->type . 's' );     // 公開した記事の削除
 			$editors->add_cap( 'delete_others_' . $this->type . 's' );        // 他のユーザーの記事の削除
@@ -136,7 +136,7 @@ class VA_PostType_Class {
 				'edit_published_' . $this->type . 's'       => true, // 公開した記事の編集
 				'edit_private_' . $this->type . 's'         => true, // 他のユーザーの非公開記事の閲覧
 				'edit_others_' . $this->type . 's'          => true, // 他のユーザーの記事の編集
-				'delete_' . $this->type . $this->type . 's' => true, // 記事の削除
+				'delete_' . $this->type . 's'               => true, // 記事の削除
 				'delete_private_' . $this->type . 's'       => true, // 他のユーザーの非公開記事の削除
 				'delete_published_' . $this->type . 's'     => true, // 公開した記事の削除
 				'delete_others_' . $this->type . 's'        => true, // 他のユーザーの記事の削除

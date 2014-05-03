@@ -70,15 +70,15 @@ add_action( 'dashboard_glance_items', '_visualive_theme_posttype_dashboard' );
  * @return string
  */
 if ( ! function_exists( '_visualive_theme_auto_post_slug' ) ) :
-function _visualive_theme_auto_post_slug( $slug, $post_ID, $post_status, $post_type, $post_title ) {
+function _visualive_theme_auto_post_slug( $slug, $post_ID, $post_status, $post_type ) {
 	if ( preg_match( '/(%[0-9a-f]{2})+/', $slug ) ) {
-		// $slug = utf8_uri_encode( $post_type ) . '-' . $post_ID;
-		$slug = 'post-' . $post_ID;
+		$slug = utf8_uri_encode( $post_type ) . '-' . $post_ID;
+		// $slug = 'post-' . $post_ID;
 	}
 	return $slug;
 }
 endif;
-add_filter( 'wp_unique_post_slug', '_visualive_theme_auto_post_slug', 10, 5 );
+add_filter( 'wp_unique_post_slug', '_visualive_theme_auto_post_slug', 10, 4 );
 
 
 if ( ! function_exists( '_visualive_theme_admin_setup_message' ) ) :
@@ -130,19 +130,16 @@ add_action( 'wp_dashboard_setup', '_visualive_theme_remove_dashboard_widgets' );
 
 if ( ! function_exists( '_visualive_theme_remove_metabox' ) ) :
 function _visualive_theme_remove_metabox() {
-	remove_meta_box( 'slugdiv',          'post', 'normal' );
-	remove_meta_box( 'authordiv',        'post', 'normal' );
+	if ( ! is_super_admin() && ! current_user_can( 'administrator' ) && ! current_user_can( 'editor' ) ) {
+		remove_meta_box( 'authordiv',        'post', 'normal' );
+		remove_meta_box( 'authordiv',        'page', 'normal' );
+	}
 	remove_meta_box( 'postcustom',       'post', 'normal' );
-	remove_meta_box( 'commentstatusdiv', 'post', 'normal' );
-
-	remove_meta_box( 'slugdiv',          'page', 'normal' );
-	remove_meta_box( 'authordiv',        'page', 'normal' );
 	remove_meta_box( 'postcustom',       'page', 'normal' );
-	remove_meta_box( 'commentstatusdiv', 'page', 'normal' );
 }
 endif;
 add_action( 'admin_menu', '_visualive_theme_remove_metabox' );
-// ! current_user_can('update_core')
+
 
 /**
  * フッタの先頭に何かを出力する場合、echo

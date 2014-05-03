@@ -60,7 +60,7 @@ if ( ! function_exists( '_visualive_theme_bloginfo' ) ) :
  * @return string
  */
 function _visualive_theme_bloginfo( $output, $show) {
-	if ( ! is_login_page() )
+	if ( ! va_is_login() )
 		return $output;
 
 	switch( $show ) :
@@ -71,8 +71,8 @@ function _visualive_theme_bloginfo( $output, $show) {
 					$meta_description = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_description');
 					$meta_description = ( ! empty( $meta_description ) ) ? $meta_description : '';
 					$post = get_post( get_the_ID(), 'OBJECT', 'edit' );
-					$post_content = ( ! empty( $post ) ) ? visualive_theme_escape_text( $post->post_content ) : '';
-					$post_excerpt = ( ! empty( $post ) ) ? visualive_theme_escape_text( $post->post_excerpt ) : '';
+					$post_content = ( ! empty( $post ) ) ? va_get_escape_text( $post->post_content ) : '';
+					$post_excerpt = ( ! empty( $post ) ) ? va_get_escape_text( $post->post_excerpt ) : '';
 
 					if ( ! empty($meta_description) ) {
 						$output = $meta_description;
@@ -100,8 +100,8 @@ if ( ! function_exists( '_visualive_theme_excerpt' ) ) :
 function _visualive_theme_excerpt( $output ) {
 	$meta_description = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_description');
 	$post = get_post( get_the_ID(), 'OBJECT', 'edit' );
-	$post_content = visualive_theme_escape_text( $post->post_content );
-	$post_excerpt = visualive_theme_escape_text( $post->post_excerpt );
+	$post_content = va_get_escape_text( $post->post_content );
+	$post_excerpt = va_get_escape_text( $post->post_excerpt );
 
 	if ( ! empty($meta_description) ) {
 		$output = $meta_description;

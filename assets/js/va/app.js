@@ -3,10 +3,18 @@
  * http://visualive.jp/
  * Copyright 2014, VisuAlive
 */
+// function preloader(){
+// 	document.getElementById("loader-wrap").style.display = "none";
+// 	document.getElementById("content").style.display = "block";
+// }//preloader
+// window.onload = preloader;
+
 jQuery(function($){
-	var ua       = navigator.userAgent,
-		touch    = Modernizr.touch,
-		parallax = $('.img-holder');
+	var ua         = navigator.userAgent,
+		touch      = Modernizr.touch,
+		parallax   = $('.img-holder'),
+		standalone = window.navigator.standalone,
+		aTags      = $('a');
 	$(document).foundation();
 
 	// パララックス画像
@@ -25,9 +33,26 @@ jQuery(function($){
 	//画面のロード
 	$(window).load(function(){
 		$('#goTop').goToTop();
-		$('.loader-wrap').fadeOut();
+		$('#loader-wrap').fadeOut();
 		setTimeout(scrollBy, 100, 0, 1);
 	});
+
+	// スタンドアローンモードの場合の制御
+	if (standalone) {
+		aTags.each(function(){
+			var url = $(this).attr('href');
+
+			if (url !== '#' && url !== '#wrap' && typeof url !== "undefined") {
+				//念のため、href属性は削除
+				$(this).removeAttr('href');
+				//クリックイベントをバインド
+				$(this).click(function(){
+					location.href = url;
+					return false;
+				});
+			}
+		});
+	}
 
 	// Androidの場合、スクロールバーを隠す
 	if(ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {

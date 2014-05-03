@@ -44,8 +44,8 @@ $vacb_mb_carousel = new VP_Metabox(
 						'label' => __( 'お知らせ', VACB_TEXTDOMAIN ),
 					),
 					array(
-						'value' => 'showcase',
-						'label' => __( 'ショーケース', VACB_TEXTDOMAIN ),
+						'value' => 'works',
+						'label' => __( '制作実績', VACB_TEXTDOMAIN ),
 					),
 					array(
 						'value' => 'url',
@@ -114,20 +114,20 @@ $vacb_mb_carousel = new VP_Metabox(
 			), // select
 			array(
 				'type'        => 'select',
-				'name'        => 'vacb_carousel_link_showcase',
-				'label'       => __( 'Choose showcase', VACB_TEXTDOMAIN ),
+				'name'        => 'vacb_carousel_link_works',
+				'label'       => __( 'Choose works', VACB_TEXTDOMAIN ),
 				'description' => __( 'リンク先のページを選択してください。', VACB_TEXTDOMAIN ),
 				'items'       => array(
 					'data' => array(
 						array(
 							'source' => 'function',
-							'value'  => 'vacb_get_showcases',
+							'value'  => 'vacb_get_workss',
 						)
 					)
 				),
 				'dependency' => array(
 					'field'    => 'vacb_carousel_link_filter',
-					'function' => 'vacb_dep_is_showcase',
+					'function' => 'vacb_dep_is_works',
 				)
 			), // select
 			array(

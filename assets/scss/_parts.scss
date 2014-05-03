@@ -5,7 +5,7 @@
  * ローディング
  * @source http://codepen.io/pupismyname/pen/rAxmB
  */
-.loader-wrap {
+#loader-wrap {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -152,6 +152,7 @@ $header-shrink: $topbar-height - 20px;
 .cbp-af-header.cbp-af-header-shrink,
 .cbp-af-header.cbp-af-header-shrink .top-bar,
 .show-for-medium-down .top-bar,
+.show-for-medium-down .top-bar .name,
 .cbp-af-header.cbp-af-header-shrink .top-bar .name,
 .cbp-af-header.cbp-af-header-shrink .top-bar .top-bar-section > ul > .divider {
 	height: $header-shrink;

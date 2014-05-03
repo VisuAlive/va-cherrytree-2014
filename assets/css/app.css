@@ -17,15 +17,15 @@ meta.foundation-mq-small {
 /* line 268, ../bower_components/foundation/scss/foundation/components/_global.scss */
 
 meta.foundation-mq-medium {
-  font-family: "/only screen and (min-width:40.063em)/";
-  width: 40.063em;
+  font-family: "/only screen and (min-width:35.563em)/";
+  width: 35.563em;
 }
 
 /* line 273, ../bower_components/foundation/scss/foundation/components/_global.scss */
 
 meta.foundation-mq-large {
-  font-family: "/only screen and (min-width:64.063em)/";
-  width: 64.063em;
+  font-family: "/only screen and (min-width:50.063em)/";
+  width: 50.063em;
 }
 
 /* line 278, ../bower_components/foundation/scss/foundation/components/_global.scss */
@@ -668,7 +668,7 @@ select {
   }
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 157, ../bower_components/foundation/scss/foundation/components/_grid.scss */
 
   .medium-push-0 {
@@ -1255,7 +1255,7 @@ select {
   }
 }
 
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 50.063em) {
   /* line 157, ../bower_components/foundation/scss/foundation/components/_grid.scss */
 
   .large-push-0 {
@@ -2264,7 +2264,7 @@ select {
   }
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 61, ../bower_components/foundation/scss/foundation/components/_block-grid.scss */
 
   .medium-block-grid-1 > li {
@@ -2494,7 +2494,7 @@ select {
   }
 }
 
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 50.063em) {
   /* line 61, ../bower_components/foundation/scss/foundation/components/_block-grid.scss */
 
   .large-block-grid-1 > li {
@@ -3242,7 +3242,7 @@ button[disabled].alert:focus,
   background-color: #f04124;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 216, ../bower_components/foundation/scss/foundation/components/_buttons.scss */
 
   button,
@@ -3752,7 +3752,7 @@ button[disabled].alert:focus,
   display: block;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 144, ../bower_components/foundation/scss/foundation/components/_clearing.scss */
 
   .clearing-main-prev,
@@ -5080,7 +5080,11 @@ label.error {
 
 /* line 96, ../bower_components/foundation/scss/foundation/components/_joyride.scss */
 
-.joyride-tip-guide .joyride-nub.bottom {
+.joyride-tip-guide .joyride-nub.bottom,
+.joyride-tip-guide .home .content-wrap > .joyride-nub.row,
+.home .joyride-tip-guide .content-wrap > .joyride-nub.row,
+.joyride-tip-guide .home .service > div.joyride-nub,
+.home .joyride-tip-guide .service > div.joyride-nub {
   border-bottom-style: solid;
   border-color: #333333 !important;
   border-bottom-color: transparent !important;
@@ -5204,7 +5208,7 @@ label.error {
 
 /* Styles for screens that are at least 768px; */
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 190, ../bower_components/foundation/scss/foundation/components/_joyride.scss */
 
   .joyride-tip-guide {
@@ -5214,7 +5218,11 @@ label.error {
 
   /* line 192, ../bower_components/foundation/scss/foundation/components/_joyride.scss */
 
-  .joyride-tip-guide .joyride-nub.bottom {
+  .joyride-tip-guide .joyride-nub.bottom,
+  .joyride-tip-guide .home .content-wrap > .joyride-nub.row,
+  .home .joyride-tip-guide .content-wrap > .joyride-nub.row,
+  .joyride-tip-guide .home .service > div.joyride-nub,
+  .home .joyride-tip-guide .service > div.joyride-nub {
     border-color: #333333 !important;
     border-bottom-color: transparent !important;
     border-left-color: transparent !important;
@@ -5815,7 +5823,7 @@ kbd {
   display: none;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 382, ../bower_components/foundation/scss/foundation/components/_orbit.scss */
 
   .touch .orbit-container .orbit-prev,
@@ -5830,7 +5838,7 @@ kbd {
   }
 }
 
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 35.5em) {
   /* line 393, ../bower_components/foundation/scss/foundation/components/_orbit.scss */
 
   .orbit-stack-on-small .orbit-slides-container {
@@ -6381,7 +6389,7 @@ dialog,
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 35.5em) {
   /* line 164, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog,
@@ -6390,7 +6398,7 @@ dialog,
   }
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 164, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog,
@@ -6422,7 +6430,7 @@ dialog > :last-child,
   margin-bottom: 0;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 164, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog,
@@ -6432,7 +6440,7 @@ dialog > :last-child,
   }
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 164, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog,
@@ -6462,7 +6470,7 @@ dialog[open] {
   visibility: visible;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 184, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog,
@@ -6503,7 +6511,7 @@ dialog[open] {
   }
 }
 
-@media only screen and (min-width: 40.063em) and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) and (min-width: 35.563em) {
   /* line 192, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog.tiny,
@@ -6513,7 +6521,7 @@ dialog[open] {
   }
 }
 
-@media only screen and (min-width: 40.063em) and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) and (min-width: 35.563em) {
   /* line 193, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog.small,
@@ -6523,7 +6531,7 @@ dialog[open] {
   }
 }
 
-@media only screen and (min-width: 40.063em) and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) and (min-width: 35.563em) {
   /* line 194, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog.medium,
@@ -6533,7 +6541,7 @@ dialog[open] {
   }
 }
 
-@media only screen and (min-width: 40.063em) and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) and (min-width: 35.563em) {
   /* line 195, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog.large,
@@ -6543,7 +6551,7 @@ dialog[open] {
   }
 }
 
-@media only screen and (min-width: 40.063em) and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) and (min-width: 35.563em) {
   /* line 196, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog.xlarge,
@@ -6553,7 +6561,7 @@ dialog[open] {
   }
 }
 
-@media only screen and (min-width: 40.063em) and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) and (min-width: 35.563em) {
   /* line 200, ../bower_components/foundation/scss/foundation/components/_reveal.scss */
 
   dialog.full,
@@ -7362,7 +7370,7 @@ table tr td {
   padding: 0 0.9375rem;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 84, ../bower_components/foundation/scss/foundation/components/_tabs.scss */
 
   .tabs.vertical {
@@ -7513,7 +7521,7 @@ table tr td {
   font-weight: normal;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 108, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
 
   .tooltip > .nub {
@@ -7560,8 +7568,8 @@ table tr td {
 /* line 103, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 
 meta.foundation-mq-topbar {
-  font-family: "/only screen and (min-width:40.063em)/";
-  width: 40.063em;
+  font-family: "/only screen and (min-width:35.563em)/";
+  width: 35.563em;
 }
 
 /* Wrapped around .top-bar to contain to grid width */
@@ -8167,7 +8175,7 @@ meta.foundation-mq-topbar {
   display: block;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 434, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 
   .top-bar {
@@ -8500,7 +8508,7 @@ meta.foundation-mq-topbar {
   text-align: justify !important;
 }
 
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 35.5em) {
   /* line 145, ../bower_components/foundation/scss/foundation/components/_type.scss */
 
   .small-only-text-left {
@@ -8552,7 +8560,7 @@ meta.foundation-mq-topbar {
   }
 }
 
-@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+@media only screen and (min-width: 35.563em) and (max-width: 50em) {
   /* line 145, ../bower_components/foundation/scss/foundation/components/_type.scss */
 
   .medium-only-text-left {
@@ -8578,7 +8586,7 @@ meta.foundation-mq-topbar {
   }
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 145, ../bower_components/foundation/scss/foundation/components/_type.scss */
 
   .medium-text-left {
@@ -8604,7 +8612,7 @@ meta.foundation-mq-topbar {
   }
 }
 
-@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+@media only screen and (min-width: 50.063em) and (max-width: 90em) {
   /* line 145, ../bower_components/foundation/scss/foundation/components/_type.scss */
 
   .large-only-text-left {
@@ -8630,7 +8638,7 @@ meta.foundation-mq-topbar {
   }
 }
 
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 50.063em) {
   /* line 145, ../bower_components/foundation/scss/foundation/components/_type.scss */
 
   .large-text-left {
@@ -9170,7 +9178,7 @@ blockquote p {
   padding: 0 0.0625rem;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 431, ../bower_components/foundation/scss/foundation/components/_type.scss */
 
   h1,
@@ -9439,7 +9447,7 @@ blockquote p {
   top: 0;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 328, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 
   .tab-bar-section {
@@ -9629,7 +9637,7 @@ ul.off-canvas-list li a:hover {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 258, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 
   .move-right .exit-off-canvas:hover {
@@ -9666,7 +9674,7 @@ ul.off-canvas-list li a:hover {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 258, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 
   .move-left .exit-off-canvas:hover {
@@ -9917,7 +9925,7 @@ ul.off-canvas-list li a:hover {
 
 /* medium displays */
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 35.563em) {
   /* line 244, ../bower_components/foundation/scss/foundation/components/_visibility.scss */
 
   .hide-for-small-only,
@@ -10134,7 +10142,7 @@ ul.off-canvas-list li a:hover {
 
 /* large displays */
 
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 50.063em) {
   /* line 244, ../bower_components/foundation/scss/foundation/components/_visibility.scss */
 
   .hide-for-small-only,
@@ -11263,7 +11271,7 @@ body {
 
 /* line 8, ../scss/_parts.scss */
 
-.loader-wrap {
+#loader-wrap {
   position: absolute;
   top: 0;
   left: 0;
@@ -11277,7 +11285,7 @@ body {
 
 /* line 18, ../scss/_parts.scss */
 
-.loader-wrap .loader {
+#loader-wrap .loader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11295,8 +11303,8 @@ body {
 
 /* line 31, ../scss/_parts.scss */
 
-.loader-wrap .loader:before,
-.loader-wrap .loader:after {
+#loader-wrap .loader:before,
+#loader-wrap .loader:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -11315,7 +11323,7 @@ body {
 
 /* line 44, ../scss/_parts.scss */
 
-.loader-wrap .loader:after {
+#loader-wrap .loader:after {
   z-index: 1;
   -webkit-animation: gogoloader 2s ease 1s infinite;
   animation: gogoloader 2s ease 1s infinite;
@@ -11323,7 +11331,7 @@ body {
 
 /* line 48, ../scss/_parts.scss */
 
-.loader-wrap .loader:before {
+#loader-wrap .loader:before {
   z-index: 2;
   -webkit-animation: gogoloader 2s ease 0s infinite;
   animation: gogoloader 2s ease 0s infinite;
@@ -11462,17 +11470,18 @@ body {
   transition: all 0.3s;
 }
 
-/* line 156, ../scss/_parts.scss */
+/* line 157, ../scss/_parts.scss */
 
 .cbp-af-header.cbp-af-header-shrink,
 .cbp-af-header.cbp-af-header-shrink .top-bar,
 .show-for-medium-down .top-bar,
+.show-for-medium-down .top-bar .name,
 .cbp-af-header.cbp-af-header-shrink .top-bar .name,
 .cbp-af-header.cbp-af-header-shrink .top-bar .top-bar-section > ul > .divider {
   height: 50px;
 }
 
-/* line 163, ../scss/_parts.scss */
+/* line 164, ../scss/_parts.scss */
 
 .cbp-af-header.cbp-af-header-shrink h1,
 .cbp-af-header.cbp-af-header-shrink .top-bar,
@@ -11482,31 +11491,31 @@ body {
   line-height: 50px;
 }
 
-/* line 166, ../scss/_parts.scss */
+/* line 167, ../scss/_parts.scss */
 
 .cbp-af-header.cbp-af-header-shrink .top-bar .title-area a {
   line-height: 48px;
 }
 
-/* line 169, ../scss/_parts.scss */
+/* line 170, ../scss/_parts.scss */
 
 .cbp-af-header.cbp-af-header-shrink .top-bar-section .has-dropdown > a:after {
   top: 25px;
 }
 
-/* line 172, ../scss/_parts.scss */
+/* line 173, ../scss/_parts.scss */
 
 .cbp-af-header .top-bar-section .has-dropdown .dropdown li.has-dropdown > a:after {
   line-height: 3;
 }
 
-/* line 175, ../scss/_parts.scss */
+/* line 176, ../scss/_parts.scss */
 
 .cbp-af-header.cbp-af-header-shrink .top-bar-section .has-dropdown .dropdown li.has-dropdown > a:after {
   line-height: 1.5;
 }
 
-/* line 178, ../scss/_parts.scss */
+/* line 179, ../scss/_parts.scss */
 
 .cbp-af-header.cbp-af-header-shrink h1 {
   font-size: 2em;
@@ -11516,14 +11525,14 @@ body {
  * Off canvas
  */
 
-/* line 186, ../scss/_parts.scss */
+/* line 187, ../scss/_parts.scss */
 
 .off-canvas-profile {
   margin: 20px 0 15px;
   text-align: center;
 }
 
-/* line 189, ../scss/_parts.scss */
+/* line 190, ../scss/_parts.scss */
 
 .off-canvas-profile ul {
   margin: 0;
@@ -11531,7 +11540,7 @@ body {
   list-style: none;
 }
 
-/* line 194, ../scss/_parts.scss */
+/* line 195, ../scss/_parts.scss */
 
 .off-canvas-profile a {
   display: block;
@@ -11539,7 +11548,7 @@ body {
   color: #fff;
 }
 
-/* line 198, ../scss/_parts.scss */
+/* line 199, ../scss/_parts.scss */
 
 .off-canvas-profile a span {
   display: block;
@@ -11547,7 +11556,7 @@ body {
   font-size: 12px;
 }
 
-/* line 204, ../scss/_parts.scss */
+/* line 205, ../scss/_parts.scss */
 
 .off-canvas-profile .profile-avatar {
   margin: 0 auto;
@@ -11557,13 +11566,19 @@ body {
   border-radius: 64px;
 }
 
-/* line 210, ../scss/_parts.scss */
+/* line 211, ../scss/_parts.scss */
 
 .off-canvas-profile .profile-avatar .avatar {
   border-radius: 64px;
 }
 
 /* line 9, ../scss/app.scss */
+
+body {
+  background: #222;
+}
+
+/* line 13, ../scss/app.scss */
 
 .no-touch .not_parallax {
   padding-top: 70px;
@@ -11573,20 +11588,20 @@ body {
  * ヘッダーのパララックス
  */
 
-/* line 16, ../scss/app.scss */
+/* line 20, ../scss/app.scss */
 
 .imageHolder {
   position: relative;
   background-color: #fff;
 }
 
-/* line 19, ../scss/app.scss */
+/* line 23, ../scss/app.scss */
 
 .imageHolder img {
   z-index: -1;
 }
 
-/* line 22, ../scss/app.scss */
+/* line 26, ../scss/app.scss */
 
 .imageHolder .header-title {
   position: absolute;
@@ -11594,50 +11609,159 @@ body {
   right: 7%;
   z-index: 10;
   width: 700px;
-  color: #fff;
 }
 
-/* line 29, ../scss/app.scss */
+/* line 32, ../scss/app.scss */
 
 .imageHolder .header-title .header-title-inner {
   padding: 0 20px;
   background-color: rgba(0, 0, 0, 0.4);
-  font-size: 100%;
+  color: #fff;
 }
 
-/* line 36, ../scss/app.scss */
+/* line 39, ../scss/app.scss */
 
 .img-holder {
   position: relative;
 }
 
-/* line 38, ../scss/app.scss */
+/* line 41, ../scss/app.scss */
 
 .img-holder .header-title {
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 10;
-  margin: 0;
   padding: 10px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  font-size: 18px;
 }
 
 /* line 49, ../scss/app.scss */
 
 .img-holder .header-title .header-title-inner {
+  margin: 0;
   width: 270px;
+  color: #fff;
+  font-size: 1.125rem;
+}
+
+/* line 58, ../scss/app.scss */
+
+.bottom,
+.home .content-wrap > .row,
+.home .service > div {
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 35.5em) {
+  /* line 58, ../scss/app.scss */
+
+  .bottom,
+  .home .content-wrap > .row,
+  .home .service > div {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 50em) {
+  /* line 64, ../scss/app.scss */
+
+  .bottom-inner,
+  .home .solution > .large-8 {
+    margin-bottom: 15px;
+  }
 }
 
 /**
  * コンテンツ
  */
 
-/* line 59, ../scss/app.scss */
+/* line 73, ../scss/app.scss */
 
 .content-wrap {
   background-color: #fff;
+}
+
+/* line 75, ../scss/app.scss */
+
+.content-wrap h2 {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 35.5em) {
+  /* line 79, ../scss/app.scss */
+
+  .content-wrap h2 {
+    font-size: 1.125rem;
+  }
+
+  /* line 82, ../scss/app.scss */
+
+  .content-wrap h3 {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 35.563em) and (max-width: 50em) {
+  /* line 87, ../scss/app.scss */
+
+  .content-wrap h2 {
+    font-size: 2.1875rem;
+  }
+
+  /* line 90, ../scss/app.scss */
+
+  .content-wrap h3 {
+    font-size: 1.5625rem;
+  }
+}
+
+/**
+ * フロントページ
+ */
+
+/* line 104, ../scss/app.scss */
+
+.home .small-12 > h2 {
+  margin: 30px auto;
+  text-align: center;
+}
+
+@media only screen and (max-width: 35.5em) {
+  /* line 104, ../scss/app.scss */
+
+  .home .small-12 > h2 {
+    margin: 15px auto;
+  }
+}
+
+/* line 110, ../scss/app.scss */
+
+.home .small-12 > h2 + h3 {
+  margin: -30px auto 30px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 35.5em) {
+  /* line 110, ../scss/app.scss */
+
+  .home .small-12 > h2 + h3 {
+    margin: -15px auto 15px;
+  }
+}
+
+/* line 122, ../scss/app.scss */
+
+.home .service h3 {
+  text-align: center;
+}
+
+@media only screen and (max-width: 35.5em) {
+  /* line 122, ../scss/app.scss */
+
+  .home .service h3 {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
 }

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $vacb_mb_seo = new VP_Metabox(
 	array(
 		'id'          => '_vacb_metaboxs_seo_',
-		'types'       => array( 'post', 'page', 'info', 'showcase' ),
+		'types'       => array( 'post', 'page', 'info', 'works', 'download' ),
 		'title'       => __( 'SEO', VACB_TEXTDOMAIN ),
 		'priority'    => 'high',
 		'template'    => array(
