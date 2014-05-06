@@ -23,27 +23,66 @@
 <meta name="apple-mobile-web-app-title" content="VisuAlive">
 <meta name="format-detection" content="telephone=no">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
+<style>
+/**
+ * ローディング
+ * @source http://codepen.io/pupismyname/pen/rAxmB
+ */
+#loader-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100000;
+	width: 100%;
+	height: 100%;
+	background: #050505;
+	color: #fff;
+	font-size: 0.875rem;
+}
+#loader-wrap .loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: -75px 0 0 -75px;
+	width: 150px;
+	height: 150px;
+	text-align: center;
+	text-transform: uppercase;
+	line-height: 150px;
+}
+#loader-wrap .loader:before,
+#loader-wrap .loader:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	border: 5px solid #fff;
+	border-radius: 100px;
+	-webkit-box-shadow: 0 0 50px #fff, inset 0 0 50px #fff;
+	box-shadow: 0 0 50px #fff, inset 0 0 50px #fff;
+	content: "\0020";
+	opacity: 0;
+}
+#loader-wrap .loader:after {
+	z-index: 1;
+	-webkit-animation: gogoloader 2s ease 1s infinite;
+	animation: gogoloader 2s ease 1s infinite;
+}
+#loader-wrap .loader:before {
+	z-index: 2;
+	-webkit-animation: gogoloader 2s ease 0s infinite;
+	animation: gogoloader 2s ease 0s infinite;
+}
+</style>
 <?php wp_head(); ?>
-<script>
-// jQuery(function($){
-// 	$(window).load(function(){
-// 		console.log('body : ' + $('body').actual('outerHeight', { includeMargin : true }));
-// 		console.log('right-off-canvas-menu : ' + $('.right-off-canvas-menu').actual('outerHeight', { includeMargin : true }));
-// 		var bH = $('body').actual('outerHeight', { includeMargin : true }),
-// 			rMenu = $('.right-off-canvas-menu').actual('outerHeight', { includeMargin : true });
-
-
-// 		$('.right-off-canvas-toggle').click(function(){
-// 			if (bH <= rMenu) {
-// 				$('html,body,.off-canvas-wrap').css({'height':rMenu});
-// 			}
-// 		});
-// 		$('.exit-off-canvas').click(function(){
-// 			$('html,body,.off-canvas-wrap').css({'height':''});
-// 		});
-// 	});
-// });
-</script>
 </head>
 <body <?php body_class(); ?>>
 <div id="loader-wrap"><div class="loader">Loading</div></div>

@@ -143,6 +143,25 @@ add_action( 'widgets_init', '_visualive_theme_widgets_init' );
 
 
 if ( ! is_admin() ) :
+/**
+ * Register Lato Google font for Twenty Fourteen.
+ *
+ * @since Twenty Fourteen 1.0
+ *
+ * @return string
+ */
+function visualive_theme_font_url() {
+	$font_url = '';
+	/*
+	 * Translators: If there are characters in your language that are not supported
+	 * by Lato, translate this to 'off'. Do not translate into your own language.
+	 */
+	if ( 'off' !== _x( 'on', 'Lato font: on or off', 'twentyfourteen' ) ) {
+		$font_url = add_query_arg( 'family', urlencode( 'Vollkorn:700,400' ), "//fonts.googleapis.com/css" );
+	}
+
+	return $font_url;
+}
 
 if ( ! function_exists( '_visualive_theme_scripts' ) ) :
 /**
@@ -152,8 +171,13 @@ if ( ! function_exists( '_visualive_theme_scripts' ) ) :
  */
 function _visualive_theme_scripts() {
 	// Add Lato font, used in the main stylesheet.
-	wp_enqueue_style( 'va-cherryblossum-style', get_template_directory_uri() . '/assets/css/app.css', array(), null );
+	wp_enqueue_style( 'twentyfourteen-lato', visualive_theme_font_url(), array(), null );
+
+	// Add Fort Awesome, used in the main stylesheet.
 	wp_enqueue_style( 'fort-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array(), null );
+
+	// Load our main stylesheet.
+	wp_enqueue_style( 'va-cherryblossum-style', get_template_directory_uri() . '/assets/css/app.css', array(), null );
 
 	// Load the Internet Explorer specific stylesheet.
 	// wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
@@ -267,7 +291,7 @@ if ( ! function_exists( '_visualive_theme_google_ad_wrap' ) ) :
  * @return string
  */
 function _visualive_theme_google_ad_wrap( $content ) {
-	return "<!-- google_ad_section_start -->\n" . $content . "<!-- google_ad_section_end -->\n";
+	return "\n<!-- google_ad_section_start -->\n" . $content . "<!-- google_ad_section_end -->\n";
 }
 endif;
 add_filter( 'the_content', '_visualive_theme_google_ad_wrap' );

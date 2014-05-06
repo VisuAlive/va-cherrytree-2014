@@ -6,65 +6,17 @@
 @import "editor-style";
 @import "parts";
 
-body {
-	background: #222;
-}
 
 .no-touch .not_parallax {
 	padding-top: $topbar-height;
 }
 
-/**
- * ヘッダーのパララックス
- */
-.imageHolder {
-	position: relative;
-	background-color: #fff;
-	img {
-		z-index: -1;
-	}
-	.header-title {
-		position: absolute;
-		top: 50%;
-		right: 7%;
-		z-index: 10;
-		width: 700px;
-		.header-title-inner {
-			padding: 0 20px;
-			background-color: rgba(0,0,0,0.4);
-			color: #fff;
-		}
-	}
-}
-.img-holder {
-	position: relative;
-	.header-title {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		z-index: 10;
-		padding: 10px;
-		width: 100%;
-		background-color: rgba(0,0,0,0.4);
-		.header-title-inner {
-			margin: 0;
-			width: 270px;
-			color: #fff;
-			font-size: rem-calc(18);
-		}
-	}
-}
 
 .bottom {
-	margin-bottom: 30px;
-	@media #{$small-only} {
-		margin-bottom: 15px;
-	}
-}
-.bottom-inner {
 	@include max-screen(50em) {
 		margin-bottom: 15px;
 	}
+	margin-bottom: 30px;
 }
 
 /**
@@ -74,6 +26,9 @@ body {
 	background-color: #fff;
 	h2 {
 		font-weight: bold;
+	}
+	h2, h2 + p {
+		font-family: 'Vollkorn';
 	}
 	@media #{$small-only} {
 		h2 {
@@ -101,35 +56,68 @@ body {
 	.content-wrap > .row {
 		@extend .bottom;
 	}
-	.small-12 > h2 {
-		margin: 30px auto;
+	.occupation, .release, .project, .profile {
+		padding: 30px 0;
+	}
+	.occupation {
+		padding-bottom: 0;
+		.service {
+			h3 {
+				text-align: center;
+				@media #{$small-only} {
+					font-weight: bold;
+					font-size: rem-calc(18);
+				}
+			}
+			p {
+				margin: 0;
+			}
+		}
+		.solution {
+			padding: 30px 0;
+			background-color: #f7f7f7;
+			box-shadow: inset 0px 0px 0px 1px rgba(218,222,225,0.86);
+			dl {
+				@include max-screen(50em) {
+					margin-top: 15px;
+				}
+				margin-bottom: 0;
+				dd:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	.release {
+	}
+	.project { }
+	.profile { }
+}
+
+/**
+ * フッター
+ */
+.page-footer {
+	border-top: solid 5px #1A1A1A;
+	background-color: #0D0D0D;
+	background-image: linear-gradient(bottom, #0D0D0D, #121212);
+	color: #b7b7b7;
+	h2, h3 {
+		color: #b7b7b7;
+	}
+	a {
+		color: #fff;
+	}
+	.copyright {
+		padding: 25px 0;
+		border-top: solid 2px #161616;
+		background-color: #050505;
 		text-align: center;
-		@media #{$small-only} {
-			margin: 15px auto;
-		}
-		& + h3 {
-			margin: -30px auto 30px;
-			text-align: center;
-			@media #{$small-only} {
-				margin: -15px auto 15px;
+		small {
+			@include max-screen(50em) {
+				font-size: 10px;
 			}
-		}
-	}
-	.service {
-		& > div {
-			@extend .bottom;
-		}
-		h3 {
-			text-align: center;
-			@media #{$small-only} {
-				font-weight: bold;
-				font-size: rem-calc(18);
-			}
-		}
-	}
-	.solution {
-		& > .large-8 {
-			@extend .bottom-inner;
+			font-size: 14px;
 		}
 	}
 }

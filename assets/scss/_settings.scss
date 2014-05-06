@@ -39,7 +39,7 @@
 // Global
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: #050505;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -662,7 +662,7 @@ $large-range: (50.063em, 90em);
 
 // $include-html-off-canvas-classes: $include-html-classes;
 
-// $tabbar-bg: #333;
+// $tabbar-bg: #000;
 $tabbar-height: rem-calc(50);
 // $tabbar-line-height: $tabbar-height;
 // $tabbar-color: #fff;
@@ -1170,8 +1170,8 @@ $off-canvas-overlay-background-hover: rgba(#000, 0.4);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: #050505;
+$topbar-bg: $topbar-bg-color;
 
 // Height and margin
 $topbar-height: 70px;

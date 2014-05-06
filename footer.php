@@ -12,7 +12,7 @@
  * @link http://visualive.jp/
  */
 ?>
-<footer>
+<footer class="page-footer">
 <?php get_sidebar( 'footer' ); ?>
 <div class="copyright">
 <div class="row">

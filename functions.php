@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *   - フックに登録するだけのコールバック関数は_vacb2014_を接頭辞とします。
  * - フックに登録する場合、特定の事情がなければ関数定義のすぐ下に書いてください。
  */
-ini_set( 'display_errors', 1 );
+// ini_set( 'display_errors', 1 );
 $GLOBALS['vacb_options'] = get_option('_vacb_options_');
 define( 'VACB_TEXTDOMAIN', 'va-cherryblossum-2014' );
 
@@ -43,4 +43,3 @@ get_template_part( 'includes/plugin', 'hack' );
 get_template_part( 'includes/plugin', 'admin-postlist-addcolumns' );
 get_template_part( 'includes/plugin', 'post-discussion-closed' );
 get_template_part( 'includes/plugin', 'simple-expires' );
-

@@ -1,8 +1,11 @@
 <?php get_header(); ?>
-<section class="row occupation">
-	<div class="small-12 columns">
-		<h2>ヴィジュアライブにお任せください</h2>
-		<div class="row service">
+<section class="occupation">
+	<div class="section-heading">
+		<h2><?php the_title(); ?></h2>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<ul class="medium-block-grid-3 service">
 <?php
 $service      = va_get_page_id('service');
 $service_args = array (
@@ -16,91 +19,98 @@ query_posts( $service_args );
 if ( have_posts() ) :
 	while( have_posts() ) : the_post();
 ?>
-			<div class="large-4 columns">
-				<?php the_post_thumbnail('column-3'); ?>
-				<h3><?php the_title(); ?></h3>
-				<div><?php the_excerpt(); ?></div>
-			</div>
+				<li id="post-<?php the_ID(); ?>" <?php post_class('large-4 columns'); ?>>
+					<?php the_post_thumbnail('column-3'); ?>
+					<h3><?php the_title(); ?></h3>
+					<?php the_excerpt(); ?>
+				</li>
 <?php
 	endwhile;
 else:
 endif;
 wp_reset_query();
 ?>
+			</ul>
 		</div>
-<!-- 		<div class="row service">
+	</div>
+	<div class="solution">
+		<div class="row">
+			<div class="large-8 columns"><?php the_post_thumbnail('636x470'); ?></div>
 			<div class="large-4 columns">
-				<img src="http://placehold.jp/606x428.png" alt="">
-				<h3>CMSの導入</h3>
-				<div>WordPressを使ったウェブサイトの制作。現在運営中のウェブサイトをWordPressへの移行。</div>
-			</div>
-			<div class="large-4 columns">
-				<img src="http://placehold.jp/606x428.png" alt="">
-				<h3>保守管理</h3>
-				<div>レンタルサーバー・ドメインの契約更新作業、WordPressのアップデート並びにアップグレード等の保守管理。</div>
-			</div>
-			<div class="large-4 columns">
-				<img src="http://placehold.jp/606x428.png" alt="">
-				<h3>HTMLコーディング</h3>
-				<div>PC・スマートフォンサイト、レスポンシブデザインのHTMLコーディング。</div>
-			</div>
-		</div> -->
-		<div class="row solution">
-			<div class="large-8 columns"><img src="http://placehold.jp/636x470.png" alt=""></div>
-			<div class="large-4 columns">
-				<dl>
-					<dt>自社内で記事の更新したい！</dt>
-					<dd>WordPressなら扱い易い管理画面な為、自社内で簡単に記事の公開・更新が可能です。学習コストは多くありません。</dd>
-					<dt>アクセスアップしたい！</dt>
-					<dd>WordPressはSEOと非常に相性の良いCMSです。すぐにアクセスアップに繋げるのは難しいですが、中期〜長期的に運営していく事でアクセスアップが見込めます。</dd>
-					<dt>お金かけられないんだけど…</dt>
-					<dd>WordPressはGPL v2ライセンスのもとで無償で提供されています。その為、CMSの大規模開発を行う必要が無く、ウェブサイトの制作コストを抑える事が可能です。</dd>
-				</dl>
+				<?php the_content(); ?>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="row release">
-	<div class="small-12 columns">
-		<h2>WordPress plugins which VisuAlive released</h2>
-		<h3>Though it is a very small thing, I offer convenience when there is it.</h3>
-		<ul class="medium-block-grid-3">
-			<li>
-				<img src="http://placehold.jp/606x428.png" alt="">
-			</li>
-			<li>
-				<img src="http://placehold.jp/606x428.png" alt="">
-			</li>
-			<li>
-				<img src="http://placehold.jp/606x428.png" alt="">
-			</li>
-		</ul>
+
+<?php
+$download_args = array(
+					'post_type'      => 'download',
+					'posts_per_page' => 3,
+				);
+query_posts( $download_args );
+if ( have_posts() ) :
+?>
+<section class="release">
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="section-heading">
+				<h2>WordPress plugins which VisuAlive released</h2>
+				<p>Though it is a very small thing, I offer convenience when there is it.</p>
+			</div>
+			<?php while( have_posts() ) : the_post(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'medium-4 columns post-figure' ); ?>>
+				<?php the_post_thumbnail( 'column-3' ); ?>
+				<div class="figcaption">
+					<h3 class="post-title"><?php the_title(); ?></h3>
+					<?php the_excerpt(); ?>
+				</div>
+			</article>
+			<?php endwhile; ?>
+		</div>
 	</div>
 </section>
+<?php else:
+endif;
+wp_reset_query();
+?>
 
+
+<?php
+$works_args = array(
+					'post_type'      => 'works',
+					'posts_per_page' => 4,
+				);
+query_posts( $works_args );
+if ( have_posts() ) :
+?>
 <section class="row project">
 	<div class="small-12 columns">
-		<h2>The past projects of VisuAlive</h2>
-		<h3>Though it is a very small thing, I offer convenience when there is it.</h3>
-		<ul class="medium-block-grid-2 large-block-grid-4">
-			<li>
-				<img src="http://placehold.jp/440x310.png" alt="">
-			</li>
-			<li>
-				<img src="http://placehold.jp/440x310.png" alt="">
-			</li>
-			<li>
-				<img src="http://placehold.jp/440x310.png" alt="">
-			</li>
-			<li>
-				<img src="http://placehold.jp/440x310.png" alt="">
-			</li>
-		</ul>
+		<div class="section-heading">
+			<h2>The past projects of VisuAlive</h2>
+			<h3>Though it is a very small thing, I offer convenience when there is it.</h3>
+		</div>
+		<?php while( have_posts() ) : the_post(); ?>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'medium-3 columns post-figure' ); ?>>
+			<?php the_post_thumbnail( 'column-4' ); ?>
+			<div class="figcaption">
+				<h3 class="post-title"><?php the_title(); ?></h3>
+			</div>
+		</article>
+		<?php endwhile; ?>
 	</div>
 </section>
+<?php else:
+endif;
+wp_reset_query();
+?>
+
 
 <section class="row profile">
+	<div class="section-heading">
+		<h2>The KUCKLU of VisuAlive</h2>
+	</div>
 	<div class="medium-4 columns"><img src="http://placehold.jp/256x256.png" alt=""></div>
 	<div class="medium-8 columns"></div>
 </section>
