@@ -1,0 +1,139 @@
+/* line 2, ../scss/editor-style.scss */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* line 7, ../scss/editor-style.scss */
+
+body {
+  color: #333;
+  line-height: 1.8;
+}
+
+/* line 11, ../scss/editor-style.scss */
+
+.ff-smg {
+  font-family: "Sorts Mill Goudy";
+}
+
+/* line 15, ../scss/editor-style.scss */
+
+.editor-area {
+  /* =WordPress Core http://codex.wordpress.org/CSS
+  -------------------------------------------------------------- */
+}
+
+/* line 18, ../scss/editor-style.scss */
+
+.editor-area .alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 23, ../scss/editor-style.scss */
+
+.editor-area .aligncenter,
+.editor-area div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+
+/* line 28, ../scss/editor-style.scss */
+
+.editor-area .alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+/* line 33, ../scss/editor-style.scss */
+
+.editor-area .alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+/* line 38, ../scss/editor-style.scss */
+
+.editor-area .aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+
+/* line 43, ../scss/editor-style.scss */
+
+.editor-area a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+/* line 48, ../scss/editor-style.scss */
+
+.editor-area a img.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 52, ../scss/editor-style.scss */
+
+.editor-area a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+/* line 57, ../scss/editor-style.scss */
+
+.editor-area a img.aligncenter {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* line 63, ../scss/editor-style.scss */
+
+.editor-area .wp-caption {
+  padding: 5px 3px 10px;
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  border: 1px solid #f0f0f0;
+  background: #fff;
+  text-align: center;
+}
+
+/* line 71, ../scss/editor-style.scss */
+
+.editor-area .wp-caption.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 75, ../scss/editor-style.scss */
+
+.editor-area .wp-caption.alignleft {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 79, ../scss/editor-style.scss */
+
+.editor-area .wp-caption.alignright {
+  margin: 5px 0 20px 20px;
+}
+
+/* line 83, ../scss/editor-style.scss */
+
+.editor-area .wp-caption img {
+  margin: 0;
+  padding: 0;
+  max-width: 98.5%;
+  width: auto;
+  height: auto;
+  border: 0 none;
+}
+
+/* line 92, ../scss/editor-style.scss */
+
+.editor-area .wp-caption p.wp-caption-text {
+  margin: 0;
+  padding: 0 4px 5px;
+  font-size: 11px;
+  line-height: 17px;
+}

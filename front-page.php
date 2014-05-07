@@ -107,12 +107,14 @@ wp_reset_query();
 ?>
 
 
-<section class="row profile">
-	<div class="section-heading">
-		<h2>The KUCKLU of VisuAlive</h2>
+<section class="profile parallax" data-stellar-background-ratio="0.5">
+	<div class="row">
+		<div class="section-heading">
+			<h2>The KUCKLU of VisuAlive</h2>
+		</div>
+		<div class="medium-4 columns"><img src="http://placehold.jp/256x256.png" alt=""></div>
+		<div class="medium-8 columns"></div>
 	</div>
-	<div class="medium-4 columns"><img src="http://placehold.jp/256x256.png" alt=""></div>
-	<div class="medium-8 columns"></div>
 </section>
 <!-- <a href="<?php echo add_query_arg( array( 'lang'=>'en' ), $_SERVER['REQUEST_URI'] ); ?>">テスト</a> -->
 <?php get_footer(); ?>

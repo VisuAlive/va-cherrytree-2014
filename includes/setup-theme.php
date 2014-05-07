@@ -157,7 +157,7 @@ function visualive_theme_font_url() {
 	 * by Lato, translate this to 'off'. Do not translate into your own language.
 	 */
 	if ( 'off' !== _x( 'on', 'Lato font: on or off', 'twentyfourteen' ) ) {
-		$font_url = add_query_arg( 'family', urlencode( 'Vollkorn:700,400' ), "//fonts.googleapis.com/css" );
+		$font_url = add_query_arg( 'family', 'Lato:300,400,700,900|Sorts+Mill+Goudy', "//fonts.googleapis.com/css" );
 	}
 
 	return $font_url;
@@ -171,7 +171,7 @@ if ( ! function_exists( '_visualive_theme_scripts' ) ) :
  */
 function _visualive_theme_scripts() {
 	// Add Lato font, used in the main stylesheet.
-	wp_enqueue_style( 'twentyfourteen-lato', visualive_theme_font_url(), array(), null );
+	wp_enqueue_style( 'va-cherryblossum-font', visualive_theme_font_url(), array(), null );
 
 	// Add Fort Awesome, used in the main stylesheet.
 	wp_enqueue_style( 'fort-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array(), null );
@@ -258,7 +258,7 @@ function _visualive_theme_the_meta_tags() {
 		$metatag .= '<meta property="og:url" content="' . esc_url( get_the_permalink() ) . '">' . "\n";
 	}
 	$metatag .= '<meta property="og:description" content="' . esc_attr( get_bloginfo('description', 'display') ) . '">' . "\n";
-	if ( ( is_singular() || is_single() || is_page() ) && get_post_thumbnail_id() ) {
+	if ( ( is_singular() || is_single() || is_page() ) && get_post_thumbnail_id() && ! is_home() && ! is_front_page() ) {
 		$metatag .= '<meta property="og:image" content="' . esc_url( wp_get_attachment_url( get_post_thumbnail_id() ) ) .'">' . "\n";
 	} elseif ( ! empty($options['vacb_general_seo_ogp_image']) ) {
 		$metatag .= '<meta property="og:image" content="' . esc_url( $options['vacb_general_seo_ogp_image'] ) .'">' . "\n";

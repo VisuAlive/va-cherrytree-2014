@@ -28,7 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $GLOBALS['vacb_options'] = get_option('_vacb_options_');
 define( 'VACB_TEXTDOMAIN', 'va-cherryblossum-2014' );
 
-
 get_template_part( 'includes/vafpress-framework/bootstrap' );
 get_template_part( 'includes/tags' );
 get_template_part( 'includes/setup', 'login' );

@@ -10,22 +10,38 @@
 // window.onload = preloader;
 
 jQuery(function($){
-	var ua         = navigator.userAgent,
-		touch      = Modernizr.touch,
-		parallax   = $('.img-holder'),
-		standalone = window.navigator.standalone,
-		aTags      = $('a');
+	var ua          = navigator.userAgent,
+		touch       = Modernizr.touch,
+		parallax    = $('.img-holder'),
+		parallax2   = $('.parallax'),
+		standalone  = window.navigator.standalone,
+		aTags       = $('a');
 	$(document).foundation();
 
 	// パララックス画像
-	if (parallax.length >= 1) {
-		$('.img-holder').imageScroll({
-			imageAttribute: (touch === true) ? 'image-mobile' : 'image',
-			touch: touch,
-			// coverRatio: 0.6,
-			mediaWidth: 1280,
-			mediaHeight: 753
-		});
+	if (parallax.length >= 1 || parallax2.length >= 1) {
+		if (parallax.length >= 1) {
+			$('.img-holder').imageScroll({
+				imageAttribute: (touch === true) ? 'image-mobile' : 'image',
+				touch: touch,
+				// coverRatio: 0.6,
+				mediaWidth: 1280,
+				mediaHeight: 753
+			});
+			var imgHolderHight = $('.imageHolder').height();
+			$('.imageHolder .small-12').css('height',imgHolderHight);
+		}
+		if (parallax2.length >= 1) {
+			if (Modernizr.touch){
+				$('.parallax').css('background-attachment', 'scroll');
+				$('.parallax').removeAttr('data-stellar-background-ratio');
+			} else {
+				$.stellar({
+					horizontalScrolling: false,
+					verticalOffset: 40
+				});
+			}
+		}
 	} else {
 		$('body').addClass('not_parallax');
 	}

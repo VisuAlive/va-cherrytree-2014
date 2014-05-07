@@ -16,7 +16,7 @@
 <?php get_sidebar( 'footer' ); ?>
 <div class="copyright">
 <div class="row">
-<small class="small-12 columns">Copyright (C) <?php echo date_i18n( 'Y' ); ?> KUCKLU, VisuAlive All Rights Reserved.</small>
+<small class="small-12 columns">Copyright (C) <?php echo date_i18n( 'Y' ); ?> <span class="ff-smg">KUCKLU, VisuAlive</span> All Rights Reserved.</small>
 </div>
 </div>
 </footer>
