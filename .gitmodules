@@ -16,3 +16,6 @@
 [submodule "assets/js/vendor/SlitSlider"]
 	path = assets/js/vendor/SlitSlider
 	url = git@github.com:codrops/SlitSlider.git
+[submodule "assets/js/vendor/RWD-Table-Patterns"]
+	path = assets/js/vendor/RWD-Table-Patterns
+	url = git@github.com:nadangergeo/RWD-Table-Patterns.git
