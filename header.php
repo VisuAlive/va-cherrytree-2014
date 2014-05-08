@@ -26,6 +26,14 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<!-- <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=272538956253165&version=v2.0";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> -->
 <div id="loader-wrap"><div class="loader">Loading</div></div>
 
 <div id="wrap" class="off-canvas-wrap" data-offcanvas>
@@ -33,18 +41,6 @@
 
 <?php get_template_part( 'parts', 'nav' ); ?>
 <?php get_template_part( 'parts', 'navm' ); ?>
-
-<header 
-class="img-holder"
-data-image="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/main/main_visual_4546_2.jpg"
-data-image-mobile="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/main/main_visual_4546_2_m.jpg">
-<div class="row">
-<div class="small-12 columns">
-<div class="header-title">
-<h1 class="header-title-inner"><?php echo get_bloginfo('name'); ?></h1>
-</div>
-</div>
-</div>
-</header>
+<?php get_template_part( 'parts', 'header' ); ?>
 
 <div class="content-wrap">

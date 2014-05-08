@@ -1,28 +1,14 @@
-@charset "utf-8";
 @import "compass";
 @import "media-queries";
 @import "settings";
 @import "foundation";
 @import "editor-style";
 @import "parts";
-
-
-.no-touch .not_parallax {
-	padding-top: $topbar-height;
-}
-
-
-.bottom {
-	margin-bottom: 30px;
-	@include max-screen(50em) {
-		margin-bottom: 15px;
-	}
-}
+@import "vendor/rwd-table.min";
 
 /**
  * コンテンツ
  */
-#wrap,
 .content-wrap {
 	background-color: #fff;
 }
@@ -42,9 +28,9 @@
 		padding-bottom: 0;
 		.service {
 			h3 {
+				@extend .bold;
 				text-align: center;
 				@media #{$small-only} {
-					font-weight: bold;
 					font-size: rem-calc(18);
 				}
 			}
@@ -61,19 +47,85 @@
 					margin-top: 15px;
 				}
 				margin-bottom: 0;
+				dt, dd {
+					position: relative;
+					padding-left: 64px;
+				}
+				dt {
+					@extend .bold;
+					.fa {
+						position: absolute;
+						top: auto;
+						left: 0;
+						font-size: 56px;
+						transform: translateZ(0);
+						&.fa-bar-chart-o {
+							font-size: 48px;
+						}
+						&:hover, &:active {
+							animation-name: pulse;
+							animation-duration: 1s;
+							animation-timing-function: linear;
+							animation-iteration-count: infinite;
+						}
+					}
+					&:hover, &:active {
+						.fa {
+							animation-name: pulse;
+							animation-duration: 1s;
+							animation-timing-function: linear;
+							animation-iteration-count: infinite;
+						}
+					}
+				}
 				dd:last-child {
 					margin-bottom: 0;
 				}
 			}
 		}
 	}
-	.release {}
-	.project {}
+	.release { }
+	.project { }
 	.profile {
+		margin-bottom: -60px;
 		.section-heading {
+			text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 			&:after {
 				background-color: #222;
+				box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 			}
+		}
+		&.parallax {
+			background-image: url('../images/main/main_visual_5890.jpg');
+			background-position: 0 center;
+			background-size: cover;
+			transition: background-position 0 linear 0;
+		}
+		.profile-avatar {
+			margin: 0 auto;
+			padding: 8px;
+			max-width: 100%;
+			width: 256px;
+			border: solid 1px #444;
+			border-radius: 128px;
+			background-color: rgba(255, 255, 255, 0.4);
+			transform: translateZ(0);
+			.avatar {
+				border-radius: 128px;
+			}
+			&:hover {
+				animation-name: buzz;
+				animation-duration: 0.15s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+			}
+		}
+		.profile-desc {
+			margin: 16px 0 0;
+			padding: 8px;
+			border-radius: 8px;
+			background-color: rgba(255, 255, 255, 0.4);
+			text-align: left;
 		}
 	}
 }
@@ -82,9 +134,12 @@
  * フッター
  */
 .page-footer {
-	border-top: solid 5px #218EAD;
+	margin-top: 60px;
+	padding-top: 30px;
 	background-color: #1C1C1C;
 	color: #b7b7b7;
+	// border-top: solid 5px #218EAD;
+	border-top: solid 5px #1a728a;
 	h2, h3 {
 		color: #b7b7b7;
 	}

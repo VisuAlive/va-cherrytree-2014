@@ -15,8 +15,38 @@ jQuery(function($){
 		parallax    = $('.img-holder'),
 		parallax2   = $('.parallax'),
 		standalone  = window.navigator.standalone,
-		aTags       = $('a');
+		aTags       = $('a'),
+		tableTag    = $('table'),
+		insta       = $('.si_feed_list');
 	$(document).foundation();
+
+	// スタンドアローンモードの場合の制御
+	if (standalone) {
+		aTags.each(function(){
+			var url = $(this).attr('href');
+
+			if (url !== '#' && url !== '#wrap' && typeof url !== "undefined") {
+				//念のため、href属性は削除
+				$(this).removeAttr('href');
+				//クリックイベントをバインド
+				$(this).click(function(){
+					location.href = url;
+					return false;
+				});
+			}
+		});
+	}
+
+	// Androidの場合、スクロールバーを隠す
+	if(ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+		$(window).on('load resize', function(){
+			// Hide Address Bar
+			setTimeout(function(){
+				if(0 == document.body.scrollTop)
+					window.scrollTo(0, 1)
+			}, 100)
+		});
+	}
 
 	// パララックス画像
 	if (parallax.length >= 1 || parallax2.length >= 1) {
@@ -46,39 +76,18 @@ jQuery(function($){
 		$('body').addClass('not_parallax');
 	}
 
-	//画面のロード
-	$(window).load(function(){
-		$('#goTop').goToTop();
-		$('#loader-wrap').fadeOut();
-		setTimeout(scrollBy, 100, 0, 1);
-	});
-
-	// スタンドアローンモードの場合の制御
-	if (standalone) {
-		aTags.each(function(){
-			var url = $(this).attr('href');
-
-			if (url !== '#' && url !== '#wrap' && typeof url !== "undefined") {
-				//念のため、href属性は削除
-				$(this).removeAttr('href');
-				//クリックイベントをバインド
-				$(this).click(function(){
-					location.href = url;
-					return false;
-				});
-			}
+	// table tag レスポンシブ対応
+	if (tableTag.length >= 1) {
+		tableTag.wrap('<div class="table-responsive"></div>').addClass("table table-complex");
+		tableTag.responsiveTable({
+			adddisplayallbtn: true,
+			addfocusbtn: false,
+			fixednavbar: '#navbar'//In case you have a fixed navbar.
 		});
 	}
 
-	// Androidの場合、スクロールバーを隠す
-	if(ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
-		$(window).on('load resize', function(){
-			// Hide Address Bar
-			setTimeout(function(){
-				if(0 == document.body.scrollTop)
-					window.scrollTo(0, 1)
-			}, 100)
-		});
+	if (insta.length >= 1) {
+		insta.addClass("small-block-grid-3");
 	}
 });
 /**
@@ -87,10 +96,12 @@ jQuery(function($){
  */
 (function($) {
 	$.fn.goToTop = function() {
-		var myThis = $(this);
+		var myThis  = $(this),
+			bodyTag = $('body');
+
 		//ボタン表示スクリプト
 		$(window).scroll(function() {
-			if ($('body').scrollTop() > 100) {
+			if (bodyTag.scrollTop() > 100) {
 				myThis.fadeIn();
 			} else {
 				myThis.fadeOut();
@@ -99,10 +110,10 @@ jQuery(function($){
 
 		//移動するスクリプト
 		myThis.click(function() {
-			var speed    = 400;
-			var href     = myThis.attr("href");
-			var target   = $(href == "#" || href == "" ? 'html' : href);
-			var position = target.offset().top + 1;
+			var speed    = 400,
+				href     = myThis.attr("href"),
+				target   = $(href == "#" || href == "" ? 'html' : href),
+				position = target.offset().top + 1;
 
 			$('body,html').animate({scrollTop:position}, speed, 'swing');
 

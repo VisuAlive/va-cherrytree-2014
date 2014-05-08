@@ -1,4 +1,5 @@
 @import "settings";
+@import "media-queries";
 html {
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -8,8 +9,24 @@ body {
 	color: #333;
 	line-height: 1.8;
 }
+.no-touch .not_parallax {
+	padding-top: 70px;
+	&.admin-bar {
+		padding-top: 38px;
+	}
+}
 .ff-smg {
 	font-family: "Sorts Mill Goudy";
+}
+.bottom {
+	@include max-screen(50em) {
+		margin-bottom: 15px;
+	}
+	margin-bottom: 30px;
+}
+.bold {
+	text-shadow: 1px 1px 1px #333, 1px 1px 0px #333;
+	font-weight: normal;
 }
 
 .editor-area {

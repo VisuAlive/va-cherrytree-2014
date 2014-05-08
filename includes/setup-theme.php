@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @license http://opensource.org/licenses/gpl-2.0.php GPLv2
  * @link http://visualive.jp/
  */
-
 get_template_part( 'includes/theme', 'hack' );
 
 /**
@@ -46,7 +45,7 @@ function _visualive_theme_setup() {
 	load_theme_textdomain( VACB_TEXTDOMAIN, get_template_directory() . '/languages' );
 
 	// This theme styles the visual editor to resemble the theme style.
-	add_editor_style( 'assets/css/editor-style.css' );
+	add_editor_style( 'assets/css/editor-style.min.css' );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -132,7 +131,7 @@ function _visualive_theme_widgets_init() {
 		'name'          => __( 'Footer Widget Area', VACB_TEXTDOMAIN ),
 		'id'            => 'sidebar-3',
 		'description'   => __( 'Appears in the footer section of the site.', VACB_TEXTDOMAIN ),
-		'before_widget' => '<aside id="%1$s" class="medium-4 columns widget %2$s">',
+		'before_widget' => '<aside id="%1$s" class="large-3 columns widget footer-widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
@@ -170,6 +169,7 @@ if ( ! function_exists( '_visualive_theme_scripts' ) ) :
  * @return void
  */
 function _visualive_theme_scripts() {
+	wp_enqueue_style( 'va-loader', get_template_directory_uri() . '/assets/css/loader.min.css', array(), null );
 	// Add Lato font, used in the main stylesheet.
 	wp_enqueue_style( 'va-cherryblossum-font', visualive_theme_font_url(), array(), null );
 
@@ -177,14 +177,16 @@ function _visualive_theme_scripts() {
 	wp_enqueue_style( 'fort-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', array(), null );
 
 	// Load our main stylesheet.
-	wp_enqueue_style( 'va-cherryblossum-style', get_template_directory_uri() . '/assets/css/app.css', array(), null );
+	wp_enqueue_style( 'va-cherryblossum-style', get_template_directory_uri() . '/assets/css/app.min.css', array(), null );
 
 	// Load the Internet Explorer specific stylesheet.
 	// wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
 	// wp_style_add_data( 'twentyfourteen-ie', 'conditional', 'lt IE 9' );
 
+
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), null );
+	wp_enqueue_script( 'va-loader', get_template_directory_uri() . '/assets/js/va/loader.min.js', array( 'jquery' ), null, false );
 	wp_enqueue_script( 'va-cherryblossum-core', get_template_directory_uri() . '/assets/js/app.min.js', array( 'jquery' ), null, true );
 
 	// if ( is_active_sidebar( 'sidebar-3' ) ) {

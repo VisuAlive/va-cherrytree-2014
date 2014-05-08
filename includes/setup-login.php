@@ -22,7 +22,7 @@ if ( ! function_exists( '_visualive_theme_admin_css_url' ) ) :
  * @return string
  */
 function _visualive_theme_admin_css_url() {
-	wp_enqueue_style( 'va-login', get_stylesheet_directory_uri() . '/assets/css/login.css', array() );
+	wp_enqueue_style( 'va-login', get_stylesheet_directory_uri() . '/assets/css/login.min.css', array() );
 	wp_print_styles();
 }
 endif;

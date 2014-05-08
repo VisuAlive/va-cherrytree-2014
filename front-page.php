@@ -35,8 +35,8 @@ wp_reset_query();
 	</div>
 	<div class="solution">
 		<div class="row">
-			<div class="large-8 columns"><?php the_post_thumbnail('636x470'); ?></div>
-			<div class="large-4 columns">
+			<div class="large-8 large-push-4 columns"><?php the_post_thumbnail('636x470'); ?></div>
+			<div class="large-4 large-pull-8 columns">
 				<?php the_content(); ?>
 			</div>
 		</div>
@@ -112,8 +112,14 @@ wp_reset_query();
 		<div class="section-heading">
 			<h2>The KUCKLU of VisuAlive</h2>
 		</div>
-		<div class="medium-4 columns"><img src="http://placehold.jp/256x256.png" alt=""></div>
-		<div class="medium-8 columns"></div>
+		<div class="medium-4 columns">
+			<div class="profile-avatar"><?php echo va_get_user_prof('1', '256')['avatar']; ?></div>
+		</div>
+		<div class="medium-8 columns">
+			<p class="profile-desc">
+				テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+			</p>
+		</div>
 	</div>
 </section>
 <!-- <a href="<?php echo add_query_arg( array( 'lang'=>'en' ), $_SERVER['REQUEST_URI'] ); ?>">テスト</a> -->
