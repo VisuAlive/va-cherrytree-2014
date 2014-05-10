@@ -56,7 +56,7 @@ if ( have_posts() ) :
 	<div class="row">
 		<div class="small-12 columns">
 			<div class="section-heading">
-				<h2>WordPress plugins which VisuAlive released</h2>
+				<h2>Plugins and themes that VisuAlive has released</h2>
 				<p>Though it is a very small thing, I offer convenience when there is it.</p>
 			</div>
 			<?php while( have_posts() ) : the_post(); ?>

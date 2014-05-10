@@ -60,7 +60,7 @@ if ( ! function_exists( '_visualive_theme_bloginfo' ) ) :
  * @return string
  */
 function _visualive_theme_bloginfo( $output, $show) {
-	if ( ! va_is_login() )
+	if ( va_is_login() )
 		return $output;
 
 	switch( $show ) :
@@ -83,12 +83,15 @@ function _visualive_theme_bloginfo( $output, $show) {
 					}
 				}
 			break;
+		case 'manifest':
+				$output = home_url( '/manifest.appcache' );
+			break;
 	endswitch;
 
 	return $output;
 }
 endif; // _visualive_theme_bloginfo
-add_filter( 'bloginfo', '_visualive_theme_bloginfo', 10, 2 );
+add_filter( 'bloginfo', '_visualive_theme_bloginfo', 9999, 2 );
 
 
 if ( ! function_exists( '_visualive_theme_excerpt' ) ) :

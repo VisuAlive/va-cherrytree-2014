@@ -21,6 +21,14 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 714; /* pixels */
 }
 
+if ( ! function_exists( '_visualive_theme_after_switch_theme' ) ) :
+function _visualive_theme_after_switch_theme() {
+	flush_rewrite_rules();
+}
+endif;
+add_action( 'after_switch_theme', '_visualive_theme_after_switch_theme' );
+
+
 if ( ! function_exists( '_visualive_theme_setup' ) ) :
 /**
  * VA CherryBlossum 2014 setup.
@@ -186,7 +194,6 @@ function _visualive_theme_scripts() {
 
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), null );
-	wp_enqueue_script( 'va-loader', get_template_directory_uri() . '/assets/js/va/loader.min.js', array( 'jquery' ), null, false );
 	wp_enqueue_script( 'va-cherryblossum-core', get_template_directory_uri() . '/assets/js/app.min.js', array( 'jquery' ), null, true );
 
 	// if ( is_active_sidebar( 'sidebar-3' ) ) {

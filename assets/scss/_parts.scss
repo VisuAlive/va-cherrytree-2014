@@ -160,7 +160,7 @@ $header-shrink: $topbar-height - 20px;
 	}
 }
 .cbp-af-header {
-	position: fixed;
+	position: static;
 	top: 0;
 	left: 0;
 	z-index: 10000;

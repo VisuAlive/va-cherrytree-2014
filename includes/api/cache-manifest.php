@@ -4,10 +4,9 @@ $mod   = filemtime( __FILE__ );
 $date  = date_i18n( 'U', $mod );
 $dir   = '..' . str_replace( home_url(), '', get_stylesheet_directory_uri() );
 $files = array(
-			$dir . '/assets/css/loader.min.css',
+			// $dir . '/assets/css/loader.min.css',
 			// $dir . '/assets/css/app.min.css',
-			$dir . '/assets/js/jquery.min.js',
-			$dir . '/assets/js/va/loader.min.js',
+			// $dir . '/assets/js/jquery.min.js',
 			// $dir . '/assets/js/app.min.js',
 			'http://www.google-analytics.com/analytics.js',
 			'http://themes.googleusercontent.com/static/fonts/lato/v7/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff',

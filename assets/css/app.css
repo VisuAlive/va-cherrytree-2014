@@ -8460,6 +8460,10 @@ th.hide-for-touch {
   display: table-cell !important;
 }
 
+* {
+  word-break: break-all;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -8469,14 +8473,6 @@ html {
 body {
   color: #333;
   line-height: 1.8;
-}
-
-.no-touch .not_parallax {
-  padding-top: 70px;
-}
-
-.no-touch .not_parallax.admin-bar {
-  padding-top: 38px;
 }
 
 .ff-smg {
@@ -8860,7 +8856,7 @@ body {
 }
 
 .cbp-af-header {
-  position: fixed;
+  position: static;
   top: 0;
   left: 0;
   z-index: 10000;

@@ -14,7 +14,7 @@
  ?>
 <!doctype html>
 <!--[if IE 9]><html class="no-js lt-ie10" <?php language_attributes(); ?>> <![endif]-->
-<html class="no-js" <?php language_attributes(); ?>>
+<html class="no-js" <?php language_attributes(); ?> manifest="<?php bloginfo( 'manifest', 'display' ); ?>">
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,6 +23,10 @@
 <meta name="apple-mobile-web-app-title" content="VisuAlive">
 <meta name="format-detection" content="telephone=no">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
+<!--
+    Your smile is the best reward.
+                            by VisuAlive (｡◕ ∀ ◕｡)
+-->
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
