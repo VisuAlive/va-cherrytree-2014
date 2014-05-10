@@ -1,5 +1,7 @@
 @import "settings";
 @import "media-queries";
+@import "vendor/footable.core.min";
+@import "vendor/footable.standalone.min";
 
 * {
 	word-break: break-all;
@@ -12,6 +14,18 @@ html {
 body {
 	color: #333;
 	line-height: 1.8;
+	.no-touch & .inner-wrap {
+		@include  max-screen(50em) {
+			padding-top: 0;
+		}
+		padding-top: $topbar-height;
+	}
+	&.admin-bar {
+		.cbp-af-header,
+		.imageHolder {
+			top: 32px;
+		}
+	}
 }
 
 
@@ -31,6 +45,10 @@ body {
 
 
 .editor-area {
+	table {
+		border-top: none !important;
+		border-radius: 0 !important;
+	}
 	/* =WordPress Core http://codex.wordpress.org/CSS
 	-------------------------------------------------------------- */
 	.alignnone {

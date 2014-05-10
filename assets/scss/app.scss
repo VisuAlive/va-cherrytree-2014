@@ -4,13 +4,86 @@
 @import "foundation";
 @import "editor-style";
 @import "parts";
-@import "vendor/rwd-table.min";
 
 /**
  * コンテンツ
  */
 .content-wrap {
 	background-color: #fff;
+	.breadcrumbs {
+		margin: 0;
+		padding: 24px 0;
+		border: none;
+		background-color: transparent;
+	}
+	.post-orbit {
+		@include max-screen(50em) {
+			padding-right: 0 !important;
+			padding-left: 0 !important;
+		}
+		@include max-screen(35.5em) {
+			margin-bottom: 20px !important;
+		}
+		margin-bottom: 30px;
+		img {
+			@include max-screen(35.5em) {
+				height: 200px !important;
+			}
+			width: 100%;
+			height: 300px;
+		}
+	}
+	#masonry {
+		.post .small-12 {
+			@include max-screen(50em) {
+				margin-bottom: 20px !important;
+			}
+			margin-bottom: 30px;
+			background: #f7f7f7;
+		}
+		.post img {
+			height: 214px;
+		}
+	}
+	.page & .entry-title {
+		@include max-screen(50em) {
+			padding: 25px 0 !important;
+			h1 {
+				font-size: 24px !important;
+				line-height: 34px !important;
+			}
+		}
+		position: relative;
+		overflow: hidden;
+		padding: 50px 0;
+		border-bottom: solid 1px #e7e7e7;
+		background: #f7f7f7;
+		h1 {
+			color: #747474;
+			font-size: 36px;
+			line-height: 46px;
+		}
+	}
+	.blog & {
+		.entry-thumbnail {
+			padding: 0;
+		}
+		.entry-title {
+			h1 {
+				padding: 16px 0 8px;
+				font-size: 22px;
+				a {
+					color: #333;
+				}
+			}
+		}
+		.entry-excerpt p {
+			margin-bottom: 0;
+			padding: 0 0 16px;
+			color: #777;
+			font-size: 14px;
+		}
+	}
 }
 
 

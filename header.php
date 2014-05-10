@@ -14,7 +14,11 @@
  ?>
 <!doctype html>
 <!--[if IE 9]><html class="no-js lt-ie10" <?php language_attributes(); ?>> <![endif]-->
+<?php if ( ! is_user_logged_in() ) : ?>
 <html class="no-js" <?php language_attributes(); ?> manifest="<?php bloginfo( 'manifest', 'display' ); ?>">
+<?php else: ?>
+<html class="no-js" <?php language_attributes(); ?>>
+<?php endif; ?>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">

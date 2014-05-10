@@ -1,10 +1,22 @@
-//アプリケーションキャッシュ
+/**!
+ * VisuAlive core javascript
+ * http://visualive.jp/
+ * Copyright KUCKLU, VisuAlive
+ */
+
+
+/**
+ * アプリケーションキャッシュの制御
+ * 
+ * @link
+ */
 window.addEventListener('load', function() {
 	var appCache = window.applicationCache;
 
 	appCache.addEventListener('updateready', function(evt) {
 		if (appCache.status == appCache.UPDATEREADY) {
 			appCache.swapCache();
+			window.location.reload();
 		}
 	}, false);
 
@@ -15,12 +27,46 @@ window.addEventListener('load', function() {
 	}
 }, false);
 
-//画面のロード
+
+/**
+ * 画面のロード
+ * 
+ * @link
+ */
 jQuery(function($){
 	$('#goTop').goToTop();
 	$('#loader-wrap').fadeOut();
-	setTimeout(scrollBy, 100, 0, 1);
+	$(document).hideAddressBar();
 });
+
+
+/**
+ * Androidの場合、スクロールバーを隠す
+ * 
+ * @link
+ */
+(function($){
+	$.fn.hideAddressBar = function(options) {
+		// options = $.extend({
+		//
+		// }, options);
+		var ua = navigator.userAgent;
+
+		if(ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+			// $(window).on('load', function() {
+			// 	setTimeout(scrollBy, 100, 0, 1);
+			// });
+			$(window).on('load resize', function(){
+				// Hide Address Bar
+				setTimeout(function(){
+					if(0 == document.body.scrollTop)
+						window.scrollBy(0, 1)
+				}, 100)
+			});
+		}
+	};
+})(jQuery);
+
 
 /**
  * ページトップへ戻る

@@ -94,6 +94,20 @@ endif; // _visualive_theme_bloginfo
 add_filter( 'bloginfo', '_visualive_theme_bloginfo', 9999, 2 );
 
 
+if ( ! function_exists( '_visualive_theme_content' ) ) :
+/**
+ * Change the content
+ *
+ * @return string
+ */
+function _visualive_theme_content( $content ) {
+	$content = force_balance_tags($content);
+	return str_replace( array('<p></p>', '<p>&nbsp;</p>', '<p> </p>'), '', $content );
+}
+endif; // _visualive_theme_content
+add_filter( 'the_content', '_visualive_theme_content' );
+
+
 if ( ! function_exists( '_visualive_theme_excerpt' ) ) :
 /**
  * Change the excerpt
@@ -116,8 +130,8 @@ function _visualive_theme_excerpt( $output ) {
 
 	return $output;
 }
-endif; // _visualive_theme_bloginfo
-add_filter( 'get_the_excerpt', '_visualive_theme_excerpt', 10, 2 );
+endif; // _visualive_theme_excerpt
+add_filter( 'get_the_excerpt', '_visualive_theme_excerpt' );
 
 
 if ( ! function_exists( '_visualive_theme_remove_cssjs_ver' ) ) :

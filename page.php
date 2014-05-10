@@ -1,14 +1,22 @@
 <?php get_header();
-get_template_part( 'parts', 'breadcrumbs' );
 
 if ( have_posts() ) :
 while( have_posts() ) : the_post();
 ?>
-<div class="row">
-<div <?php post_class("small-12 columns"); ?>>
-	<div class="entry-title"><?php the_title(); ?></div>
-	<div class="entry-body"><?php the_content(); ?></div>
-</div>
+<header class="entry-title">
+	<div class="row">
+		<div class="small-12 columns">
+			<h1><?php the_title(); ?></h1>
+		</div>
+	</div>
+</header>
+<?php get_template_part( 'parts', 'breadcrumbs' ); ?>
+<div <?php post_class("entry-body"); ?>>
+	<div class="row">
+		<div class="small-12 columns">
+			<?php the_content(); ?>
+		</div>
+	</div>
 </div>
 <?php
 endwhile;

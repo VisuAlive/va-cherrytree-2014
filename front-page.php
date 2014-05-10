@@ -113,12 +113,13 @@ wp_reset_query();
 			<h2>The KUCKLU of VisuAlive</h2>
 		</div>
 		<div class="medium-4 columns">
-			<div class="profile-avatar"><?php echo va_get_user_prof('1', '256')['avatar']; ?></div>
+			<div class="profile-avatar"><?php echo va_get_user_prof(1, 256)['avatar']; ?></div>
 		</div>
 		<div class="medium-8 columns">
-			<p class="profile-desc">
-				テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-			</p>
+			<div class="profile-desc">
+				<h3><?php echo va_get_user_prof(1)['name']; ?></h3>
+				<p><?php echo va_get_user_prof(1)['description']; ?></p>
+			</div>
 		</div>
 	</div>
 </section>

@@ -1,89 +1,130 @@
 /**!
  * VisuAlive core javascript
  * http://visualive.jp/
- * Copyright 2014, VisuAlive
-*/
+ * Copyright KUCKLU, VisuAlive
+ */
+
 
 jQuery(function($){
-	var ua          = navigator.userAgent,
-		touch       = Modernizr.touch,
-		parallax    = $('.img-holder'),
-		parallax2   = $('.parallax'),
-		standalone  = window.navigator.standalone,
-		aTags       = $('a'),
-		tableTag    = $('.entry-body table'),
-		insta       = $('.si_feed_list');
 	$(document).foundation();
+	$(document).standaloneMode();
+	$(document).parallaxBox();
+	$(document).masonryBox();
+	$('.entry-body table').respondTable();
 
-	// スタンドアローンモードの場合の制御
-	if (standalone) {
-		aTags.each(function(){
-			var url = $(this).attr('href');
-
-			if (url !== '#' && url !== '#wrap' && typeof url !== "undefined") {
-				//念のため、href属性は削除
-				$(this).removeAttr('href');
-				//クリックイベントをバインド
-				$(this).click(function(){
-					location.href = url;
-					return false;
-				});
-			}
-		});
-	}
-
-	// Androidの場合、スクロールバーを隠す
-	if(ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
-		$(window).on('load resize', function(){
-			// Hide Address Bar
-			setTimeout(function(){
-				if(0 == document.body.scrollTop)
-					window.scrollTo(0, 1)
-			}, 100)
-		});
-	}
-
-	// パララックス画像
-	if (parallax.length > 0 || parallax2.length > 0) {
-		if (parallax.length > 0) {
-			$('.img-holder').imageScroll({
-				imageAttribute: (touch === true) ? 'image-mobile' : 'image',
-				touch: touch,
-				// coverRatio: 0.6,
-				mediaWidth: 1280,
-				mediaHeight: 753
-			});
-			var imgHolderHight = $('.imageHolder').height();
-			$('.imageHolder .small-12').css('height',imgHolderHight);
-		}
-		if (parallax2.length > 0) {
-			if (Modernizr.touch){
-				$('.parallax').css('background-attachment', 'scroll');
-				$('.parallax').removeAttr('data-stellar-background-ratio');
-			} else {
-				$.stellar({
-					horizontalScrolling: false,
-					verticalOffset: 40
-				});
-			}
-		}
-	} else {
-		$('body').addClass('not_parallax');
-	}
-
-	if (tableTag.length > 0) {
-		tableTag.wrap('<div class="table-responsive" data-pattern="priority-columns"></div>').addClass("table table-complex");
-		tableTag.responsiveTable({
-			adddisplayallbtn: true,
-			addfocusbtn: false,
-			fixednavbar: '#navbar'//In case you have a fixed navbar.
-		});
-	}
-
+	var insta = $('.si_feed_list');
 	if (insta.length > 0) {
 		insta.addClass("small-block-grid-3");
 	}
 });
+
+
+/**
+ * スタンドアローンモード時のアンカーの動作
+ * 
+ * @link
+ */
+(function($){
+	$.fn.standaloneMode = function(options) {
+		// options = $.extend({
+		//
+		// }, options);
+		var standalone = window.navigator.standalone;
+
+		if (standalone) {
+			$('a').each(function(){
+				var url = $(this).attr('href');
+
+				if (url !== '#' && url !== '#wrap' && typeof url !== "undefined") {
+					//念のため、href属性は削除
+					$(this).removeAttr('href');
+					//クリックイベントをバインド
+					$(this).click(function(){
+						location.href = url;
+						return false;
+					});
+				}
+			});
+		}
+	};
+})(jQuery);
+
+
+/**
+ * パララックス
+ * 
+ * @link
+ */
+(function($){
+	$.fn.parallaxBox = function(options) {
+		// options = $.extend({
+		//
+		// }, options);
+		var touch          = Modernizr.touch,
+		    imgHolder      = $('.img-holder'),
+		    parallax       = $('.parallax');
+
+		if (imgHolder.length > 0 || parallax.length > 0) {
+			if (imgHolder.length > 0) {
+				imgHolder.imageScroll({
+					imageAttribute: (touch === true) ? 'image-mobile' : 'image',
+					touch: touch,
+					// coverRatio: 0.6,
+					mediaWidth: 1280,
+					mediaHeight: 753
+				});
+				$('.imageHolder .small-12').css('height', $('.imageHolder').height());
+			}
+			if (parallax.length > 0) {
+				if (Modernizr.touch){
+					parallax.css('background-attachment', 'scroll');
+					parallax.removeAttr('data-stellar-background-ratio');
+				} else {
+					$.stellar({
+						horizontalScrolling: false,
+						verticalOffset: 40
+					});
+				}
+			}
+		} else {
+			$('body').addClass('not_parallax');
+		}
+	};
+})(jQuery);
+
+
+/**
+ * Tableをレスポンシブに対応
+ * 要FooTable.js
+ * @link
+ */
+(function($){
+	$.fn.respondTable = function(options) {
+		// options = $.extend({
+		// 	'library': undefined
+		// }, options);
+		var myThis = $(this);
+
+		if (myThis.length > 0) {
+			var trCount  = myThis.children('tbody').children('tr').length,
+			    tdCount  = myThis.children('tbody').children('tr').children('td').length,
+			    addCount = tdCount / trCount;
+
+			myThis.addClass('footable table').prepend('<thead style="display:none;"><tr></tr></thead>');
+			for (var i = 1; i <= addCount; i++) {
+				myThis.find('thead').find('tr').prepend('<th></th>');
+			};
+			myThis.find('thead').find('tr').each(function(){
+				$(this).children('th:not(:first)').attr({'data-hide':'phone'});
+			});
+			myThis.footable().find('td').css('float','none');
+		} else {
+			console.log('Error');
+		}
+	};
+})(jQuery);
+
+
 /**
  * グローバルナビをページトップに固定
  * @link
@@ -106,4 +147,22 @@ jQuery(function($){
 		});
 	};
 	// $('.cbp-af-header').fixedBox();
+})(jQuery);
+
+
+/**
+ * Masonry
+ * @link
+ */
+(function($) {
+	$.fn.masonryBox = function() {
+		var masonry = $('#masonry');
+
+		if (masonry.length > 0) {
+			masonry.masonry({
+				'itemSerector': '.post',
+				'isAnimated': true
+			});
+		}
+	};
 })(jQuery);

@@ -6,6 +6,8 @@ class VisuAlive_API {
 	function __construct() {
 		add_action( 'generate_rewrite_rules', array( $this, 'generate_rewrite_rules' ) );
 		add_action( 'wp', array( $this, 'wp' ) );
+		add_action( 'save_post', array( $this, 'manifest_update') );
+		add_action( 'delete_post', array( $this, 'manifest_update') );
 		add_filter( 'query_vars', array( $this, 'query_vars' ) );
 		add_filter( 'api_cachemanifest', array( $this, 'api_cachemanifest' ), 10, 2 );
 		add_filter( 'api_robots', array( $this, 'api_robots' ), 10, 2 );
@@ -114,7 +116,17 @@ class VisuAlive_API {
 
 		return $args;
 	}
+	function manifest_update() {
+		$old = get_stylesheet_directory() . '/includes/api/cache-manifest.php';
+		$new = get_stylesheet_directory() . '/includes/api/cache-manifest_new.php';
 
+		if ( copy( $old, $new ) ) {
+			if ( unlink( $old ) ) {
+				if ( rename( $new, $old ) ) {
+				}
+			}
+		}
+	}
 
 /********************
  * JSONを返すサンプル
