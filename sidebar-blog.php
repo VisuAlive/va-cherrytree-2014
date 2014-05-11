@@ -12,7 +12,6 @@
  * @link http://visualive.jp/
  */
  ?>
-<?php //if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
-テスト
+<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
 <?php dynamic_sidebar( 'sidebar-2' ); ?>
-<?php //endif; ?>
+<?php endif; ?>

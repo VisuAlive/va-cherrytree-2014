@@ -3,7 +3,7 @@
 if ( have_posts() ) :
 while( have_posts() ) : the_post();
 ?>
-<header class="entry-title">
+<header class="entry-title primary">
 	<div class="row">
 		<div class="small-12 columns">
 			<h1><?php the_title(); ?></h1>

@@ -5,9 +5,9 @@ $date  = date_i18n( 'Y-m-d H:i:s', $mod );
 $dir   = '.' . str_replace( home_url(), '', get_stylesheet_directory_uri() );
 $files = array(
 			$dir . '/assets/css/loader.min.css',
-			$dir . '/assets/css/app.min.css',
+			// $dir . '/assets/css/app.min.css',
 			$dir . '/assets/js/jquery.min.js',
-			$dir . '/assets/js/app.min.js',
+			// $dir . '/assets/js/app.min.js',
 			'./wp-includes/js/masonry.min.js',
 			'./wp-includes/js/jquery/jquery.masonry.min.js',
 			'http://www.google-analytics.com/analytics.js',

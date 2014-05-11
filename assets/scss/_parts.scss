@@ -2,6 +2,10 @@
 @import "settings";
 @import "_animation";
 
+.bold {
+	text-shadow: 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 1px #333;
+	font-weight: normal;
+}
 
 /**
  * ページトップに戻るボタン
@@ -371,25 +375,126 @@ $header-shrink: $topbar-height - 20px;
 /**
  * ウィジェット
  */
-.widget-title {
-	font-family: "Sorts Mill Goudy";
+/* 共通 */
+.widget {
+	margin-bottom: 32px;
+	.widget-title {
+		color: #747474;
+		font-family: "Sorts Mill Goudy";
+		a {
+			color: #747474;
+		}
+	}
+	.post-date,
+	.rss-date {
+		display: block;
+		color: #747474;
+		font-size: 12px;
+	}
+	ul, ol, li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		padding: 12px 8px;
+		border-bottom: solid 1px #f0f0f0;
+		.children {
+			margin: 0 -8px 0;
+			padding-top: 12px;
+			li {
+				padding-left: 24px;
+				border-top: solid 1px #f0f0f0;
+				border-bottom: none;
+				&:last-child {
+					padding-bottom: 0;
+				}
+			}
+			.children {
+				margin: 0 -8px 0 -24px;
+				li {
+					padding-left: 36px;
+				}
+				.children {
+					margin: 0 -8px 0 -24px;
+					li {
+						padding-left: 48px;
+					}
+				}
+			}
+		}
+	}
 }
+/* コンテンツのサイドバー */
+.content-wrap .large-4 .widget {
+	.widget-title {
+		text-shadow: 0px 0px 1px #747474, 0px 0px 1px #747474;
+		font-weight: normal;
+		font-size: 16px;
+	}
+}
+/* footer */
 .footer-widget {
 	margin-bottom: 30px;
 }
+/* カレンダーウィジェット */
+.widget_calendar {
+	#wp-calendar {
+		width: 100%;
+		thead th, tbody td {
+			text-align: center;
+		}
+	}
+}
+/* 最近の投稿ウィジェット */
+.widget_recent_entries {
+}
+/* RSSウィジェット */
+.widget_rss {
+
+}
+/* 検索フォーム */
+.widget_search {
+	label {
+		display: inline-block;
+		width: 70%;
+		.screen-reader-text {
+			width: 20%;
+		}
+		.search-field {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			width: 80%;
+		}
+	}
+	.search-submit {
+		display: inline-block;
+		width: 29%;
+	}
+}
 /* Recent Posts Widget Extended */
-.rpwe-ul {
-	margin-bottom: 0;
-	.rpwe-clearfix {
-		border-color: #585858 !important;
-		&:last-child{
-			border:none;
-		}
-		& .rpwe-thumb {
+.rpwe-block li {
+	margin-bottom: 0 !important;
+}
+.page-footer {
+	.rpwe-ul {
+		margin-bottom: 0;
+		.rpwe-clearfix {
+			padding: 8px 0;
 			border-color: #585858 !important;
-		}
-		&:last-child {
-			margin-bottom: 0;
+			&:first-child{
+				padding-top: 0;
+			}
+			&:last-child{
+				border:none;
+			}
+			& .rpwe-thumb {
+				border-color: #585858 !important;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 }
@@ -397,6 +502,9 @@ $header-shrink: $topbar-height - 20px;
 .si_feed_widget {
 	&, .si_feed_list {
 		margin-right: -4px;
+	}
+	li {
+		border: none;
 	}
 	.si_feed_list {
 		.si_item {
@@ -409,7 +517,7 @@ $header-shrink: $topbar-height - 20px;
 		}
 	}
 }
-
+/* お問い合わせフォーム */
 form.contact-form.commentsblock {
 	input, textarea {
 		max-width: none;
@@ -428,7 +536,7 @@ form.contact-form.commentsblock {
 .textwidget {
 	form.contact-form.commentsblock {
 		textarea {
-			height: 133px;
+			height: 117px;
 		}
 		.pushbutton-wide {
 			padding-top: 5px;

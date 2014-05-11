@@ -14,8 +14,9 @@
  ?>
 <!doctype html>
 <!--[if IE 9]><html class="no-js lt-ie10" <?php language_attributes(); ?>> <![endif]-->
+<!-- manifest="<?php bloginfo( 'manifest', 'display' ); ?>" -->
 <?php if ( ! is_user_logged_in() ) : ?>
-<html class="no-js" <?php language_attributes(); ?> manifest="<?php bloginfo( 'manifest', 'display' ); ?>">
+<html class="no-js" <?php language_attributes(); ?>>
 <?php else: ?>
 <html class="no-js" <?php language_attributes(); ?>>
 <?php endif; ?>

@@ -39,15 +39,16 @@
 				margin-bottom: 20px !important;
 			}
 			margin-bottom: 30px;
-			background: #f7f7f7;
+			border: solid 1px #f0f0f0;
+			background: #fff;
 		}
 		.post img {
 			height: 214px;
 		}
 	}
-	.page & .entry-title {
+	.entry-title.primary {
 		@include max-screen(50em) {
-			padding: 25px 0 !important;
+			padding: 20px 0 !important;
 			h1 {
 				font-size: 24px !important;
 				line-height: 34px !important;
@@ -55,7 +56,7 @@
 		}
 		position: relative;
 		overflow: hidden;
-		padding: 50px 0;
+		padding: 40px 0;
 		border-bottom: solid 1px #e7e7e7;
 		background: #f7f7f7;
 		h1 {
@@ -72,9 +73,6 @@
 			h1 {
 				padding: 16px 0 8px;
 				font-size: 22px;
-				a {
-					color: #333;
-				}
 			}
 		}
 		.entry-excerpt p {
@@ -82,6 +80,19 @@
 			padding: 0 0 16px;
 			color: #777;
 			font-size: 14px;
+		}
+		.entry-footer {
+			margin: 0 -15px;
+			padding: 4px 15px;
+			border-top: solid 1px #f0f0f0;
+			background: #f7f7f7;
+			font-size: 12px;
+			.fa {
+				margin-right: 8px;
+			}
+			time {
+				margin-left: 16px;
+			}
 		}
 	}
 }
