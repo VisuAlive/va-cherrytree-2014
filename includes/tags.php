@@ -65,7 +65,7 @@ if ( get_header_image() ) :
  * @return
  */
 function va_get_user_prof( $userid = false, $size = 180 ) {
-	if ( ! $userid || ! preg_match("/^[0-9]+$/", $userid) || ! preg_match("/^[0-9]+$/", $size))
+	if ( ( ! $userid && ! preg_match("/^[0-9]+$/", $userid) ) && ! preg_match("/^[0-9]+$/", $size) )
 		return false;
 
 	$data = get_userdata( $userid );
