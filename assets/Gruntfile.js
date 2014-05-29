@@ -1,9 +1,14 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		// cssmin: {
-		// 	compress: {
-		// 		files: {
-		// 			'./min.css': ['css/base.css', 'css/style.css']
+		// 	minify: {
+		// 		expand: true,
+		// 		cwd: 'css/',
+		// 		src: ['**/*.css', '!**/*.min.css'],
+		// 		dest: 'css/',
+		// 		ext: '.min.css',
+		// 		options: {
+		// 			noAdvanced: true,
 		// 		}
 		// 	}
 		// },
@@ -13,7 +18,10 @@ module.exports = function(grunt) {
 				cwd: 'css/',
 				src: ['*.css', '!*.min.css'],
 				dest: 'css/',
-				ext: '.min.css'
+				ext: '.min.css',
+				options: {
+					restructure: false
+				}
 			}
 		},
 		watch: {

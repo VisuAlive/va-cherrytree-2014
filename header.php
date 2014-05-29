@@ -13,12 +13,12 @@
  */
  ?>
 <!doctype html>
-<!--[if IE 9]><html class="no-js lt-ie10" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10" <?php language_attributes(); ?>><![endif]-->
 <!-- manifest="<?php bloginfo( 'manifest', 'display' ); ?>" -->
 <?php if ( ! is_user_logged_in() ) : ?>
-<html class="no-js" <?php language_attributes(); ?>>
+<!--[if gt IE 9]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]--> 
 <?php else: ?>
-<html class="no-js" <?php language_attributes(); ?>>
+<!--[if gt IE 9]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]--> 
 <?php endif; ?>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">

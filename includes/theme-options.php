@@ -100,9 +100,30 @@ $theme_options = new VP_Option(
 																	),
 																	array(
 																		'type'        => 'textbox',
+																		'name'        => 'vacb_general_seo_ogp_fbpage',
+																		'label'       => __( 'Facebook Page URL', VACB_TEXTDOMAIN ),
+																		'description' => __( 'Your Facebook Page URL.<br>It is common and is used.', VACB_TEXTDOMAIN ),
+																		'validation'  => 'url'
+																	),
+																	array(
+																		'type'        => 'textbox',
 																		'name'        => 'vacb_general_seo_ogp_twitter_id',
 																		'label'       => __( 'Twitter Account', VACB_TEXTDOMAIN ),
 																		'description' => __( 'It is common and is used.', VACB_TEXTDOMAIN )
+																	),
+																	array(
+																		'type'        => 'textbox',
+																		'name'        => 'vacb_general_seo_ogp_plus',
+																		'label'       => __( 'Google+ Profile URL', VACB_TEXTDOMAIN ),
+																		'description' => __( 'Your Google+ Profile URL.<br>It is common and is used.', VACB_TEXTDOMAIN ),
+																		'validation'  => 'url'
+																	),
+																	array(
+																		'type'        => 'textbox',
+																		'name'        => 'vacb_general_seo_ogp_plus_page',
+																		'label'       => __( 'Google+ Page URL', VACB_TEXTDOMAIN ),
+																		'description' => __( 'Your Google+ Page URL.<br>It is common and is used.', VACB_TEXTDOMAIN ),
+																		'validation'  => 'url'
 																	)
 																) // fields
 															), // section

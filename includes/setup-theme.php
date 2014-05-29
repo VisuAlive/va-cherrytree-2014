@@ -21,12 +21,63 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 714; /* pixels */
 }
 
+
 if ( ! function_exists( '_visualive_theme_after_switch_theme' ) ) :
 function _visualive_theme_after_switch_theme() {
+	_visualive_theme_push_htaccess( 'activate' );
+	_work_genre_insert_term();
+	_work_charge_insert_term();
 	flush_rewrite_rules();
 }
 endif;
 add_action( 'after_switch_theme', '_visualive_theme_after_switch_theme' );
+
+
+if ( ! function_exists( '_visualive_theme_switch_theme' ) ) :
+function _visualive_theme_switch_theme() {
+	_visualive_theme_push_htaccess( 'deactivate' );
+	flush_rewrite_rules();
+}
+endif;
+add_action( 'switch_theme', '_visualive_theme_switch_theme' );
+
+
+if ( ! function_exists( '_visualive_theme_push_htaccess' ) ) :
+/**
+ * Edit htaccess.
+ *
+ * @link https://github.com/wokamoto/wp-basic-auth
+ * @return void
+ */
+function _visualive_theme_push_htaccess( $flug = false ) {
+	$htaccess_rewrite_rule = '# BEGIN VACB BASIC AUTH
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
+</IfModule>
+# END VACB BASIC AUTH
+
+';
+
+	if ( ! file_exists(ABSPATH.'.htaccess') || ! $flug)
+		return;
+	$htaccess = file_get_contents(ABSPATH.'.htaccess');
+
+	switch ($flug) {
+		case 'activate':
+			if ( strpos( $htaccess, $htaccess_rewrite_rule ) !== false )
+				return;
+			file_put_contents( ABSPATH.'.htaccess', $htaccess_rewrite_rule . $htaccess );
+			break;
+		case 'deactivate':
+			if ( strpos( $htaccess, $htaccess_rewrite_rule ) === false )
+				return;
+			file_put_contents( ABSPATH.'.htaccess', str_replace( $htaccess_rewrite_rule, '', $htaccess ) );
+			break;
+	}
+}
+endif;
 
 
 if ( ! function_exists( '_visualive_theme_setup' ) ) :
@@ -219,11 +270,14 @@ function _visualive_theme_the_meta_tags() {
 	$meta_noindex = vp_metabox('_vacb_metaboxs_seo_.vacb_seo_noindex');
 	$noindex      = $options['vacb_general_seo_noindex'];
 	$admins_id    = $options['vacb_general_seo_ogp_admins_id'];
-	$admins_id    = ( preg_match("/^[a-zA-Z0-9]+$/", $admins_id) && ! empty($admins_id ) ) ? $admins_id : false ;
+	$admins_id    = ( preg_match("/^[a-zA-Z0-9]+$/", $admins_id) && ! empty( $admins_id ) ) ? $admins_id : false ;
 	$app_id       = $options['vacb_general_seo_ogp_app_id'];
-	$app_id       = ( preg_match("/^[a-zA-Z0-9]+$/", $app_id) && ! empty($app_id ) ) ? $app_id : false ;
+	$app_id       = ( preg_match("/^[a-zA-Z0-9]+$/", $app_id) && ! empty( $app_id ) ) ? $app_id : false ;
+	$fbpage       = ( ! empty( $options['vacb_general_seo_ogp_fbpage'] ) ) ? $options['vacb_general_seo_ogp_fbpage'] : false;
 	$twitter_id   = $options['vacb_general_seo_ogp_twitter_id'];
-	$twitter_id   = ( preg_match("/^[a-zA-Z0-9_]+$/", $twitter_id) && ! empty($twitter_id ) ) ? $twitter_id : false ;
+	$twitter_id   = ( preg_match("/^[a-zA-Z0-9_]+$/", $twitter_id) && ! empty( $twitter_id ) ) ? $twitter_id : false ;
+	$plus_prof    = ( ! empty( $options['vacb_general_seo_ogp_plus'] ) ) ? $options['vacb_general_seo_ogp_plus'] : false;
+	$plus_page    = ( ! empty( $options['vacb_general_seo_ogp_plus_page'] ) ) ? $options['vacb_general_seo_ogp_plus_page'] : false;
 
 	/**
 	 * Noindex
@@ -277,11 +331,21 @@ function _visualive_theme_the_meta_tags() {
 	if ( $app_id ) {
 		$metatag .= '<meta property="fb:app_id" content="' . esc_attr( $app_id ) . '">' . "\n";
 	}
+	if ( $fbpage ) {
+		$metatag .= '<meta property="article:publisher" content="' . esc_url( $fbpage ) . '">' . "\n";
+	}
 	$metatag .= '<meta name="twitter:card" content="summary">' . "\n";
 	if ( $twitter_id ) {
 		$metatag .= '<meta name="twitter:site" content="@' . esc_attr( $twitter_id ) . '">' . "\n";
+		$metatag .= '<meta name="twitter:creator" content="@' . esc_attr( $twitter_id ) . '">' . "\n";
 	}
 	$metatag .= '<meta name="twitter:description" content="' . esc_attr( get_bloginfo('description', 'display') ) . '">' . "\n";
+	if ( $plus_prof ) {
+		$metatag .= '<link rel="author" href="' . esc_url( $plus_prof ) . '">' . "\n";
+	}
+	if ( $plus_page ) {
+		$metatag .= '<link rel="publisher" href="' . esc_url( $plus_page ) . '">' . "\n";
+	}
 
 	echo $metatag;
 }

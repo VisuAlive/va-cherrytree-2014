@@ -3,24 +3,18 @@
 		<div class="row">
 			<div class="small-12 columns post-orbit">
 				<ul data-orbit data-options="bullets:false;">
+					<?php query_posts( array( 'post_type' => 'post', 'posts_per_page' => '5', 'meta_key' => '_thumbnail_id', 'ignore_sticky_posts' => 1, 'orderby' => 'rand' )  );
+					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<li>
-						<img src="http://foundation.zurb.com/docs/assets/img/examples/satelite-orbit.jpg" height="450" alt="slide 1" />
-						<div class="orbit-caption">
-							Caption One.
-						</div>
+						<a href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail( array( 637, 300 ) ); ?>
+							<div class="orbit-caption">
+								<?php the_title(); ?>
+							</div>
+						</a>
 					</li>
-					<li class="active">
-						<img src="http://foundation.zurb.com/docs/assets/img/examples/andromeda-orbit.jpg" height="450" alt="slide 2" />
-						<div class="orbit-caption">
-							Caption Two.
-						</div>
-					</li>
-					<li>
-						<img src="http://foundation.zurb.com/docs/assets/img/examples/launch-orbit.jpg" height="450" alt="slide 3" />
-						<div class="orbit-caption">
-							Caption Three.
-						</div>
-					</li>
+					<?php endwhile; endif;
+					wp_reset_query(); ?>
 				</ul>
 			</div>
 		</div>

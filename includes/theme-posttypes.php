@@ -52,6 +52,50 @@ endif;
 add_action( 'init', 'vacb2014_register_posttype', 0 );
 
 
+/**
+ * 自動でタームを登録する。
+ * フックは setup-theme.php の after_switch_theme に登録
+ * @return void
+ */ 
+function _work_genre_insert_term() {
+	$terms   = array();
+	$terms[] = array( 'name' => 'ECサイト',          'slug' => 'ecsite' );
+	$terms[] = array( 'name' => 'PRサイト',          'slug' => 'prsite' );
+	$terms[] = array( 'name' => 'Webサービスサイト',  'slug' => 'webservice' );
+	$terms[] = array( 'name' => 'コーポレートサイト', 'slug' => 'corporatesite' );
+	$terms[] = array( 'name' => '不動産サイト',      'slug' => 'estatesite' );
+	$terms[] = array( 'name' => '求人サイト',        'slug' => 'recruitsite' );
+	$terms[] = array( 'name' => '特設サイト',        'slug' => 'specialsite' );
+
+	foreach ($terms as $term) {
+		wp_insert_term( $term['name'], 'genre', array( 'slug' => $term['slug'] ) );
+	}
+}
+
+
+/**
+ * 自動でタームを登録する。
+ * フックは setup-theme.php の after_switch_theme に登録
+ * @return void
+ */ 
+function _work_charge_insert_term() {
+	$terms   = array();
+	$terms[] = array( 'name' => 'JavaScript',    'slug' => 'javascript' );
+	$terms[] = array( 'name' => 'WordPress',     'slug' => 'wordpress' );
+	$terms[] = array( 'name' => 'コーディング',   'slug' => 'coding' );
+	$terms[] = array( 'name' => 'ディレクション', 'slug' => 'direction' );
+	$terms[] = array( 'name' => 'デザイン',      'slug' => 'design' );
+	$terms[] = array( 'name' => '企画',         'slug' => 'plan' );
+	$terms[] = array( 'name' => '保守',         'slug' => 'maintenance' );
+	$terms[] = array( 'name' => '運営',         'slug' => 'management' );
+
+
+	foreach ($terms as $term) {
+		wp_insert_term( $term['name'], 'charge', array( 'slug' => $term['slug'] ) );
+	}
+}
+
+
 // /**
 //  * Replace menu text within the admin sidebar menu
 //  *
